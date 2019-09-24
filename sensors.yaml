@@ -1,0 +1,86 @@
+# Weather prediction
+- platform: yr
+  name: Weather
+  #forecast: 24
+  monitored_conditions:
+    - temperature
+    - symbol
+    - precipitation
+    - windSpeed
+    - humidity
+
+# Уровни заряда батарей
+- platform: template
+  sensors:
+    xiaomi_thp_bedroom_battery:
+      friendly_name: "Заряд в датчике THP в комнате"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('sensor.xiaomi_thp_temperature_bedroom_158d00025f03f5', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_thp_bathroom_battery:
+      friendly_name: "Заряд в датчике THP в ванной"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('sensor.xiaomi_thp_temperature_bathroom_158d00025f14c5', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_thp_loggia_battery:
+      friendly_name: "Заряд в датчике THP в лоджии"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('sensor.xiaomi_thp_temperature_loggia_158d0002389f84', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_wall_switch_bedroom_battery:
+      friendly_name: "Заряд в выключателе в спальне"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('binary_sensor.xiaomi_wall_switch_bedroom_158d000230d4a2', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_exit_switch_lobby_battery:
+      friendly_name: "Заряд в кнопке на выходе"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('binary_sensor.xiaomi_exit_switch_lobby_158d0002135c59', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_water_leak_bedroom_battery:
+      friendly_name: "Заряд в датчике протечки в ванной"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('binary_sensor.xiaomi_water_leak_bedroom_158d00027b0cd4', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_motion_bathroom_battery:
+      friendly_name: "Заряд в датчике движения в ванной"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('binary_sensor.xiaomi_motion_bathroom_158d0002b6e8e6', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_smoke_kitchen_battery:
+      friendly_name: "Заряд в датчике дыма на кухне"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('binary_sensor.xiaomi_smoke_kitchen_158d00028229a1', 'battery_level') }}"
+      device_class: battery
+
+# Увлажнитель
+- platform: template
+  sensors:
+    xiaomi_humidifier_bedroom_water_level:
+      friendly_name: "Уровень воды"
+      unit_of_measurement: '%'
+      value_template: "{{ [state_attr('fan.xiaomi_humidifier_bedroom', 'depth') / 1.2, 100] | min | int }}"
+      icon_template: "mdi:cup"
+
+# System monitor
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /
+    - type: memory_use_percent
+    - type: processor_use
+    - type: last_boot

@@ -1,0 +1,74 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 181
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Moscow
+  # Customization file
+  customize: !include customize.yaml
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+#logger
+logger:
+  default: info
+
+# Discover some devices automatically
+discovery:
+
+# Wake on LAN service
+wake_on_lan:
+
+
+# Sensors
+sensor: !include sensors.yaml
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+# Fans
+fan:
+  - platform: xiaomi_miio
+    host: 192.168.1.86
+    token: !secret xiaomi_humfan_token
+    
+# Xiaomi gateway
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - key: !secret xiaomi_gateway_key
+
+# Xiaomi увлажнитель
+input_select:
+  xiaomi_humidifier_bedroom_mode:
+    name: "Режим работы"
+    options:
+      - silent
+      - medium
+      - high
+      - auto
+    initial: auto
+    icon: mdi:concourse-ci
+
+# Wheater forecasting
+weather:
+  - platform: darksky
+    name: Прогноз
+    api_key: !secret dark_sky_api_key
+
+switch: !include switches.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
