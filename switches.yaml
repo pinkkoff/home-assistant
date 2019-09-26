@@ -3,3 +3,17 @@
   host: "192.168.1.50"
   broadcast_address: "192.168.1.255"
   mac_address: !secret master_MAC
+- platform: template
+  switches:
+    xiaomi_humidifier_bedroom_dry_mode:
+      friendly_name: "Режим DRY"
+      value_template: "{{ is_state_attr('fan.xiaomi_humidifier_bedroom', 'dry', true) }}"
+      turn_on:
+        service: fan.xiaomi_miio_set_dry_on 
+        data:
+          entity_id: fan.xiaomi_humidifier_bedroom
+      turn_off:
+        service: fan.xiaomi_miio_set_dry_off 
+        data:
+          entity_id: fan.xiaomi_humidifier_bedroom
+

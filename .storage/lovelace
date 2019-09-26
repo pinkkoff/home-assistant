@@ -88,16 +88,25 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "fan.xiaomi_humidifier_bedroom"
-                                },
-                                {
-                                    "entity": "sensor.xiaomi_thp_humidity_bedroom_158d00025f03f5"
+                                    "entity": "fan.xiaomi_humidifier_bedroom",
+                                    "name": "\u0412\u043a\u043b/\u0412\u044b\u043a\u043b"
                                 },
                                 {
                                     "entity": "input_select.xiaomi_humidifier_bedroom_mode"
                                 },
                                 {
+                                    "entity": "sensor.xiaomi_thp_humidity_bedroom_158d00025f03f5",
+                                    "name": "\u0422\u0435\u043a\u0443\u0449\u0430\u044f \u0432\u043b\u0430\u0436\u043d\u043e\u0441\u0442\u044c"
+                                },
+                                {
+                                    "entity": "input_number.xiaomi_humidifier_bedroom_target_hum"
+                                },
+                                {
                                     "entity": "sensor.xiaomi_humidifier_bedroom_water_level"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_humidifier_bedroom_dry_mode",
+                                    "name": "\u0420\u0435\u0436\u0438\u043c Dry"
                                 }
                             ],
                             "show_header_toggle": false,

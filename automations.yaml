@@ -1,1 +1,35 @@
-[]
+# Xiaomi Humidifier mode
+- alias: Xiaomi Humidifier mode changed in HA
+  trigger:
+    entity_id: input_select.xiaomi_humidifier_bedroom_mode
+    platform: state
+  condition:
+    condition: template
+    value_template: "{{ (state_attr('fan.xiaomi_humidifier_bedroom', 'mode')) != (states('input_select.xiaomi_humidifier_bedroom_mode')) }}"
+  action:
+    service: fan.set_speed
+    data_template:
+      entity_id: fan.xiaomi_humidifier_bedroom
+      speed: "{{ states('input_select.xiaomi_humidifier_bedroom_mode') }}"
+- alias: Xiaomi Humidifier mode changed
+  trigger:
+    platform: state
+    entity_id: fan.xiaomi_humidifier_bedroom
+  condition:
+    condition: template
+    value_template: "{{ (state_attr('fan.xiaomi_humidifier_bedroom', 'mode')) != (states('input_select.xiaomi_humidifier_bedroom_mode')) }}"
+  action:
+    service: input_select.select_option
+    entity_id: input_select.xiaomi_humidifier_bedroom_mode
+    data_template:
+      option: "{{ state_attr('fan.xiaomi_humidifier_bedroom', 'mode') }}"
+# Xiaomi Humidifier target humidity
+- alias: Xiaomi Humidifier target humidity
+  trigger:
+    entity_id: input_number.xiaomi_humidifier_bedroom_target_hum
+    platform: state
+  action:
+    service: fan.xiaomi_miio_set_target_humidity
+    data_template:
+      entity_id: fan.xiaomi_humidifier_bedroom
+      humidity: "{{ (states('input_number.xiaomi_humidifier_bedroom_target_hum')) | int }}"

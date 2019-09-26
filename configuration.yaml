@@ -59,8 +59,17 @@ input_select:
       - medium
       - high
       - auto
-    initial: auto
     icon: mdi:concourse-ci
+input_number:
+  xiaomi_humidifier_bedroom_target_hum:
+    name: "Целевая влажность"
+    unit_of_measurement: '%'
+    min: 30
+    max: 80
+    step: 10
+    mode: slider
+    icon: mdi:water-percent
+
 
 # Wheater forecasting
 weather:
