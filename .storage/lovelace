@@ -408,18 +408,6 @@
                             "show_state": false,
                             "title": "\u0421\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u0431\u0430\u0442\u0430\u0440\u0435\u0435\u043a",
                             "type": "glance"
-                        },
-                        {
-                            "entity": "script.restart_ha_core",
-                            "hold_action": {
-                                "action": "more-info"
-                            },
-                            "show_icon": true,
-                            "show_name": true,
-                            "tap_action": {
-                                "action": "toggle"
-                            },
-                            "type": "entity-button"
                         }
                     ],
                     "icon": "mdi:lan",
