@@ -1,0 +1,25 @@
+restart_ha:
+  alias: Перезапустить HA
+  sequence:
+    - alias: Restart Home Assistant
+      service: homeassistant.restart
+restart_ha_core:
+  alias: Перезапустить ядро HA
+  sequence:
+    - alias: Restart Home Assistant Core
+      service: homeassistant.reload_core_config
+restart_ha_group:
+  alias: Перезагрузить группы
+  sequence:
+    - alias: Restart Home Assistant Group
+      service: group.reload
+restart_ha_automations:
+  alias: Перезагрузить автоматизации
+  sequence:
+    - alias: Restart Home Assistant Automations
+      service: automation.reload
+restart_ha_scripts:
+  alias: Перезагрузить скрипты
+  sequence:
+    - alias: Restart Home Assistant Scripts
+      service: script.reload
