@@ -70,6 +70,11 @@ input_number:
     mode: slider
     icon: mdi:water-percent
 
+# Автоматическая подсветка в ванной
+input_boolean:
+  auto_light_switch_bedroom:
+    name: "Авто подсветка"
+    icon: mdi:brightness-auto
 
 # Wheater forecasting
 weather:

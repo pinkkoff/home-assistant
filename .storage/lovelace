@@ -10,7 +10,6 @@
                         "sensor.weather_symbol",
                         "sensor.weather_temperature",
                         "sensor.weather_humidity",
-                        "sensor.weather_wind_speed",
                         "sensor.weather_precipitation"
                     ],
                     "cards": [
@@ -138,14 +137,6 @@
                             "type": "horizontal-stack"
                         },
                         {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.xiaomi_motion_bathroom_158d0002b6e8e6"
-                                }
-                            ],
-                            "type": "glance"
-                        },
-                        {
                             "cards": [
                                 {
                                     "entity": "light.gateway_light_7c49eb1babbf",
@@ -153,17 +144,30 @@
                                     "type": "light"
                                 },
                                 {
-                                    "columns": 1,
-                                    "entities": [
+                                    "cards": [
                                         {
-                                            "entity": "binary_sensor.xiaomi_motion_bathroom_158d0002b6e8e6"
+                                            "columns": 2,
+                                            "entities": [
+                                                {
+                                                    "entity": "binary_sensor.xiaomi_motion_bathroom_158d0002b6e8e6"
+                                                },
+                                                {
+                                                    "entity": "sensor.xiaomi_illumin_bathroom_158d0002b6e8e6"
+                                                }
+                                            ],
+                                            "show_name": false,
+                                            "type": "glance"
                                         },
                                         {
-                                            "entity": "sensor.xiaomi_illumin_bathroom_158d0002b6e8e6"
+                                            "entities": [
+                                                {
+                                                    "entity": "input_boolean.auto_light_switch_bedroom"
+                                                }
+                                            ],
+                                            "type": "entities"
                                         }
                                     ],
-                                    "show_name": false,
-                                    "type": "glance"
+                                    "type": "vertical-stack"
                                 }
                             ],
                             "type": "horizontal-stack"
