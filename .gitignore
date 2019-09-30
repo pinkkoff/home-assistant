@@ -8,6 +8,8 @@
 !*.md
 !.storage
 !.storage/lovelace
+!node-red
+!node-red/flows.json
 
 # Ignore folders.
 .cloud
