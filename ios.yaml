@@ -1,0 +1,19 @@
+#push:
+#  categories:
+#    - name: "Тестовый PUSH c кнопками" # Дружелюбное имя
+#      identifier: 'test' # Маленькими буквами и без спец знаков. Это категория PUSH
+#      actions:
+#        - identifier: 'ALARM'
+#          title: 'Жуткий алярм'
+#          activationMode: 'background'
+#          authenticationRequired: true
+#          destructive: true
+#          behavior: 'default'
+#        - identifier: 'SILENCE_ALARM'
+#          title: 'Небольшой алярм'
+#          activationMode: 'background'
+#          authenticationRequired: true
+#          destructive: false
+#          behavior: 'textInput'
+#          textInputButtonTitle: 'Кнопка input!'
+#          textInputPlaceholder: 'Placeholder для текста'

@@ -27,6 +27,38 @@ logger:
 # Discover some devices automatically
 discovery:
 
+# Telegram
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_bot_api_key
+    proxy_url: !secret telegram_bot_proxy_url
+    proxy_params:
+      username: !secret telegram_bot_proxy_username
+      password: !secret telegram_bot_proxy_password
+    allowed_chat_ids:
+      - !secret telegram_bot_allowed_chat_id_pinkkoff
+      - !secret telegram_bot_allowed_chat_id_fludshorty
+      - !secret telegram_bot_allowed_chat_id_all
+
+# iOS notifications
+ios: !include ios.yaml
+notify:
+  - name: all_notifiers_push
+    platform: group
+    services:
+      - service: ios_iphone_pinkkoff
+      - service: ios_iphone_anechka
+  - name: telegram_HA_pinkkoff
+    platform: telegram
+    chat_id: !secret telegram_bot_allowed_chat_id_pinkkoff
+  - name: telegram_HA_fludshorty
+    platform: telegram
+    chat_id: !secret telegram_bot_allowed_chat_id_fludshorty
+  - name: telegram_HA_all
+    platform: telegram
+    chat_id: !secret telegram_bot_allowed_chat_id_all
+
+
 # Wake on LAN service
 wake_on_lan:
 
