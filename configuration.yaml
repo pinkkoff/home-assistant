@@ -50,98 +50,19 @@ xiaomi_aqara:
   gateways:
     - key: !secret xiaomi_gateway_key
 
-# Xiaomi увлажнитель
-input_select:
-  xiaomi_humidifier_bedroom_mode:
-    name: "Режим работы"
-    options:
-      - silent
-      - medium
-      - high
-      - auto
-    icon: mdi:concourse-ci
-input_number:
-  xiaomi_humidifier_bedroom_target_hum:
-    name: "Целевая влажность"
-    unit_of_measurement: '%'
-    min: 30
-    max: 80
-    step: 10
-    mode: slider
-    icon: mdi:water-percent
-
-# Автоматическая подсветка в ванной
-input_boolean:
-  auto_light_switch_bedroom:
-    name: "Авто подсветка"
-    icon: mdi:brightness-auto
-
 # Wheater forecasting
 weather:
   - platform: darksky
     name: Прогноз
     api_key: !secret dark_sky_api_key
 
+# Includes entities
 switch: !include switches.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
-
-# Test elements
-input_select:
-  test_input_select_1:
-    name: "Test input select 1"
-    options:
-      - one
-      - two
-      - three
-      - four
-    icon: mdi:alpha-t-circle-outline
-  test_input_select_2:
-    name: "Test input select 2"
-    options:
-      - one
-      - two
-      - three
-      - four
-    icon: mdi:alpha-t-circle-outline     
-input_number:
-  test_input_number_1:
-    name: "Test input number 1"
-    unit_of_measurement: '%'
-    min: -20
-    max: 100
-    step: 5
-    mode: slider
-    icon: mdi:alpha-t-circle-outline
-  test_input_number_2:
-    name: "Test input number 2"
-    min: 0
-    max: 50
-    step: 1
-    mode: slider
-    icon: mdi:alpha-t-circle-outline
-  test_input_number_3:
-    name: "Test input number 3"
-    min: 0
-    max: 200
-    step: 1
-    mode: box
-    icon: mdi:alpha-t-circle-outline
-input_boolean:
-  test_input_boolean_1:
-    name: "Test input boolean"
-    initial: off
-    icon: mdi:alpha-t-circle-outline
-input_datetime:
-  test_input_datetime_1:
-    name: "Test input datetime"
-    has_date: true
-    has_time: true
-  test_input_datetime_2:
-    name: "Test input date"
-    has_date: true
-input_text:
-  test_input_text_1:
-    name: "Test input text"
-    initial: Some Text
+input_select: !include input_selects.yaml
+input_number: !include input_numbers.yaml
+input_boolean: !include input_booleans.yaml
+input_datetime: !include input_datetimes.yaml
+input_text: !include input_texts.yaml

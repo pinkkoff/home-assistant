@@ -1,0 +1,34 @@
+#
+# Humidifier target humidity
+xiaomi_humidifier_bedroom_target_hum:
+  name: "Целевая влажность"
+  unit_of_measurement: '%'
+  min: 30
+  max: 80
+  step: 10
+  mode: slider
+  icon: mdi:water-percent
+#
+# Test entities
+test_input_number_1:
+  name: "Test input number 1"
+  unit_of_measurement: '%'
+  min: -20
+  max: 100
+  step: 5
+  mode: slider
+  icon: mdi:alpha-t-circle-outline
+test_input_number_2:
+  name: "Test input number 2"
+  min: 0
+  max: 50
+  step: 1
+  mode: slider
+  icon: mdi:alpha-t-circle-outline
+test_input_number_3:
+  name: "Test input number 3"
+  min: 0
+  max: 200
+  step: 1
+  mode: box
+  icon: mdi:alpha-t-circle-outline

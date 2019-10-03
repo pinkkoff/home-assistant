@@ -1,0 +1,11 @@
+#
+# Auto light in bathroom
+auto_light_switch_bedroom:
+  name: "Авто подсветка"
+  icon: mdi:brightness-auto
+#
+# Test entities
+test_input_boolean_1:
+  name: "Test input boolean"
+  initial: off
+  icon: mdi:alpha-t-circle-outline
