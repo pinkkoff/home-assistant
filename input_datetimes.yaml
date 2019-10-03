@@ -1,0 +1,9 @@
+#
+# Test entities
+test_input_datetime_1:
+  name: "Test input datetime"
+  has_date: true
+  has_time: true
+test_input_datetime_2:
+  name: "Test input date"
+  has_date: true
