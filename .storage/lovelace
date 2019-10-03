@@ -423,84 +423,37 @@
                     "badges": [],
                     "cards": [
                         {
-                            "columns": 4,
                             "entities": [
                                 {
-                                    "entity": "sensor.memory_use_percent"
+                                    "entity": "input_select.test_input_select_1"
                                 },
                                 {
-                                    "entity": "sensor.disk_use_percent"
+                                    "entity": "input_select.test_input_select_2"
                                 },
                                 {
-                                    "entity": "sensor.processor_use"
+                                    "entity": "input_number.test_input_number_1"
                                 },
                                 {
-                                    "entity": "sensor.last_boot"
+                                    "entity": "input_number.test_input_number_2"
+                                },
+                                {
+                                    "entity": "input_number.test_input_number_3"
+                                },
+                                {
+                                    "entity": "input_boolean.test_input_boolean_1"
+                                },
+                                {
+                                    "entity": "input_datetime.test_input_datetime_1"
+                                },
+                                {
+                                    "entity": "input_datetime.test_input_datetime_2"
+                                },
+                                {
+                                    "entity": "input_text.test_input_text_1"
                                 }
                             ],
-                            "show_icon": true,
-                            "show_name": true,
-                            "show_state": true,
-                            "title": "\u0421\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u0445\u043e\u0441\u0442\u0430",
-                            "type": "glance"
-                        },
-                        {
-                            "entity": "sensor.disk_use_percent",
-                            "max": 100,
-                            "min": 0,
-                            "severity": {
-                                "green": 0,
-                                "red": 80,
-                                "yellow": 60
-                            },
-                            "theme": "default",
-                            "type": "gauge"
-                        },
-                        {
-                            "entity": "switch.wol_master",
-                            "hold_action": {
-                                "action": "more-info"
-                            },
-                            "icon": "mdi:desktop-classic",
-                            "icon_height": "35px",
-                            "show_icon": true,
-                            "show_name": true,
-                            "tap_action": {
-                                "action": "toggle"
-                            },
-                            "type": "entity-button"
-                        },
-                        {
-                            "entity": "sensor.processor_use",
-                            "max": 100,
-                            "min": 0,
-                            "severity": {
-                                "green": 0,
-                                "red": 80,
-                                "yellow": 60
-                            },
-                            "theme": "default",
-                            "type": "gauge"
-                        },
-                        {
-                            "entity": "switch.plug_158d0002677bd3",
-                            "hold_action": {
-                                "action": "more-info"
-                            },
-                            "icon": "mdi:lightbulb",
-                            "icon_height": "35px",
-                            "show_icon": true,
-                            "show_name": true,
-                            "tap_action": {
-                                "action": "toggle"
-                            },
-                            "type": "entity-button"
-                        },
-                        {
-                            "entities": [
-                                "light.gateway_light_7c49eb1babbf"
-                            ],
-                            "title": "\u041e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435",
+                            "show_header_toggle": false,
+                            "title": "\u0422\u0435\u0441\u0442\u043e\u0432\u044b\u0435 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u044b",
                             "type": "entities"
                         },
                         {
