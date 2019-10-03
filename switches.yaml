@@ -1,8 +1,12 @@
+#
+# Wake on LAN switch. Indicate working comp
 - platform: wake_on_lan
   name: "WoL Master"
   host: "192.168.1.50"
   broadcast_address: "192.168.1.255"
   mac_address: !secret master_MAC
+#
+# Xiaomi humidifier dry mode switch
 - platform: template
   switches:
     xiaomi_humidifier_bedroom_dry_mode:
@@ -16,4 +20,3 @@
         service: fan.xiaomi_miio_set_dry_off 
         data:
           entity_id: fan.xiaomi_humidifier_bedroom
-
