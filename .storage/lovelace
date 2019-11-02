@@ -368,6 +368,10 @@
                                             "entities": [
                                                 {
                                                     "entity": "sensor.last_boot"
+                                                },
+                                                {
+                                                    "entity": "sensor.snapshot_backup",
+                                                    "name": "Backup"
                                                 }
                                             ],
                                             "show_header_toggle": false,
@@ -464,6 +468,45 @@
                             "show_state": false,
                             "title": "\u0421\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u0431\u0430\u0442\u0430\u0440\u0435\u0435\u043a",
                             "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.router_ping",
+                                    "name": "\u0420\u043e\u0443\u0442\u0435\u0440"
+                                },
+                                {
+                                    "entity": "binary_sensor.xiaomi_gw1_ping",
+                                    "name": "\u0428\u043b\u044e\u0437 Xiaomi"
+                                },
+                                {
+                                    "entity": "binary_sensor.xiaomi_humidifier_bedroom_ping",
+                                    "name": "\u0423\u0432\u043b\u0430\u0436\u043d\u0438\u0442\u0435\u043b\u044c"
+                                },
+                                {
+                                    "entity": "binary_sensor.nasmaster_ping",
+                                    "name": "NASMaster"
+                                },
+                                {
+                                    "entity": "binary_sensor.kidnas_ping",
+                                    "name": "KidNas"
+                                },
+                                {
+                                    "entity": "binary_sensor.master_ping",
+                                    "name": "\u041a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440"
+                                },
+                                {
+                                    "entity": "binary_sensor.odroid1_ping",
+                                    "name": "Odroid 1"
+                                },
+                                {
+                                    "entity": "binary_sensor.odroid2_ping",
+                                    "name": "Odroid 2"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "\u0421\u0435\u0442\u0435\u0432\u044b\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430",
+                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:lan",
