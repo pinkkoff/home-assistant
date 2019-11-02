@@ -1,3 +1,21 @@
 fan.xiaomi_miio_device:
   humidity: 52
   mode: silent
+###
+# Ping sensors
+binary_sensor.router_ping:
+  friendly_name: Роутер
+binary_sensor.NASMaster_ping:
+  friendly_name: NASMaster
+binary_sensor.KidNAS_ping:
+  friendly_name: KidNas
+binary_sensor.master_ping:
+  friendly_name: Компьютер
+binary_sensor.odroid1_ping:
+  friendly_name: Odroid 1
+binary_sensor.odroid2_ping:
+  friendly_name: Odroid 2
+binary_sensor.xiaomi_gw1_ping:
+  friendly_name: Xiaomi gateway
+binary_sensor.xiaomi_humidifier_bedroom_ping:
+  friendly_name: "Увлажнитель в спальне"
