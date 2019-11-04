@@ -71,7 +71,7 @@
 - platform: template
   sensors:
     xiaomi_humidifier_bedroom_water_level:
-      friendly_name: "Уровень воды"
+      friendly_name: "Уровень воды в увлажнителе"
       unit_of_measurement: '%'
       value_template: "{{ [state_attr('fan.xiaomi_humidifier_bedroom', 'depth') / 1.2, 100] | min | int }}"
       icon_template: "mdi:cup"

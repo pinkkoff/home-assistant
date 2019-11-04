@@ -1,12 +1,12 @@
 #
 # Auto light in bathroom
-auto_light_switch_bedroom:
-  name: "Авто подсветка"
+auto_light_bedroom_switch:
+  name: "Авто подсветка в ванной"
   icon: mdi:brightness-auto
 #
 # Loggia auto heater
-auto_temp_heater_switch_loggia:
-  name: "Авто подогрев"
+auto_heater_loggia_switch:
+  name: "Авто подогрев лоджии"
   icon: mdi:auto-upload
 #
 # Test entities

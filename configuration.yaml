@@ -43,18 +43,18 @@ telegram_bot:
 # iOS notifications
 ios: !include ios.yaml
 notify:
-  - name: all_notifiers_push
+  - name: ios_iphone_all
     platform: group
     services:
       - service: ios_iphone_pinkkoff
       - service: ios_iphone_anechka
-  - name: telegram_HA_pinkkoff
+  - name: telegram_chat_pinkkoff
     platform: telegram
     chat_id: !secret telegram_bot_allowed_chat_id_pinkkoff
-  - name: telegram_HA_fludshorty
+  - name: telegram_chat_fludshorty
     platform: telegram
     chat_id: !secret telegram_bot_allowed_chat_id_fludshorty
-  - name: telegram_HA_all
+  - name: telegram_chat_all
     platform: telegram
     chat_id: !secret telegram_bot_allowed_chat_id_all
 
@@ -85,7 +85,7 @@ xiaomi_aqara:
 # Wheater forecasting
 weather:
   - platform: darksky
-    name: Прогноз
+    name: darksky_forecast
     api_key: !secret dark_sky_api_key
 
 # Includes entities

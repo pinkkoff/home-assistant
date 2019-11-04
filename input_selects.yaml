@@ -1,7 +1,7 @@
 #
 # Humidifier mode
 xiaomi_humidifier_bedroom_mode:
-  name: "Режим работы"
+  name: "Режим работы увлажнителя в спальне"
   options:
     - silent
     - medium

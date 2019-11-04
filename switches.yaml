@@ -10,7 +10,7 @@
 - platform: template
   switches:
     xiaomi_humidifier_bedroom_dry_mode:
-      friendly_name: "Режим DRY"
+      friendly_name: "Режим DRY в увлажнителе в спальне"
       value_template: "{{ is_state_attr('fan.xiaomi_humidifier_bedroom', 'dry', true) }}"
       turn_on:
         service: fan.xiaomi_miio_set_dry_on 

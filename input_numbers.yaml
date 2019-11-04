@@ -1,7 +1,7 @@
 #
 # Humidifier target humidity
 xiaomi_humidifier_bedroom_target_hum:
-  name: "Целевая влажность"
+  name: "Целевая влажность увлажнителя в спальне"
   unit_of_measurement: '%'
   min: 30
   max: 80
@@ -10,24 +10,24 @@ xiaomi_humidifier_bedroom_target_hum:
   icon: mdi:water-percent
 #
 # Loggia auto heater
-auto_temp_day_min_loggia: # Min temp in loggia during day
-  name: "T днем (min)"
+auto_heater_loggia_day_temp_min: # Min temp in loggia during day
+  name: "Min T днем в лоджии"
   unit_of_measurement: '°C'
   min: 0
   max: 30
   step: 1
   mode: slider
   icon: mdi:thermometer
-auto_temp_night_min_loggia: # Min temp in loggia during night
-  name: "T ночью (min)"
+auto_heater_loggia_night_temp_min: # Min temp in loggia during night
+  name: "Min T ночью в лоджии (авто)"
   unit_of_measurement: '°C'
   min: 0
   max: 30
   step: 1
   mode: slider
   icon: mdi:thermometer
-auto_temp_range_loggia: # Range of temperature (min + range)
-  name: "Диапазон (min +)"
+auto_heater_loggia_temp_range: # Range of temperature (min + range)
+  name: "Диапазон T в лоджии (авто, min +)"
   unit_of_measurement: '°C'
   min: 2
   max: 10
