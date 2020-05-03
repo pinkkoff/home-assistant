@@ -217,6 +217,7 @@
         "id": "12c41a6a.f1de76",
         "type": "server-state-changed",
         "z": "6a24dcbb.10a694",
+        "d": true,
         "name": "Движение в ванной",
         "server": "6962e153.99eb9",
         "version": 1,
@@ -2181,8 +2182,9 @@
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
         "version": 1,
+        "debugenabled": false,
         "service_domain": "notify",
-        "service": "telegram_chat_pinkkoff",
+        "service": "telegram_chat_all",
         "entityId": "",
         "data": "{\"title\":\"❗️*ОПАСНОСТЬ❗️ Возможен пожар на кухне*🔥\",\"message\":\"Уровень задымления: {{data.attributes.Density}}\"}",
         "dataType": "json",
@@ -2203,8 +2205,9 @@
         "name": "Send sound push to all",
         "server": "6962e153.99eb9",
         "version": 1,
+        "debugenabled": false,
         "service_domain": "notify",
-        "service": "ios_iphone_pinkkoff",
+        "service": "ios_iphone_all",
         "entityId": "",
         "data": "{\"message\":\"Уровень задымления:{{data.attributes.Density}} \",\"title\":\"❗ОПАСНОСТЬ❗️ Возможен пожар на кухне🔥\",\"data\":{\"push\":{\"sound\":\"US-EN-Alexa-Smoke-Detected-Generic.wav\"}}}",
         "dataType": "json",
@@ -2332,8 +2335,9 @@
         "name": "Send sound push to All",
         "server": "6962e153.99eb9",
         "version": 1,
+        "debugenabled": false,
         "service_domain": "notify",
-        "service": "ios_iphone_pinkkoff",
+        "service": "ios_iphone_all",
         "entityId": "",
         "data": "{\"title\":\"❗ОПАСНОСТЬ❗️Зафиксирована протечка💧\",\"message\":\"Устройство: {{data.new_state.attributes.friendly_name}}\",\"data\":{\"push\":{\"sound\":\"US-EN-Alexa-Water-Detected-Generic.wav\"}}}",
         "dataType": "json",
@@ -3624,22 +3628,22 @@
         "id": "531ed9d6.d350a8",
         "type": "subflow:7cf1202f.0fec5",
         "z": "8d422126.121a1",
-        "name": "< 20 - 26 <",
+        "name": "< 21 - 27 <",
         "env": [
             {
                 "name": "low",
-                "type": "num",
-                "value": "20"
+                "value": "21",
+                "type": "num"
             },
             {
                 "name": "high",
-                "type": "num",
-                "value": "26"
+                "value": "27",
+                "type": "num"
             },
             {
                 "name": "hysteresis",
-                "type": "str",
-                "value": "0.2"
+                "value": "0.2",
+                "type": "str"
             }
         ],
         "x": 310,
@@ -4165,7 +4169,7 @@
         "entity_location": "",
         "override_data": "none",
         "blockInputOverrides": false,
-        "x": 580,
+        "x": 560,
         "y": 220,
         "wires": [
             [
@@ -4193,7 +4197,7 @@
         "entity_location": "",
         "override_data": "none",
         "blockInputOverrides": false,
-        "x": 770,
+        "x": 730,
         "y": 220,
         "wires": [
             [
@@ -4223,7 +4227,7 @@
         "entity_location": "",
         "override_data": "none",
         "blockInputOverrides": false,
-        "x": 930,
+        "x": 890,
         "y": 220,
         "wires": [
             [
@@ -4246,7 +4250,7 @@
         "reset": "",
         "bytopic": "all",
         "name": "Turn OFF in 5 min",
-        "x": 1210,
+        "x": 1170,
         "y": 300,
         "wires": [
             [
@@ -4270,7 +4274,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 1300,
+        "x": 1240,
         "y": 220,
         "wires": [
             []
@@ -4292,7 +4296,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 1630,
+        "x": 1550,
         "y": 300,
         "wires": [
             []
@@ -4327,7 +4331,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1100,
+        "x": 1060,
         "y": 220,
         "wires": [
             [
@@ -4354,7 +4358,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1420,
+        "x": 1360,
         "y": 300,
         "wires": [
             [
@@ -4429,8 +4433,12 @@
         "x": 400,
         "y": 240,
         "wires": [
-            [],
-            []
+            [
+                "25a8611b.2bc31e"
+            ],
+            [
+                "60d19acb.b3d844"
+            ]
         ]
     },
     {
@@ -4448,7 +4456,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1000,
+        "x": 980,
         "y": 300,
         "wires": [
             [
@@ -5013,5 +5021,15 @@
                 "ec3035ce.dea868"
             ]
         ]
+    },
+    {
+        "id": "932bf777.26f8c8",
+        "type": "comment",
+        "z": "6a24dcbb.10a694",
+        "name": "Удалить, если хорошо работает ниже",
+        "info": "",
+        "x": 170,
+        "y": 60,
+        "wires": []
     }
 ]
