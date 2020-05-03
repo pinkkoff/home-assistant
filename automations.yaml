@@ -29,7 +29,7 @@
     entity_id: input_number.xiaomi_humidifier_bedroom_target_hum
     platform: state
   action:
-    service: fan.xiaomi_miio_set_target_humidity
+    service: xiaomi_miio.fan_set_target_humidity
     data_template:
       entity_id: fan.xiaomi_humidifier_bedroom
       humidity: "{{ (states('input_number.xiaomi_humidifier_bedroom_target_hum')) | int }}"

@@ -31,10 +31,10 @@ discovery:
 telegram_bot:
   - platform: polling
     api_key: !secret telegram_bot_api_key
-    proxy_url: !secret telegram_bot_proxy_url
-    proxy_params:
-      username: !secret telegram_bot_proxy_username
-      password: !secret telegram_bot_proxy_password
+#    proxy_url: !secret telegram_bot_proxy_url
+#    proxy_params:
+#      username: !secret telegram_bot_proxy_username
+#      password: !secret telegram_bot_proxy_password
     allowed_chat_ids:
       - !secret telegram_bot_allowed_chat_id_pinkkoff
       - !secret telegram_bot_allowed_chat_id_fludshorty
@@ -87,6 +87,31 @@ weather:
   - platform: darksky
     name: darksky_forecast
     api_key: !secret dark_sky_api_key
+
+# Climate thermostats
+climate:
+  - platform: generic_thermostat
+    name: thermostat_loggia
+    heater: switch.plug_158d00032d5e8b
+    target_sensor: sensor.xiaomi_thp_temperature_loggia_158d0002389f84
+    min_temp: 1
+    max_temp: 30
+    ac_mode: false
+    target_temp: 10
+    cold_tolerance: 1.0
+    hot_tolerance: 1.0
+    min_cycle_duration:
+      minutes: 10
+    initial_hvac_mode: "heat"
+    away_temp: 3
+
+# Yeelight
+yeelight:
+  devices:
+    192.168.1.87:
+      name: yeelight_bedroom_ceiling_light
+      model: ceiling13
+      nightlight_switch_type: light
 
 # Includes entities
 switch: !include switches.yaml

@@ -20,15 +20,6 @@
                         },
                         {
                             "entities": [
-                                "switch.plug_158d00032d5e8b",
-                                "switch.plug_158d0002677bd3"
-                            ],
-                            "show_header_toggle": true,
-                            "title": "\u0423\u043c\u043d\u044b\u0435 \u0440\u043e\u0437\u0435\u0442\u043a\u0438",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
                                 "sensor.xiaomi_thp_temperature_bedroom_158d00025f03f5",
                                 "sensor.xiaomi_thp_temperature_bathroom_158d00025f14c5",
                                 "sensor.xiaomi_thp_temperature_loggia_158d0002389f84",
@@ -39,6 +30,62 @@
                             "hours_to_show": 48,
                             "title": "\u041e\u0431\u0449\u0438\u0439 \u043a\u043b\u0438\u043c\u0430\u0442",
                             "type": "history-graph"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_corridor_light"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_bathroom_light"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_bedroom_spots"
+                                },
+                                {
+                                    "entity": "light.yeelight_bedroom_ceiling_light",
+                                    "name": "\u041f\u043e\u0442\u043e\u043b\u043e\u0447\u043d\u044b\u0439 \u0441\u0432\u0435\u0442 \u0432 \u0441\u043f\u0430\u043b\u044c\u043d\u0435"
+                                },
+                                {
+                                    "entity": "light.yeelight_bedroom_ceiling_light_nightlight",
+                                    "name": "\u041d\u043e\u0447\u043d\u0438\u043a \u0432 \u0441\u043f\u0430\u043b\u044c\u043d\u0435"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_bedroom_night_right"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_bedroom_night_left"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_livingroom_pczone"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_livingroom_tvzone"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_livingroom_kitchen_main"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_livingroom_kitchen_sill"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_cloackroom_light"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_balcony_light"
+                                }
+                            ],
+                            "title": "\u0412\u0435\u0441\u044c \u0441\u0432\u0435\u0442",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "switch.plug_158d00032d5e8b",
+                                "switch.plug_158d0002677bd3"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "\u0423\u043c\u043d\u044b\u0435 \u0440\u043e\u0437\u0435\u0442\u043a\u0438",
+                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:home-city-outline",
@@ -48,25 +95,6 @@
                 {
                     "badges": [],
                     "cards": [
-                        {
-                            "cards": [
-                                {
-                                    "entity": "switch.wol_master",
-                                    "icon": "mdi:desktop-tower-monitor",
-                                    "icon_height": "35px",
-                                    "name": "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u043a\u043e\u043c\u043f",
-                                    "type": "entity-button"
-                                },
-                                {
-                                    "entity": "switch.plug_158d0002677bd3",
-                                    "icon": "mdi:lightbulb",
-                                    "icon_height": "35px",
-                                    "type": "entity-button"
-                                }
-                            ],
-                            "title": "\u0412\u044b\u043a\u043b\u044e\u0447\u0430\u0442\u0435\u043b\u0438",
-                            "type": "horizontal-stack"
-                        },
                         {
                             "cards": [
                                 {
@@ -83,6 +111,40 @@
                                 }
                             ],
                             "type": "horizontal-stack"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_bedroom_spots"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_bedroom_night_right"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_bedroom_night_left"
+                                },
+                                {
+                                    "entity": "light.yeelight_bedroom_ceiling_light",
+                                    "name": "\u041f\u043e\u0442\u043e\u043b\u043e\u0447\u043d\u044b\u0439 \u0441\u0432\u0435\u0442"
+                                },
+                                {
+                                    "entity": "light.yeelight_bedroom_ceiling_light_nightlight",
+                                    "name": "\u041f\u043e\u0442\u043e\u043b\u043e\u0447\u043d\u044b\u0439 \u043d\u043e\u0447\u043d\u0438\u043a"
+                                }
+                            ],
+                            "title": "\u0421\u0432\u0435\u0442",
+                            "type": "entities"
+                        },
+                        {
+                            "double_tap_action": {
+                                "action": "more-info"
+                            },
+                            "entity": "light.yeelight_bedroom_ceiling_light",
+                            "hold_action": {
+                                "action": "toggle"
+                            },
+                            "name": "\u041f\u043e\u0442\u043e\u043b\u043e\u0447\u043d\u044b\u0439 \u0441\u0432\u0435\u0442",
+                            "type": "light"
                         },
                         {
                             "entities": [
@@ -114,10 +176,70 @@
                             "show_header_toggle": false,
                             "title": "\u0423\u0432\u043b\u0430\u0436\u043d\u0438\u0442\u0435\u043b\u044c",
                             "type": "entities"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "switch.wol_master",
+                                    "icon": "mdi:desktop-tower-monitor",
+                                    "icon_height": "35px",
+                                    "name": "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u043a\u043e\u043c\u043f",
+                                    "type": "entity-button"
+                                },
+                                {
+                                    "entity": "switch.plug_158d0002677bd3",
+                                    "icon": "mdi:lightbulb",
+                                    "icon_height": "35px",
+                                    "type": "entity-button"
+                                }
+                            ],
+                            "title": "\u0412\u044b\u043a\u043b\u044e\u0447\u0430\u0442\u0435\u043b\u0438",
+                            "type": "horizontal-stack"
                         }
                     ],
                     "icon": "mdi:hotel",
                     "title": "\u041a\u043e\u043c\u043d\u0430\u0442\u0430"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.xiaomi_smoke_kitchen_158d00028229a1",
+                                    "name": "\u0414\u0430\u0442\u0447\u0438\u043a \u043e\u0433\u043d\u044f"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_livingroom_tvzone",
+                                    "name": "TV \u0437\u043e\u043d\u0430"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_livingroom_pczone",
+                                    "name": "PC \u0437\u043e\u043d\u0430"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_livingroom_kitchen_main",
+                                    "name": "\u041f\u043e\u0434\u0441\u0432\u0435\u0442\u043a\u0430 \u043a\u0443\u0445\u043d\u0438"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_livingroom_kitchen_sill",
+                                    "name": "\u041f\u043e\u0434\u043e\u043a\u043e\u043d\u043d\u0438\u043a"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "\u0421\u0432\u0435\u0442",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:silverware-fork-knife",
+                    "path": "",
+                    "title": "\u041a\u0443\u0445\u043d\u044f"
                 },
                 {
                     "badges": [],
@@ -135,6 +257,39 @@
                                     "graph": "line",
                                     "name": "\u0412\u043b\u0430\u0436\u043d\u043e\u0441\u0442\u044c",
                                     "type": "sensor"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_bathroom_light",
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    },
+                                    "icon_height": "50px",
+                                    "name": "\u0421\u0432\u0435\u0442",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "type": "button"
+                                },
+                                {
+                                    "entity": "switch.xiaomi_wallswitch_bathroom_fan",
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    },
+                                    "icon_height": "50px",
+                                    "name": "\u0412\u044b\u0442\u044f\u0436\u043a\u0430",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "type": "button"
                                 }
                             ],
                             "type": "horizontal-stack"
@@ -185,23 +340,61 @@
                     "badges": [],
                     "cards": [
                         {
+                            "entity": "switch.xiaomi_wallswitch_cloackroom_light",
+                            "hold_action": {
+                                "action": "more-info"
+                            },
+                            "icon_height": "50px",
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "type": "button"
+                        }
+                    ],
+                    "icon": "mdi:wardrobe-outline",
+                    "path": "",
+                    "title": "\u0413\u0430\u0440\u0434\u0435\u0440\u043e\u0431\u043d\u0430\u044f"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
                             "entities": [
                                 {
-                                    "entity": "binary_sensor.xiaomi_smoke_kitchen_158d00028229a1",
-                                    "name": "\u0414\u0430\u0442\u0447\u0438\u043a \u043e\u0433\u043d\u044f"
+                                    "entity": "switch.xiaomi_wallswitch_corridor_light",
+                                    "name": "\u0421\u0432\u0435\u0442"
+                                },
+                                {
+                                    "entity": "binary_sensor.xiaomi_doorwindow_corridor_entrance"
                                 }
                             ],
                             "show_header_toggle": false,
                             "type": "entities"
                         }
                     ],
-                    "icon": "mdi:silverware-fork-knife",
+                    "icon": "mdi:door",
                     "path": "",
-                    "title": "\u041a\u0443\u0445\u043d\u044f"
+                    "title": "\u041a\u043e\u0440\u0438\u0434\u043e\u0440"
                 },
                 {
                     "badges": [],
                     "cards": [
+                        {
+                            "entity": "switch.xiaomi_wallswitch_balcony_light",
+                            "hold_action": {
+                                "action": "more-info"
+                            },
+                            "icon_height": "50px",
+                            "name": "\u0421\u0432\u0435\u0442",
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "type": "button"
+                        },
                         {
                             "cards": [
                                 {
@@ -233,6 +426,12 @@
                                 "action": "toggle"
                             },
                             "type": "entity-button"
+                        },
+                        {
+                            "entity": "climate.thermostat_loggia",
+                            "name": "\u041d\u0430\u0433\u0440\u0435\u0432\u0430\u0442\u0435\u043b\u044c",
+                            "theme": "Backend-selected",
+                            "type": "thermostat"
                         },
                         {
                             "cards": [
@@ -405,6 +604,24 @@
                                             "type": "gauge"
                                         },
                                         {
+                                            "entity": "sensor.cpu_temp",
+                                            "max": 100,
+                                            "min": 10,
+                                            "name": "CPU temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 75,
+                                                "yellow": 60
+                                            },
+                                            "theme": "default",
+                                            "type": "gauge"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
                                             "entity": "sensor.memory_use_percent",
                                             "max": 100,
                                             "min": 0,
@@ -412,7 +629,7 @@
                                             "severity": {
                                                 "green": 0,
                                                 "red": 80,
-                                                "yellow": 60
+                                                "yellow": 50
                                             },
                                             "theme": "default",
                                             "type": "gauge"

@@ -84,3 +84,8 @@
     - type: memory_use_percent
     - type: processor_use
     - type: last_boot
+- platform: command_line
+  name: CPU_temp
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | multiply(0.001) | round(1) }}'
