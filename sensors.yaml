@@ -26,10 +26,10 @@
       device_class: battery
 - platform: template
   sensors:
-    xiaomi_thp_loggia_battery:
-      friendly_name: "Заряд в датчике THP в лоджии"
+    xiaomi_thp_balcony_battery:
+      friendly_name: "Заряд в датчике THP на балконе"
       unit_of_measurement: '%'
-      value_template: "{{ state_attr('sensor.xiaomi_thp_temperature_loggia_158d0002389f84', 'battery_level') }}"
+      value_template: "{{ state_attr('sensor.xiaomi_thp_temperature_balcony_158d0002389f84', 'battery_level') }}"
       device_class: battery
 - platform: template
   sensors:

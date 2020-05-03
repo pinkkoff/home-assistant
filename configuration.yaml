@@ -91,9 +91,9 @@ weather:
 # Climate thermostats
 climate:
   - platform: generic_thermostat
-    name: thermostat_loggia
+    name: thermostat_balcony
     heater: switch.plug_158d00032d5e8b
-    target_sensor: sensor.xiaomi_thp_temperature_loggia_158d0002389f84
+    target_sensor: sensor.xiaomi_thp_temperature_balcony_158d0002389f84
     min_temp: 1
     max_temp: 30
     ac_mode: false

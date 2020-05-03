@@ -4,9 +4,9 @@ auto_light_bedroom_switch:
   name: "Авто подсветка в ванной"
   icon: mdi:brightness-auto
 #
-# Loggia auto heater
-auto_heater_loggia_switch:
-  name: "Авто подогрев лоджии"
+# balcony auto heater
+auto_heater_balcony_switch:
+  name: "Авто подогрев балкона"
   icon: mdi:auto-upload
 #
 # Test entities
