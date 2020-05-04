@@ -2290,7 +2290,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 430,
+        "x": 590,
         "y": 80,
         "wires": [
             []
@@ -2316,7 +2316,7 @@
         "y": 80,
         "wires": [
             [
-                "d603d959.56b778"
+                "ed6e47de.4b74e8"
             ],
             []
         ]
@@ -5294,6 +5294,35 @@
         "wires": [
             [
                 "abac53aa.e57ff"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ed6e47de.4b74e8",
+        "type": "switch",
+        "z": "8d422126.121a1",
+        "name": "Кнопка на выходе",
+        "property": "payload.entity_id",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "else"
+            },
+            {
+                "t": "eq",
+                "v": "fan.xiaomi_humidifier_bedroom",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 370,
+        "y": 80,
+        "wires": [
+            [
+                "d603d959.56b778"
             ],
             []
         ]
