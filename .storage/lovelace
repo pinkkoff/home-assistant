@@ -6,6 +6,9 @@
                 {
                     "badges": [
                         {
+                            "entity": "group.smb_at_home"
+                        },
+                        {
                             "entity": "person.vladimir"
                         },
                         {
@@ -100,6 +103,7 @@
                                     "entity": "switch.xiaomi_wallswitch_balcony_light"
                                 }
                             ],
+                            "state_color": true,
                             "title": "\u0412\u0435\u0441\u044c \u0441\u0432\u0435\u0442",
                             "type": "entities"
                         },
@@ -109,6 +113,7 @@
                                 "switch.plug_158d0002677bd3"
                             ],
                             "show_header_toggle": true,
+                            "state_color": true,
                             "title": "\u0423\u043c\u043d\u044b\u0435 \u0440\u043e\u0437\u0435\u0442\u043a\u0438",
                             "type": "entities"
                         }
@@ -158,6 +163,7 @@
                                     "name": "\u041f\u043e\u0442\u043e\u043b\u043e\u0447\u043d\u044b\u0439 \u043d\u043e\u0447\u043d\u0438\u043a"
                                 }
                             ],
+                            "state_color": true,
                             "title": "\u0421\u0432\u0435\u0442",
                             "type": "entities"
                         },
@@ -200,6 +206,7 @@
                                 }
                             ],
                             "show_header_toggle": false,
+                            "state_color": true,
                             "title": "\u0423\u0432\u043b\u0430\u0436\u043d\u0438\u0442\u0435\u043b\u044c",
                             "type": "entities"
                         }
@@ -240,6 +247,7 @@
                                 }
                             ],
                             "show_header_toggle": true,
+                            "state_color": true,
                             "title": "\u0421\u0432\u0435\u0442",
                             "type": "entities"
                         },
@@ -259,6 +267,7 @@
                                     "type": "entity-button"
                                 }
                             ],
+                            "state_color": true,
                             "title": "\u0412\u044b\u043a\u043b\u044e\u0447\u0430\u0442\u0435\u043b\u0438",
                             "type": "horizontal-stack"
                         }
@@ -318,6 +327,7 @@
                                     "type": "button"
                                 }
                             ],
+                            "state_color": true,
                             "type": "horizontal-stack"
                         },
                         {
@@ -397,6 +407,7 @@
                                 }
                             ],
                             "show_header_toggle": false,
+                            "state_color": true,
                             "type": "entities"
                         }
                     ],
@@ -648,35 +659,43 @@
                             "entities": [
                                 {
                                     "entity": "binary_sensor.router_ping",
-                                    "name": "\u0420\u043e\u0443\u0442\u0435\u0440"
+                                    "name": "\u0420\u043e\u0443\u0442\u0435\u0440",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "binary_sensor.xiaomi_gw1_ping",
-                                    "name": "\u0428\u043b\u044e\u0437 Xiaomi"
+                                    "name": "\u0428\u043b\u044e\u0437 Xiaomi",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "binary_sensor.xiaomi_humidifier_bedroom_ping",
-                                    "name": "\u0423\u0432\u043b\u0430\u0436\u043d\u0438\u0442\u0435\u043b\u044c"
+                                    "name": "\u0423\u0432\u043b\u0430\u0436\u043d\u0438\u0442\u0435\u043b\u044c",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "binary_sensor.nasmaster_ping",
-                                    "name": "NASMaster"
+                                    "name": "NASMaster",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "binary_sensor.kidnas_ping",
-                                    "name": "KidNas"
+                                    "name": "KidNas",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "binary_sensor.master_ping",
-                                    "name": "\u041a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440"
+                                    "name": "\u041a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "binary_sensor.odroid1_ping",
-                                    "name": "Odroid 1"
+                                    "name": "Odroid 1",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "binary_sensor.odroid2_ping",
-                                    "name": "Odroid 2"
+                                    "name": "Odroid 2",
+                                    "state_color": true
                                 }
                             ],
                             "show_header_toggle": false,

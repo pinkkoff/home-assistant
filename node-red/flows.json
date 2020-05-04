@@ -192,28 +192,6 @@
         }
     },
     {
-        "id": "2b17670e.b5c0f8",
-        "type": "server",
-        "z": "",
-        "name": "Home Assistant",
-        "legacy": false,
-        "hassio": true,
-        "rejectUnauthorizedCerts": true,
-        "ha_boolean": "y|yes|true|on|home|open",
-        "connectionDelay": true
-    },
-    {
-        "id": "90767615.7eb998",
-        "type": "server",
-        "z": "",
-        "name": "Home Assistant",
-        "legacy": false,
-        "hassio": true,
-        "rejectUnauthorizedCerts": true,
-        "ha_boolean": "y|yes|true|on|home|open",
-        "connectionDelay": false
-    },
-    {
         "id": "12c41a6a.f1de76",
         "type": "server-state-changed",
         "z": "6a24dcbb.10a694",
@@ -495,25 +473,10 @@
         ]
     },
     {
-        "id": "56d40b0d.bacb94",
-        "type": "debug",
-        "z": "6a24dcbb.10a694",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 910,
-        "y": 580,
-        "wires": []
-    },
-    {
         "id": "1079ba9.3aa4d45",
         "type": "switch",
         "z": "6a24dcbb.10a694",
-        "name": "Переключатель/кнопка",
+        "name": "Кнопка на выходе",
         "property": "payload.entity_id",
         "propertyType": "msg",
         "rules": [
@@ -526,8 +489,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 330,
-        "y": 460,
+        "x": 310,
+        "y": 500,
         "wires": [
             [
                 "2a8182fb.79f1de"
@@ -538,7 +501,7 @@
         "id": "2a8182fb.79f1de",
         "type": "switch",
         "z": "6a24dcbb.10a694",
-        "name": "Кнопка на выходе. Тип нажатия",
+        "name": "Тип нажатия",
         "property": "payload.event.click_type",
         "propertyType": "msg",
         "rules": [
@@ -561,63 +524,13 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 620,
-        "y": 460,
-        "wires": [
-            [
-                "56d40b0d.bacb94",
-                "e8e4b586.dc8d78"
-            ],
-            [
-                "56d40b0d.bacb94",
-                "6be51d53.94b124"
-            ],
-            [
-                "56d40b0d.bacb94"
-            ]
-        ]
-    },
-    {
-        "id": "e8e4b586.dc8d78",
-        "type": "api-call-service",
-        "z": "6a24dcbb.10a694",
-        "name": "Включить свет",
-        "server": "6962e153.99eb9",
-        "version": 1,
-        "service_domain": "switch",
-        "service": "turn_on",
-        "entityId": "switch.plug_158d0002677bd3",
-        "data": "",
-        "dataType": "json",
-        "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
-        "mustacheAltTags": false,
-        "x": 920,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6be51d53.94b124",
-        "type": "api-call-service",
-        "z": "6a24dcbb.10a694",
-        "name": "Выключить свет",
-        "server": "6962e153.99eb9",
-        "version": 1,
-        "service_domain": "switch",
-        "service": "turn_off",
-        "entityId": "switch.plug_158d0002677bd3",
-        "data": "",
-        "dataType": "json",
-        "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
-        "mustacheAltTags": false,
-        "x": 930,
+        "x": 510,
         "y": 500,
         "wires": [
+            [
+                "222f95a8.b270ea"
+            ],
+            [],
             []
         ]
     },
@@ -3952,22 +3865,22 @@
         "id": "e13a1eb1.4ed9e",
         "type": "subflow:7cf1202f.0fec5",
         "z": "8d422126.121a1",
-        "name": "< 30 - 80 <",
+        "name": "< 25 - 80 <",
         "env": [
             {
                 "name": "low",
-                "type": "num",
-                "value": "30"
+                "value": "25",
+                "type": "num"
             },
             {
                 "name": "high",
-                "type": "num",
-                "value": "80"
+                "value": "80",
+                "type": "num"
             },
             {
                 "name": "hysteresis",
-                "type": "str",
-                "value": "3"
+                "value": "3",
+                "type": "str"
             }
         ],
         "x": 310,
@@ -5031,5 +4944,358 @@
         "x": 170,
         "y": 60,
         "wires": []
+    },
+    {
+        "id": "481c8a3b.2077b4",
+        "type": "server-state-changed",
+        "z": "6a24dcbb.10a694",
+        "name": "Nobody at home",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "group.smb_at_home",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "not_home",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "x": 100,
+        "y": 660,
+        "wires": [
+            [
+                "dfb8cec7.185bd"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "dfb8cec7.185bd",
+        "type": "api-call-service",
+        "z": "6a24dcbb.10a694",
+        "name": "Turn off the lights",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_off",
+        "entityId": "group.all_lights",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 310,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "222f95a8.b270ea",
+        "type": "api-call-service",
+        "z": "6a24dcbb.10a694",
+        "name": "Turn off the lights",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_off",
+        "entityId": "group.all_lights",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 710,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "351aa0e2.775d3",
+        "type": "server-state-changed",
+        "z": "16ff52c4.88944d",
+        "name": "Вытяжка",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "switch.xiaomi_wallswitch_bathroom_fan",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "x": 80,
+        "y": 380,
+        "wires": [
+            [
+                "5d0d36c6.461f78"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5d0d36c6.461f78",
+        "type": "trigger",
+        "z": "16ff52c4.88944d",
+        "op1": "",
+        "op2": "off",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "45",
+        "extend": true,
+        "units": "min",
+        "reset": "",
+        "bytopic": "all",
+        "name": "Turn OFF in 45 min",
+        "x": 250,
+        "y": 380,
+        "wires": [
+            [
+                "48afe2a5.775b5c"
+            ]
+        ]
+    },
+    {
+        "id": "48afe2a5.775b5c",
+        "type": "api-current-state",
+        "z": "16ff52c4.88944d",
+        "name": "fan on?",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "switch.xiaomi_wallswitch_bathroom_fan",
+        "state_type": "str",
+        "state_location": "",
+        "override_payload": "none",
+        "entity_location": "",
+        "override_data": "none",
+        "blockInputOverrides": false,
+        "x": 420,
+        "y": 380,
+        "wires": [
+            [
+                "2eddfb87.2f2204"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2eddfb87.2f2204",
+        "type": "api-call-service",
+        "z": "16ff52c4.88944d",
+        "name": "Turn fan off",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_off",
+        "entityId": "switch.xiaomi_wallswitch_bathroom_fan",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 570,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "306bf669.6774fa",
+        "type": "comment",
+        "z": "16ff52c4.88944d",
+        "name": "=== Автоотключение вытяжки ===  ",
+        "info": "",
+        "x": 160,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "18f1d868.c5d1c8",
+        "type": "server-state-changed",
+        "z": "16ff52c4.88944d",
+        "name": "Влажность в ванной",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.xiaomi_thp_humidity_bathroom_158d00025f14c5",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 120,
+        "y": 480,
+        "wires": [
+            [
+                "23d69e4f.fb1392"
+            ]
+        ]
+    },
+    {
+        "id": "abac53aa.e57ff",
+        "type": "api-current-state",
+        "z": "16ff52c4.88944d",
+        "name": "fan on?",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "switch.xiaomi_wallswitch_bathroom_fan",
+        "state_type": "str",
+        "state_location": "",
+        "override_payload": "none",
+        "entity_location": "",
+        "override_data": "none",
+        "blockInputOverrides": false,
+        "x": 660,
+        "y": 480,
+        "wires": [
+            [],
+            [
+                "c0464c1c.3e713"
+            ]
+        ]
+    },
+    {
+        "id": "c0464c1c.3e713",
+        "type": "api-call-service",
+        "z": "16ff52c4.88944d",
+        "name": "Turn fan on",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.xiaomi_wallswitch_bathroom_fan",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 810,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "edd5b30c.915d4",
+        "type": "comment",
+        "z": "16ff52c4.88944d",
+        "name": "=== Автовключение вытяжки ===  ",
+        "info": "",
+        "x": 160,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "23d69e4f.fb1392",
+        "type": "api-current-state",
+        "z": "16ff52c4.88944d",
+        "name": "влажность в спальне",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "sensor.xiaomi_thp_humidity_bedroom_158d00025f03f5",
+        "state_type": "num",
+        "state_location": "hum",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 340,
+        "y": 480,
+        "wires": [
+            [
+                "bfd126f.901dfd8"
+            ]
+        ]
+    },
+    {
+        "id": "bfd126f.901dfd8",
+        "type": "switch",
+        "z": "16ff52c4.88944d",
+        "name": "diff  > 10 ",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "msg.hum + 10",
+                "vt": "jsonata"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 520,
+        "y": 480,
+        "wires": [
+            [
+                "abac53aa.e57ff"
+            ],
+            []
+        ]
     }
 ]
