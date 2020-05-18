@@ -1636,7 +1636,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 390,
+        "x": 370,
         "y": 1280,
         "wires": [
             []
@@ -2290,7 +2290,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 590,
+        "x": 530,
         "y": 80,
         "wires": [
             []
@@ -4441,7 +4441,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 70,
-        "y": 1380,
+        "y": 1420,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4468,7 +4468,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 90,
-        "y": 1500,
+        "y": 1540,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4495,7 +4495,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 90,
-        "y": 1460,
+        "y": 1500,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4522,7 +4522,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 80,
-        "y": 1420,
+        "y": 1460,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4549,7 +4549,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 80,
-        "y": 1580,
+        "y": 1620,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4576,7 +4576,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 80,
-        "y": 1620,
+        "y": 1660,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4603,7 +4603,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 550,
-        "y": 1520,
+        "y": 1560,
         "wires": [
             []
         ]
@@ -4615,7 +4615,7 @@
         "name": "Unavailable by ping",
         "info": "",
         "x": 110,
-        "y": 1340,
+        "y": 1380,
         "wires": []
     },
     {
@@ -4635,7 +4635,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 550,
-        "y": 1440,
+        "y": 1480,
         "wires": [
             []
         ]
@@ -4657,7 +4657,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 70,
-        "y": 1540,
+        "y": 1580,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -5302,29 +5302,225 @@
         "id": "ed6e47de.4b74e8",
         "type": "switch",
         "z": "8d422126.121a1",
-        "name": "Кнопка на выходе",
-        "property": "payload.entity_id",
+        "name": "Фильтр",
+        "property": "data.entity_id",
         "propertyType": "msg",
         "rules": [
-            {
-                "t": "else"
-            },
             {
                 "t": "eq",
                 "v": "fan.xiaomi_humidifier_bedroom",
                 "vt": "str"
+            },
+            {
+                "t": "else"
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 370,
+        "x": 340,
         "y": 80,
         "wires": [
+            [],
             [
                 "d603d959.56b778"
+            ]
+        ]
+    },
+    {
+        "id": "3c29616.c5aad9e",
+        "type": "trigger-state",
+        "z": "8d422126.121a1",
+        "name": "Вода в баке < 15%",
+        "server": "6962e153.99eb9",
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityid": "sensor.xiaomi_humidifier_bedroom_water_level",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [
+            {
+                "id": "wnxzw30lbpa",
+                "targetType": "this_entity",
+                "targetValue": "",
+                "propertyType": "current_state",
+                "propertyValue": "new_state.state",
+                "comparatorType": "<",
+                "comparatorValueDatatype": "str",
+                "comparatorValue": "15"
+            },
+            {
+                "id": "a2h0mav1dqc",
+                "targetType": "this_entity",
+                "targetValue": "",
+                "propertyType": "previous_state",
+                "propertyValue": "old_state.state",
+                "comparatorType": ">=",
+                "comparatorValueDatatype": "str",
+                "comparatorValue": "15"
+            }
+        ],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "num",
+        "x": 110,
+        "y": 1325,
+        "wires": [
+            [
+                "1c5a6dcc.a7c732"
             ],
             []
         ]
+    },
+    {
+        "id": "75afbfa.06da54",
+        "type": "api-current-state",
+        "z": "8d422126.121a1",
+        "name": "humidifier",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "fan.xiaomi_humidifier_bedroom",
+        "state_type": "str",
+        "state_location": "humidifier",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "blockInputOverrides": false,
+        "x": 480,
+        "y": 1325,
+        "wires": [
+            [
+                "d44da450.0d9578"
+            ]
+        ]
+    },
+    {
+        "id": "1c5a6dcc.a7c732",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "Humidifier off",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "fan",
+        "service": "turn_off",
+        "entityId": "fan.xiaomi_humidifier_bedroom",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 310,
+        "y": 1325,
+        "wires": [
+            [
+                "75afbfa.06da54"
+            ]
+        ]
+    },
+    {
+        "id": "d44da450.0d9578",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "Send message to All",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "notify",
+        "service": "telegram_chat_all",
+        "entityId": "",
+        "data": "{\"title\":\"*Слишком мало воды\",\"message\":\"Увлажнитель в спальне был выключен (статус: {{humidifier}})\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 660,
+        "y": 1325,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3f36690c.eef696",
+        "type": "server-state-changed",
+        "z": "ee1a9216.12937",
+        "name": "",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.last_boot",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 840,
+        "y": 400,
+        "wires": [
+            [
+                "8515fdc4.48d0d",
+                "8d482329.a3523"
+            ]
+        ]
+    },
+    {
+        "id": "8515fdc4.48d0d",
+        "type": "debug",
+        "z": "ee1a9216.12937",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1110,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8d482329.a3523",
+        "type": "debug",
+        "z": "ee1a9216.12937",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1090,
+        "y": 440,
+        "wires": []
     }
 ]

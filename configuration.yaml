@@ -113,6 +113,20 @@ yeelight:
       model: ceiling13
       nightlight_switch_type: light
 
+#
+influxdb:
+  username: homeassistant
+  password: !secret influxdb_password
+  max_retries: 3
+  default_measurement: state
+  component_config_glob:
+    sensor.*humidity*:
+      override_measurement: humidity
+    sensor.*temperature*:
+      override_measurement: temperature
+    sensor.*pressure*:
+      override_measurement: pressure
+
 # Includes entities
 switch: !include switches.yaml
 group: !include groups.yaml
