@@ -33,6 +33,27 @@
       device_class: battery
 - platform: template
   sensors:
+    xiaomi_thp_livingroom_battery:
+      friendly_name: "Заряд в датчике THP в гостиной"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('sensor.xiaomi_thp_temperature_livingroom_158d00046581b5', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_thp_cloackroom_battery:
+      friendly_name: "Заряд в датчике THP в гардеробе"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('sensor.xiaomi_thp_temperature_cloackroom_158d0004656f6d', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_thp_corridor_battery:
+      friendly_name: "Заряд в датчике THP в коридоре"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('sensor.xiaomi_thp_temperature_corridor_158d000465887b', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
     xiaomi_wall_switch_bedroom_battery:
       friendly_name: "Заряд в выключателе в спальне"
       unit_of_measurement: '%'
@@ -48,9 +69,37 @@
 - platform: template
   sensors:
     xiaomi_water_leak_bedroom_battery:
-      friendly_name: "Заряд в датчике протечки в ванной"
+      friendly_name: "Заряд в датчике протечки 1 в ванной"
       unit_of_measurement: '%'
       value_template: "{{ state_attr('binary_sensor.xiaomi_water_leak_bedroom_158d00027b0cd4', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_water_leak_bedroom_2_battery:
+      friendly_name: "Заряд в датчике протечки 2 в ванной"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('binary_sensor.xiaomi_water_leak_2_bedroom_158d0004a08155', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_water_leak_cloakroom_battery:
+      friendly_name: "Заряд в датчике протечки в гардеробе"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('binary_sensor.xiaomi_water_leak_cloakroom_158d0004a06fa3', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_water_leak_corridor_battery:
+      friendly_name: "Заряд датчика протечки в стояке"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('binary_sensor.xiaomi_water_leak_corridor_158d0004a07f44', 'battery_level') }}"
+      device_class: battery
+- platform: template
+  sensors:
+    xiaomi_water_leak_livingroom_battery:
+      friendly_name: "Заряд в датчике протечки на кухне"
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('binary_sensor.xiaomi_water_leak_livingroom_158d0004a06f5d', 'battery_level') }}"
       device_class: battery
 - platform: template
   sensors:

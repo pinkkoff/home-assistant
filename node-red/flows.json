@@ -798,7 +798,7 @@
         "outputinitially": false,
         "state_type": "num",
         "x": 110,
-        "y": 1280,
+        "y": 1400,
         "wires": [
             [
                 "dc113e4d.bc0c8"
@@ -1637,7 +1637,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 370,
-        "y": 1280,
+        "y": 1400,
         "wires": [
             []
         ]
@@ -1807,7 +1807,7 @@
         "name": "Мало воды",
         "info": "",
         "x": 90,
-        "y": 1240,
+        "y": 1360,
         "wires": []
     },
     {
@@ -2200,8 +2200,19 @@
         "name": "Leak sensor ON",
         "server": "6962e153.99eb9",
         "version": 1,
-        "entityidfilter": "binary_sensor.xiaomi_water_leak_bedroom_158d00027b0cd4",
-        "entityidfiltertype": "exact",
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "binary_sensor.xiaomi_water_leak_",
+        "entityidfiltertype": "substring",
         "outputinitially": false,
         "state_type": "str",
         "haltifstate": "on",
@@ -3517,9 +3528,20 @@
         "id": "5faa5de6.9e2f44",
         "type": "server-state-changed",
         "z": "8d422126.121a1",
-        "name": "state temp bedroom",
+        "name": "Temp bedroom",
         "server": "6962e153.99eb9",
         "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
         "entityidfilter": "sensor.xiaomi_thp_temperature_bedroom_158d00025f03f5",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -3529,7 +3551,7 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
-        "x": 110,
+        "x": 100,
         "y": 800,
         "wires": [
             [
@@ -3559,8 +3581,8 @@
                 "type": "str"
             }
         ],
-        "x": 310,
-        "y": 820,
+        "x": 330,
+        "y": 880,
         "wires": [
             [
                 "32720bda.5cced4"
@@ -3571,9 +3593,20 @@
         "id": "8dab1d02.b193d",
         "type": "server-state-changed",
         "z": "8d422126.121a1",
-        "name": "state temp bathroom",
+        "name": "Temp bathroom",
         "server": "6962e153.99eb9",
         "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
         "entityidfilter": "sensor.xiaomi_thp_temperature_bathroom_158d00025f14c5",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -3583,7 +3616,7 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
-        "x": 110,
+        "x": 100,
         "y": 840,
         "wires": [
             [
@@ -3599,8 +3632,8 @@
         "func": "// inputs var\nvar device_name = msg.data.new_state.attributes.friendly_name;\nvar curr_temp = msg.value;\nvar status = msg.payload;\n\n// Доступные иконки\n// 🥵 🥶 🙂 ☀️❄️👍\n\nif (status == \"high\") {\n    msg.title=\"🥵 *Стало слишком жарко!*\"\n} else if (status == \"normal\") {\n    msg.title=\"🙂 *Температура вернулась в норму.*\"\n} else if (status == \"low\") {\n    msg.title=\"🥶 *Стало слишком холодно!*\"\n} else {\n    msg.title=\"*Ошибка! Проверь flow оповещения по температуре.*\"\n}\n\nmsg.message = \"Устройство: *\" +  device_name + \"*.\\\\n \" +\n            \"Текущая температура: *\" + curr_temp + \"°C*.\"; \n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 540,
-        "y": 820,
+        "x": 520,
+        "y": 880,
         "wires": [
             [
                 "6b2c39aa.7fb4e8",
@@ -3619,8 +3652,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 750,
-        "y": 780,
+        "x": 690,
+        "y": 840,
         "wires": []
     },
     {
@@ -3639,8 +3672,8 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 810,
-        "y": 820,
+        "x": 750,
+        "y": 880,
         "wires": [
             []
         ]
@@ -3649,9 +3682,9 @@
         "id": "e8df41cc.15ade",
         "type": "comment",
         "z": "8d422126.121a1",
-        "name": "Temperature bath and bedroom",
+        "name": "Temperature in usual rooms",
         "info": "",
-        "x": 150,
+        "x": 140,
         "y": 760,
         "wires": []
     },
@@ -3682,7 +3715,7 @@
         "outputs": 1,
         "output_only_on_state_change": true,
         "x": 100,
-        "y": 940,
+        "y": 1060,
         "wires": [
             [
                 "46c7faf8.4acd04"
@@ -3712,7 +3745,7 @@
             }
         ],
         "x": 300,
-        "y": 940,
+        "y": 1060,
         "wires": [
             [
                 "4b3cd0b8.cc427"
@@ -3739,7 +3772,7 @@
         "override_data": "none",
         "blockInputOverrides": false,
         "x": 530,
-        "y": 900,
+        "y": 1020,
         "wires": [
             [
                 "dfa82ba4.c665d8"
@@ -3766,7 +3799,7 @@
         "override_data": "none",
         "blockInputOverrides": false,
         "x": 530,
-        "y": 940,
+        "y": 1060,
         "wires": [
             [
                 "edfc54f2.e3cec8"
@@ -3782,11 +3815,12 @@
         "outputs": 1,
         "noerr": 0,
         "x": 540,
-        "y": 980,
+        "y": 1100,
         "wires": [
             [
                 "f24f1f80.44a46",
-                "7ce25ec7.25524"
+                "7ce25ec7.25524",
+                "d5a87e37.d7ae2"
             ]
         ]
     },
@@ -3794,9 +3828,11 @@
         "id": "f24f1f80.44a46",
         "type": "api-call-service",
         "z": "8d422126.121a1",
+        "d": true,
         "name": "Send telegram msg with actions",
         "server": "6962e153.99eb9",
         "version": 1,
+        "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
         "entityId": "",
@@ -3807,7 +3843,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 830,
-        "y": 940,
+        "y": 1060,
         "wires": [
             []
         ]
@@ -3824,7 +3860,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 750,
-        "y": 900,
+        "y": 1020,
         "wires": []
     },
     {
@@ -3834,7 +3870,7 @@
         "name": "Temperature balcony with action",
         "info": "",
         "x": 140,
-        "y": 900,
+        "y": 1020,
         "wires": []
     },
     {
@@ -3854,7 +3890,7 @@
         "outputs": 1,
         "output_only_on_state_change": true,
         "x": 110,
-        "y": 1060,
+        "y": 1200,
         "wires": [
             [
                 "e13a1eb1.4ed9e"
@@ -3865,7 +3901,7 @@
         "id": "e13a1eb1.4ed9e",
         "type": "subflow:7cf1202f.0fec5",
         "z": "8d422126.121a1",
-        "name": "< 25 - 80 <",
+        "name": "< 25 - 70 <",
         "env": [
             {
                 "name": "low",
@@ -3874,7 +3910,7 @@
             },
             {
                 "name": "high",
-                "value": "80",
+                "value": "70",
                 "type": "num"
             },
             {
@@ -3884,34 +3920,10 @@
             }
         ],
         "x": 310,
-        "y": 1080,
+        "y": 1200,
         "wires": [
             [
                 "3d565c46.a724f4"
-            ]
-        ]
-    },
-    {
-        "id": "fe9e70b3.cd665",
-        "type": "server-state-changed",
-        "z": "8d422126.121a1",
-        "name": "state hum bathroom",
-        "server": "6962e153.99eb9",
-        "version": 1,
-        "entityidfilter": "sensor.xiaomi_thp_humidity_bathroom_158d00025f14c5",
-        "entityidfiltertype": "exact",
-        "outputinitially": false,
-        "state_type": "num",
-        "haltifstate": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
-        "outputs": 1,
-        "output_only_on_state_change": true,
-        "x": 110,
-        "y": 1100,
-        "wires": [
-            [
-                "e13a1eb1.4ed9e"
             ]
         ]
     },
@@ -3935,7 +3947,7 @@
         "override_data": "none",
         "blockInputOverrides": false,
         "x": 540,
-        "y": 1040,
+        "y": 1160,
         "wires": [
             [
                 "c671be0b.ad746"
@@ -3962,7 +3974,7 @@
         "override_data": "none",
         "blockInputOverrides": false,
         "x": 530,
-        "y": 1080,
+        "y": 1200,
         "wires": [
             [
                 "2b21dda0.e162b2"
@@ -3978,7 +3990,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 540,
-        "y": 1120,
+        "y": 1240,
         "wires": [
             [
                 "294c1d89.0ec4e2",
@@ -4003,7 +4015,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 830,
-        "y": 1080,
+        "y": 1200,
         "wires": [
             []
         ]
@@ -4020,17 +4032,17 @@
         "complete": "true",
         "targetType": "full",
         "x": 750,
-        "y": 1040,
+        "y": 1160,
         "wires": []
     },
     {
         "id": "f821d4ef.1365c8",
         "type": "comment",
         "z": "8d422126.121a1",
-        "name": "Humidity bath and bedroom with action",
+        "name": "Humidity bedroom with action",
         "info": "",
-        "x": 170,
-        "y": 1020,
+        "x": 140,
+        "y": 1140,
         "wires": []
     },
     {
@@ -4040,7 +4052,7 @@
         "name": "===================  Devices issues  ===================",
         "info": "",
         "x": 580,
-        "y": 1200,
+        "y": 1320,
         "wires": []
     },
     {
@@ -4441,7 +4453,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 70,
-        "y": 1420,
+        "y": 1540,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4468,7 +4480,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 90,
-        "y": 1540,
+        "y": 1660,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4495,7 +4507,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 90,
-        "y": 1500,
+        "y": 1620,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4522,7 +4534,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 80,
-        "y": 1460,
+        "y": 1580,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4549,7 +4561,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 80,
-        "y": 1620,
+        "y": 1740,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4576,7 +4588,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 80,
-        "y": 1660,
+        "y": 1780,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -4603,7 +4615,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 550,
-        "y": 1560,
+        "y": 1680,
         "wires": [
             []
         ]
@@ -4615,7 +4627,7 @@
         "name": "Unavailable by ping",
         "info": "",
         "x": 110,
-        "y": 1380,
+        "y": 1500,
         "wires": []
     },
     {
@@ -4635,7 +4647,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 550,
-        "y": 1480,
+        "y": 1600,
         "wires": [
             []
         ]
@@ -4657,7 +4669,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 70,
-        "y": 1580,
+        "y": 1700,
         "wires": [
             [
                 "50b77f93.f1d09"
@@ -5246,7 +5258,7 @@
         "id": "23d69e4f.fb1392",
         "type": "api-current-state",
         "z": "16ff52c4.88944d",
-        "name": "влажность в спальне",
+        "name": "влажность в ванной",
         "server": "6962e153.99eb9",
         "version": 1,
         "outputs": 1,
@@ -5375,7 +5387,7 @@
         "outputinitially": false,
         "state_type": "num",
         "x": 110,
-        "y": 1325,
+        "y": 1445,
         "wires": [
             [
                 "1c5a6dcc.a7c732"
@@ -5403,7 +5415,7 @@
         "override_data": "none",
         "blockInputOverrides": false,
         "x": 480,
-        "y": 1325,
+        "y": 1445,
         "wires": [
             [
                 "d44da450.0d9578"
@@ -5428,7 +5440,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 310,
-        "y": 1325,
+        "y": 1445,
         "wires": [
             [
                 "75afbfa.06da54"
@@ -5453,7 +5465,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 660,
-        "y": 1325,
+        "y": 1445,
         "wires": [
             []
         ]
@@ -5522,5 +5534,133 @@
         "x": 1090,
         "y": 440,
         "wires": []
+    },
+    {
+        "id": "7060744d.45d0cc",
+        "type": "server-state-changed",
+        "z": "8d422126.121a1",
+        "name": "Temp living room",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.xiaomi_thp_temperature_livingroom_158d00046581b5",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "num",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 100,
+        "y": 880,
+        "wires": [
+            [
+                "531ed9d6.d350a8"
+            ]
+        ]
+    },
+    {
+        "id": "5414be14.8282d",
+        "type": "server-state-changed",
+        "z": "8d422126.121a1",
+        "name": "Temp corridor",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.xiaomi_thp_temperature_corridor_158d000465887b",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "num",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 90,
+        "y": 920,
+        "wires": [
+            [
+                "531ed9d6.d350a8"
+            ]
+        ]
+    },
+    {
+        "id": "f0ee3b05.9d3648",
+        "type": "server-state-changed",
+        "z": "8d422126.121a1",
+        "name": "Temp cloakroom",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.xiaomi_thp_temperature_cloackroom_158d0004656f6d",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "num",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 100,
+        "y": 960,
+        "wires": [
+            [
+                "531ed9d6.d350a8"
+            ]
+        ]
+    },
+    {
+        "id": "d5a87e37.d7ae2",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "Send telegram msg to All",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "notify",
+        "service": "telegram_chat_all",
+        "entityId": "",
+        "data": "{\"title\":\"{{title}}\",\"message\":\"{{message}}\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 810,
+        "y": 1100,
+        "wires": [
+            []
+        ]
     }
 ]
