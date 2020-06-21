@@ -1,3 +1,18 @@
+# 
+# Управление шторами
+curtain_bedroom_time_weekday_open:
+  name: "Открытие шторы в будни"
+  has_time: true
+curtain_bedroom_time_weekday_close:
+  name: "Закрытие шторы в будни"
+  has_time: true
+curtain_bedroom_time_weekend_open:
+  name: "Открытие шторы в выходные"
+  has_time: true
+curtain_bedroom_time_weekend_close:
+  name: "Закрытие шторы в выходные"
+  has_time: true
+
 #
 # Test entities
 test_input_datetime_1:
@@ -7,3 +22,9 @@ test_input_datetime_1:
 test_input_datetime_2:
   name: "Test input date"
   has_date: true
+test_input_datetime_3:
+  name: "Test input time 1"
+  has_time: true
+test_input_datetime_4:
+  name: "Test input time 2"
+  has_time: true

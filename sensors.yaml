@@ -138,3 +138,19 @@
   command: "cat /sys/class/thermal/thermal_zone0/temp"
   unit_of_measurement: "°C"
   value_template: '{{ value | multiply(0.001) | round(1) }}'
+
+# Tuya
+- platform: template
+  sensors:
+    tuya_floorheater_bathroom_currtemp:
+      friendly_name: "Текущая температура теплого пола"
+      value_template: "{{ (state_attr('climate.tuya_floorheater_bathroom', 'current_temperature')) / 2 }}"
+      device_class: temperature
+      unit_of_measurement: "°C"
+- platform: template
+  sensors:
+    tuya_floorheater_bathroom_currsettemp:
+      friendly_name: "Выставленная температура теплого пола"
+      value_template: "{{ (state_attr('climate.tuya_floorheater_bathroom', 'temperature')) / 2 }}"
+      device_class: temperature
+      unit_of_measurement: "°C"

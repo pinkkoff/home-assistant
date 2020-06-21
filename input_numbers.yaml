@@ -58,3 +58,13 @@ test_input_number_3:
   step: 1
   mode: box
   icon: mdi:alpha-t-circle-outline
+
+# Tuya
+tuya_floorheater_bathroom_settemp: # Temp in floorheater in bathroom
+  name: "Заданная температура пола в ванной"
+  unit_of_measurement: '°C'
+  min: 15
+  max: 35
+  step: 0.5
+  mode: slider
+  icon: mdi:thermometer

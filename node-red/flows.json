@@ -528,7 +528,7 @@
         "y": 500,
         "wires": [
             [
-                "222f95a8.b270ea"
+                "9afe5edb.f2d82"
             ],
             [],
             []
@@ -1718,6 +1718,7 @@
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
         "version": 1,
+        "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
         "entityId": "",
@@ -3552,7 +3553,7 @@
         "outputs": 1,
         "output_only_on_state_change": true,
         "x": 100,
-        "y": 800,
+        "y": 840,
         "wires": [
             [
                 "531ed9d6.d350a8"
@@ -3617,10 +3618,10 @@
         "outputs": 1,
         "output_only_on_state_change": true,
         "x": 100,
-        "y": 840,
+        "y": 800,
         "wires": [
             [
-                "531ed9d6.d350a8"
+                "fd272236.1b221"
             ]
         ]
     },
@@ -4961,6 +4962,7 @@
         "id": "481c8a3b.2077b4",
         "type": "server-state-changed",
         "z": "6a24dcbb.10a694",
+        "d": true,
         "name": "Nobody at home",
         "server": "6962e153.99eb9",
         "version": 1,
@@ -4985,7 +4987,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 100,
-        "y": 660,
+        "y": 620,
         "wires": [
             [
                 "dfb8cec7.185bd"
@@ -5011,7 +5013,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 310,
-        "y": 660,
+        "y": 620,
         "wires": [
             []
         ]
@@ -5033,8 +5035,8 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 710,
-        "y": 500,
+        "x": 870,
+        "y": 460,
         "wires": [
             []
         ]
@@ -5662,5 +5664,902 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "fd272236.1b221",
+        "type": "subflow:7cf1202f.0fec5",
+        "z": "8d422126.121a1",
+        "name": "< 21 - 30 <",
+        "env": [
+            {
+                "name": "low",
+                "value": "21",
+                "type": "num"
+            },
+            {
+                "name": "high",
+                "value": "30",
+                "type": "num"
+            },
+            {
+                "name": "hysteresis",
+                "value": "0.4",
+                "type": "str"
+            }
+        ],
+        "x": 330,
+        "y": 840,
+        "wires": [
+            [
+                "32720bda.5cced4"
+            ]
+        ]
+    },
+    {
+        "id": "f18f38f5.f36718",
+        "type": "server-state-changed",
+        "z": "16ff52c4.88944d",
+        "name": "Set temp in HA",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_number.tuya_floorheater_bathroom_settemp",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "num",
+        "haltifstate": "sensor.tuya_floorheater_bathroom_currsettemp",
+        "halt_if_type": "entity",
+        "halt_if_compare": "is_not",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "x": 100,
+        "y": 640,
+        "wires": [
+            [
+                "18187754.dd9c79"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ad22d45d.f1d0d8",
+        "type": "comment",
+        "z": "16ff52c4.88944d",
+        "name": "=== Термостат теплого пола в ванной  ===  ",
+        "info": "",
+        "x": 190,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "71625419.d8055c",
+        "type": "api-call-service",
+        "z": "16ff52c4.88944d",
+        "name": "",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "climate",
+        "service": "set_temperature",
+        "entityId": "climate.tuya_floorheater_bathroom",
+        "data": "{\"temperature\":\"{{payload}}\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 740,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3ec5f92a.a0ec16",
+        "type": "server-state-changed",
+        "z": "16ff52c4.88944d",
+        "name": "Change settemp",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.tuya_floorheater_bathroom_currsettemp",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 100,
+        "y": 740,
+        "wires": [
+            [
+                "9cbf2329.62d5b"
+            ]
+        ]
+    },
+    {
+        "id": "9cbf2329.62d5b",
+        "type": "api-call-service",
+        "z": "16ff52c4.88944d",
+        "name": "",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "input_number",
+        "service": "set_value",
+        "entityId": "input_number.tuya_floorheater_bathroom_settemp",
+        "data": "{\"value\":\"{{payload}} \"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 340,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "18187754.dd9c79",
+        "type": "api-current-state",
+        "z": "16ff52c4.88944d",
+        "name": "curr settemp",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "sensor.tuya_floorheater_bathroom_currsettemp",
+        "state_type": "num",
+        "state_location": "currsettemp",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "blockInputOverrides": false,
+        "x": 290,
+        "y": 640,
+        "wires": [
+            [
+                "1446ada9.6e6e32"
+            ]
+        ]
+    },
+    {
+        "id": "1446ada9.6e6e32",
+        "type": "switch",
+        "z": "16ff52c4.88944d",
+        "name": "settemp != curr settemp",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "currsettemp",
+                "vt": "msg"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 490,
+        "y": 640,
+        "wires": [
+            [
+                "71625419.d8055c"
+            ]
+        ]
+    },
+    {
+        "id": "a4aeb03d.59cb3",
+        "type": "comment",
+        "z": "16ff52c4.88944d",
+        "name": "поменялось в HA",
+        "info": "",
+        "x": 110,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "d45dbaa0.1a5608",
+        "type": "comment",
+        "z": "16ff52c4.88944d",
+        "name": "поменялось на термостате",
+        "info": "",
+        "x": 140,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "9afe5edb.f2d82",
+        "type": "api-current-state",
+        "z": "6a24dcbb.10a694",
+        "name": "all_lights",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "group.all_lights",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": true,
+        "x": 680,
+        "y": 480,
+        "wires": [
+            [
+                "222f95a8.b270ea"
+            ],
+            [
+                "a327cec6.5716d"
+            ]
+        ]
+    },
+    {
+        "id": "a327cec6.5716d",
+        "type": "api-call-service",
+        "z": "6a24dcbb.10a694",
+        "name": "Turn on corridor light",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.xiaomi_wallswitch_corridor_light",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 880,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e7aef0d5.1d67a",
+        "type": "server-state-changed",
+        "z": "6a24dcbb.10a694",
+        "name": " Open in weekday",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_datetime.curtain_bedroom_time_weekday_open",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 100,
+        "y": 720,
+        "wires": [
+            [
+                "8d1fb854.bba0a8"
+            ]
+        ]
+    },
+    {
+        "id": "c7e20ee.c64cff",
+        "type": "server-state-changed",
+        "z": "6a24dcbb.10a694",
+        "name": "Close in weekday",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_datetime.curtain_bedroom_time_weekday_close",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 100,
+        "y": 760,
+        "wires": [
+            [
+                "62af881d.ff4758"
+            ]
+        ]
+    },
+    {
+        "id": "b52f3d37.0c075",
+        "type": "server-state-changed",
+        "z": "6a24dcbb.10a694",
+        "name": "Close in weekend",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_datetime.curtain_bedroom_time_weekend_close",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 110,
+        "y": 920,
+        "wires": [
+            [
+                "27ebd44c.e3f3ac"
+            ]
+        ]
+    },
+    {
+        "id": "68b94c30.080174",
+        "type": "server-state-changed",
+        "z": "6a24dcbb.10a694",
+        "name": "Open in weekend",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_datetime.curtain_bedroom_time_weekend_open",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 100,
+        "y": 880,
+        "wires": [
+            [
+                "6341b37a.e7400c"
+            ]
+        ]
+    },
+    {
+        "id": "3203ca81.91bd86",
+        "type": "schedex",
+        "z": "6a24dcbb.10a694",
+        "name": "Weekday",
+        "passthroughunhandled": false,
+        "suspended": false,
+        "lat": "55.554236",
+        "lon": "37.465838",
+        "ontime": "",
+        "ontopic": "",
+        "onpayload": "On",
+        "onoffset": 0,
+        "onrandomoffset": 0,
+        "offtime": "",
+        "offtopic": "",
+        "offpayload": "Off",
+        "offoffset": 0,
+        "offrandomoffset": 0,
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": false,
+        "sun": false,
+        "x": 520,
+        "y": 760,
+        "wires": [
+            [
+                "9eed354a.a77378"
+            ]
+        ]
+    },
+    {
+        "id": "8d1fb854.bba0a8",
+        "type": "change",
+        "z": "6a24dcbb.10a694",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.ontime",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 720,
+        "wires": [
+            [
+                "3203ca81.91bd86"
+            ]
+        ]
+    },
+    {
+        "id": "62af881d.ff4758",
+        "type": "change",
+        "z": "6a24dcbb.10a694",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.offtime",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 760,
+        "wires": [
+            [
+                "3203ca81.91bd86"
+            ]
+        ]
+    },
+    {
+        "id": "6341b37a.e7400c",
+        "type": "change",
+        "z": "6a24dcbb.10a694",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.ontime",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 880,
+        "wires": [
+            [
+                "e03e1925.8f6078"
+            ]
+        ]
+    },
+    {
+        "id": "27ebd44c.e3f3ac",
+        "type": "change",
+        "z": "6a24dcbb.10a694",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.offtime",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 920,
+        "wires": [
+            [
+                "e03e1925.8f6078"
+            ]
+        ]
+    },
+    {
+        "id": "e03e1925.8f6078",
+        "type": "schedex",
+        "z": "6a24dcbb.10a694",
+        "name": "Weekend",
+        "passthroughunhandled": false,
+        "suspended": false,
+        "lat": "55.554236",
+        "lon": "37.465838",
+        "ontime": "",
+        "ontopic": "",
+        "onpayload": "On",
+        "onoffset": 0,
+        "onrandomoffset": 0,
+        "offtime": "",
+        "offtopic": "",
+        "offpayload": "Off",
+        "offoffset": 0,
+        "offrandomoffset": 0,
+        "mon": false,
+        "tue": false,
+        "wed": false,
+        "thu": false,
+        "fri": false,
+        "sat": true,
+        "sun": true,
+        "x": 520,
+        "y": 880,
+        "wires": [
+            [
+                "9eed354a.a77378"
+            ]
+        ]
+    },
+    {
+        "id": "db6c59c5.925dd8",
+        "type": "api-call-service",
+        "z": "6a24dcbb.10a694",
+        "name": "Curtain 15%",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "cover",
+        "service": "set_cover_position",
+        "entityId": "cover.xiaomi_curtain_bedroom_158d0004118cca",
+        "data": "{\"position\":15}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 830,
+        "y": 780,
+        "wires": [
+            [
+                "e632cf77.cc0a8"
+            ]
+        ]
+    },
+    {
+        "id": "9eed354a.a77378",
+        "type": "switch",
+        "z": "6a24dcbb.10a694",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "On",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 670,
+        "y": 820,
+        "wires": [
+            [
+                "db6c59c5.925dd8"
+            ],
+            [
+                "71ff80e2.1bba"
+            ]
+        ]
+    },
+    {
+        "id": "71ff80e2.1bba",
+        "type": "api-call-service",
+        "z": "6a24dcbb.10a694",
+        "name": "Curtain close",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "cover",
+        "service": "close_cover",
+        "entityId": "cover.xiaomi_curtain_bedroom_158d0004118cca",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 830,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e632cf77.cc0a8",
+        "type": "delay",
+        "z": "6a24dcbb.10a694",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "15",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 990,
+        "y": 780,
+        "wires": [
+            [
+                "3a286c82.0f9944"
+            ]
+        ]
+    },
+    {
+        "id": "69fb3b50.9c5084",
+        "type": "api-call-service",
+        "z": "6a24dcbb.10a694",
+        "name": "Curtain open",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "cover",
+        "service": "open_cover",
+        "entityId": "cover.xiaomi_curtain_bedroom_158d0004118cca",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1470,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3a286c82.0f9944",
+        "type": "api-call-service",
+        "z": "6a24dcbb.10a694",
+        "name": "Curtain 30%",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "cover",
+        "service": "set_cover_position",
+        "entityId": "cover.xiaomi_curtain_bedroom_158d0004118cca",
+        "data": "{\"position\":30}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1150,
+        "y": 780,
+        "wires": [
+            [
+                "4dae449d.1916fc"
+            ]
+        ]
+    },
+    {
+        "id": "4dae449d.1916fc",
+        "type": "delay",
+        "z": "6a24dcbb.10a694",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "15",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1310,
+        "y": 780,
+        "wires": [
+            [
+                "69fb3b50.9c5084"
+            ]
+        ]
+    },
+    {
+        "id": "caa4de5c.0f44d",
+        "type": "server-state-changed",
+        "z": "6a24dcbb.10a694",
+        "name": "Auto curtain control",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_boolean.auto_curtain_bedroom_switch",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "habool",
+        "haltifstate": "true",
+        "halt_if_type": "bool",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "x": 110,
+        "y": 820,
+        "wires": [
+            [
+                "daff24c8.53cb88"
+            ],
+            [
+                "fad56aae.4f57c8"
+            ]
+        ]
+    },
+    {
+        "id": "fad56aae.4f57c8",
+        "type": "change",
+        "z": "6a24dcbb.10a694",
+        "name": "Suspend",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.suspended",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 840,
+        "wires": [
+            [
+                "3203ca81.91bd86",
+                "e03e1925.8f6078"
+            ]
+        ]
+    },
+    {
+        "id": "daff24c8.53cb88",
+        "type": "change",
+        "z": "6a24dcbb.10a694",
+        "name": "Unsuspend",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.suspended",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 800,
+        "wires": [
+            [
+                "3203ca81.91bd86",
+                "e03e1925.8f6078"
+            ]
+        ]
+    },
+    {
+        "id": "5419edfe.639fe4",
+        "type": "comment",
+        "z": "6a24dcbb.10a694",
+        "name": "===================  Управление шторами ===================  ",
+        "info": "",
+        "x": 580,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "dc12805f.8f98b",
+        "type": "comment",
+        "z": "6a24dcbb.10a694",
+        "name": "Доделать!!!!",
+        "info": "",
+        "x": 90,
+        "y": 580,
+        "wires": []
     }
 ]
