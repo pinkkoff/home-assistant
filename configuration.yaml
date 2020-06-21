@@ -15,7 +15,8 @@ homeassistant:
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
-
+frontend:
+  themes: !include_dir_merge_named themes
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
 #   base_url: example.duckdns.org:8123
@@ -26,6 +27,13 @@ logger:
 
 # Discover some devices automatically
 discovery:
+
+# HACS
+hacs:
+  token: !secret HACS_github_token
+  appdaemon: true
+  python_script: true
+  theme: true
 
 # Telegram
 telegram_bot:
@@ -128,10 +136,10 @@ influxdb:
       override_measurement: pressure
 
 # Tuya
-tuya:
-  username: !secret tuya_username
-  password: !secret tuya_password
-  country_code: 7
+#tuya:
+#  username: !secret tuya_username
+#  password: !secret tuya_password
+#  country_code: 7
 
 # Includes entities
 switch: !include switches.yaml

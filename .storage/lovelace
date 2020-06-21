@@ -38,12 +38,12 @@
                                 {
                                     "aspect_ratio": "60%",
                                     "type": "iframe",
-                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&theme=light&panelId=9&refresh=1m&from=now-24h&to=now"
+                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&theme=dark&panelId=9&refresh=1m&from=now-24h&to=now"
                                 },
                                 {
                                     "aspect_ratio": "60%",
                                     "type": "iframe",
-                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&refresh=1m&theme=light&panelId=10&from=now-24h&to=now"
+                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&refresh=1m&theme=dark&panelId=10&from=now-24h&to=now"
                                 }
                             ],
                             "type": "vertical-stack"
