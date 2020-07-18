@@ -135,6 +135,25 @@ influxdb:
     sensor.*pressure*:
       override_measurement: pressure
 
+device_tracker:
+  - platform: keenetic_ndms2
+    host: 192.168.1.1
+    username: !secret router_user
+    password: !secret router_pass
+
+# Sonoff
+sonoff:
+  username: !secret sonoff_user
+  password: !secret sonoff_pass
+  mode: local
+  reload: always  # update device list every time HA starts
+
+# Synology
+#synology_dsm:
+#  - host: nasmaster_url
+#    username: nasmaster_username
+#    password: nasmaster_pass
+
 # Tuya
 #tuya:
 #  username: !secret tuya_username

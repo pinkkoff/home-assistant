@@ -221,6 +221,7 @@
         "id": "b6033392.b4a27",
         "type": "trigger",
         "z": "6a24dcbb.10a694",
+        "name": "Выключение 5 минут",
         "op1": "",
         "op2": "off",
         "op1type": "nul",
@@ -230,7 +231,7 @@
         "units": "min",
         "reset": "",
         "bytopic": "all",
-        "name": "Выключение 5 минут",
+        "outputs": 1,
         "x": 1060,
         "y": 80,
         "wires": [
@@ -468,7 +469,8 @@
         "wires": [
             [
                 "1079ba9.3aa4d45",
-                "43b2920d.b57dbc"
+                "43b2920d.b57dbc",
+                "1a495fa6.a3ac7"
             ]
         ]
     },
@@ -490,7 +492,7 @@
         "repair": false,
         "outputs": 1,
         "x": 310,
-        "y": 500,
+        "y": 460,
         "wires": [
             [
                 "2a8182fb.79f1de"
@@ -525,7 +527,7 @@
         "repair": false,
         "outputs": 3,
         "x": 510,
-        "y": 500,
+        "y": 460,
         "wires": [
             [
                 "9afe5edb.f2d82"
@@ -618,13 +620,13 @@
         "type": "inject",
         "z": "6169ae85.ebde",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 100,
         "y": 80,
         "wires": [
@@ -660,13 +662,13 @@
         "type": "inject",
         "z": "6169ae85.ebde",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 100,
         "y": 180,
         "wires": [
@@ -712,13 +714,13 @@
         "type": "inject",
         "z": "6169ae85.ebde",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 100,
         "y": 280,
         "wires": [
@@ -801,7 +803,7 @@
         "y": 1400,
         "wires": [
             [
-                "dc113e4d.bc0c8"
+                "3136b9e0.148256"
             ],
             []
         ]
@@ -1636,7 +1638,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 370,
+        "x": 810,
         "y": 1400,
         "wires": [
             []
@@ -1765,14 +1767,15 @@
         "id": "48d2d4a1.a406bc",
         "type": "inject",
         "z": "8d422126.121a1",
+        "d": true,
         "name": "Sat, Sun 13:00",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "",
         "crontab": "00 13 * * 6,0",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 120,
         "y": 200,
         "wires": [
@@ -1785,14 +1788,15 @@
         "id": "bc72916b.5fc0d",
         "type": "inject",
         "z": "8d422126.121a1",
+        "d": true,
         "name": "Every day 18:00",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "",
         "crontab": "00 18 * * *",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 130,
         "y": 260,
         "wires": [
@@ -1816,13 +1820,13 @@
         "type": "inject",
         "z": "6169ae85.ebde",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 100,
         "y": 480,
         "wires": [
@@ -1858,13 +1862,13 @@
         "type": "inject",
         "z": "6169ae85.ebde",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 100,
         "y": 600,
         "wires": [
@@ -1900,13 +1904,13 @@
         "type": "inject",
         "z": "6169ae85.ebde",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 100,
         "y": 540,
         "wires": [
@@ -2019,13 +2023,13 @@
         "type": "inject",
         "z": "6169ae85.ebde",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 100,
         "y": 700,
         "wires": [
@@ -2521,13 +2525,13 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
-        "topic": "",
-        "payload": "5",
-        "payloadType": "num",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
         "x": 110,
         "y": 360,
         "wires": [
@@ -2541,13 +2545,13 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
-        "topic": "",
-        "payload": "6",
-        "payloadType": "num",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "6",
+        "payloadType": "num",
         "x": 110,
         "y": 560,
         "wires": [
@@ -2561,13 +2565,13 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
-        "topic": "",
-        "payload": "5.2",
-        "payloadType": "num",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5.2",
+        "payloadType": "num",
         "x": 110,
         "y": 440,
         "wires": [
@@ -2581,13 +2585,13 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
-        "topic": "",
-        "payload": "4.9",
-        "payloadType": "num",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "4.9",
+        "payloadType": "num",
         "x": 110,
         "y": 320,
         "wires": [
@@ -2632,13 +2636,13 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
-        "topic": "",
-        "payload": "6.1",
-        "payloadType": "num",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "6.1",
+        "payloadType": "num",
         "x": 110,
         "y": 600,
         "wires": [
@@ -2681,13 +2685,13 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
-        "topic": "",
-        "payload": "5.3",
-        "payloadType": "num",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5.3",
+        "payloadType": "num",
         "x": 110,
         "y": 480,
         "wires": [
@@ -2701,13 +2705,13 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
-        "topic": "",
-        "payload": "5.4",
-        "payloadType": "num",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5.4",
+        "payloadType": "num",
         "x": 110,
         "y": 520,
         "wires": [
@@ -2739,13 +2743,13 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
-        "topic": "",
-        "payload": "4.8",
-        "payloadType": "num",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "4.8",
+        "payloadType": "num",
         "x": 110,
         "y": 280,
         "wires": [
@@ -4061,13 +4065,13 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
-        "topic": "",
-        "payload": "100",
-        "payloadType": "num",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "100",
+        "payloadType": "num",
         "x": 110,
         "y": 640,
         "wires": [
@@ -4166,6 +4170,7 @@
         "id": "bac8beae.34d61",
         "type": "trigger",
         "z": "6a24dcbb.10a694",
+        "name": "Turn OFF in 5 min",
         "op1": "",
         "op2": "off",
         "op1type": "nul",
@@ -4175,7 +4180,7 @@
         "units": "min",
         "reset": "",
         "bytopic": "all",
-        "name": "Turn OFF in 5 min",
+        "outputs": 1,
         "x": 1170,
         "y": 300,
         "wires": [
@@ -4422,13 +4427,13 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
-        "topic": "",
-        "payload": "5.1",
-        "payloadType": "num",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5.1",
+        "payloadType": "num",
         "x": 110,
         "y": 400,
         "wires": [
@@ -4805,13 +4810,13 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 740,
         "y": 220,
         "wires": [
@@ -5036,7 +5041,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 870,
-        "y": 460,
+        "y": 440,
         "wires": [
             []
         ]
@@ -5081,6 +5086,7 @@
         "id": "5d0d36c6.461f78",
         "type": "trigger",
         "z": "16ff52c4.88944d",
+        "name": "Turn OFF in 45 min",
         "op1": "",
         "op2": "off",
         "op1type": "nul",
@@ -5090,7 +5096,7 @@
         "units": "min",
         "reset": "",
         "bytopic": "all",
-        "name": "Turn OFF in 45 min",
+        "outputs": 1,
         "x": 250,
         "y": 380,
         "wires": [
@@ -5392,7 +5398,7 @@
         "y": 1445,
         "wires": [
             [
-                "1c5a6dcc.a7c732"
+                "7058ac72.176e94"
             ],
             []
         ]
@@ -5416,8 +5422,8 @@
         "entity_location": "",
         "override_data": "none",
         "blockInputOverrides": false,
-        "x": 480,
-        "y": 1445,
+        "x": 900,
+        "y": 1440,
         "wires": [
             [
                 "d44da450.0d9578"
@@ -5441,8 +5447,8 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 310,
-        "y": 1445,
+        "x": 750,
+        "y": 1440,
         "wires": [
             [
                 "75afbfa.06da54"
@@ -5466,8 +5472,8 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 660,
-        "y": 1445,
+        "x": 1080,
+        "y": 1440,
         "wires": [
             []
         ]
@@ -5914,7 +5920,7 @@
         "override_data": "msg",
         "blockInputOverrides": true,
         "x": 680,
-        "y": 480,
+        "y": 460,
         "wires": [
             [
                 "222f95a8.b270ea"
@@ -5942,7 +5948,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 880,
-        "y": 500,
+        "y": 480,
         "wires": [
             []
         ]
@@ -6561,5 +6567,295 @@
         "x": 90,
         "y": 580,
         "wires": []
+    },
+    {
+        "id": "3136b9e0.148256",
+        "type": "rbe",
+        "z": "8d422126.121a1",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "property": "payload",
+        "x": 610,
+        "y": 1400,
+        "wires": [
+            [
+                "dc113e4d.bc0c8"
+            ]
+        ]
+    },
+    {
+        "id": "7058ac72.176e94",
+        "type": "rbe",
+        "z": "8d422126.121a1",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "property": "payload",
+        "x": 610,
+        "y": 1440,
+        "wires": [
+            [
+                "1c5a6dcc.a7c732"
+            ]
+        ]
+    },
+    {
+        "id": "7eda7712.bccc98",
+        "type": "change",
+        "z": "8d422126.121a1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reset",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1420,
+        "wires": [
+            [
+                "3136b9e0.148256",
+                "7058ac72.176e94"
+            ]
+        ]
+    },
+    {
+        "id": "ed68778d.e2d818",
+        "type": "timerswitch",
+        "z": "8d422126.121a1",
+        "name": "reset",
+        "ontopic": "reset",
+        "offtopic": "reset",
+        "onpayload": "reset",
+        "offpayload": "reset",
+        "disabled": false,
+        "schedules": [
+            {
+                "on_h": "09",
+                "on_m": "00",
+                "on_s": "00",
+                "off_h": "20",
+                "off_m": "00",
+                "off_s": "00",
+                "valid": true
+            }
+        ],
+        "x": 270,
+        "y": 1420,
+        "wires": [
+            [
+                "7eda7712.bccc98"
+            ]
+        ]
+    },
+    {
+        "id": "eb3aa403.1eaf18",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "Send telegram msg to All",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "notify",
+        "service": "telegram_chat_all",
+        "entityId": "",
+        "data": "{\"title\":\"🔋 *Низкий заряд батарейки*\",\"message\":\"*{{payload.attributes.friendly_name}}* равен *{{payload.state}}%*.\\n Необходимо заменить батарейку.\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1310,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5223a97a.dda8b8",
+        "type": "inject",
+        "z": "8d422126.121a1",
+        "name": "Sat, Sun 13:00",
+        "repeat": "",
+        "crontab": "00 13 * * 6,0",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 860,
+        "y": 200,
+        "wires": [
+            [
+                "3447f846.ef1768"
+            ]
+        ]
+    },
+    {
+        "id": "3447f846.ef1768",
+        "type": "ha-get-entities",
+        "z": "8d422126.121a1",
+        "server": "6962e153.99eb9",
+        "name": "Battery < 20",
+        "rules": [
+            {
+                "property": "entity_id",
+                "logic": "is",
+                "value": ".*battery",
+                "valueType": "re"
+            },
+            {
+                "property": "state",
+                "logic": "lt",
+                "value": "20",
+                "valueType": "num"
+            }
+        ],
+        "output_type": "split",
+        "output_empty_results": false,
+        "output_location_type": "msg",
+        "output_location": "payload",
+        "output_results_count": 1,
+        "x": 1050,
+        "y": 200,
+        "wires": [
+            [
+                "eb3aa403.1eaf18",
+                "3d5643b5.e2f8dc"
+            ]
+        ]
+    },
+    {
+        "id": "3d5643b5.e2f8dc",
+        "type": "debug",
+        "z": "8d422126.121a1",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1270,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "2fd88557.46fe0a",
+        "type": "inject",
+        "z": "8d422126.121a1",
+        "name": "Every day 18:00",
+        "repeat": "",
+        "crontab": "00 18 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 870,
+        "y": 260,
+        "wires": [
+            [
+                "9e29e9bf.ef8a08"
+            ]
+        ]
+    },
+    {
+        "id": "9e29e9bf.ef8a08",
+        "type": "ha-get-entities",
+        "z": "8d422126.121a1",
+        "server": "6962e153.99eb9",
+        "name": "Battery < 10",
+        "rules": [
+            {
+                "property": "entity_id",
+                "logic": "is",
+                "value": ".*battery",
+                "valueType": "re"
+            },
+            {
+                "property": "state",
+                "logic": "lt",
+                "value": "10",
+                "valueType": "num"
+            }
+        ],
+        "output_type": "split",
+        "output_empty_results": false,
+        "output_location_type": "msg",
+        "output_location": "payload",
+        "output_results_count": 1,
+        "x": 1050,
+        "y": 260,
+        "wires": [
+            [
+                "eb3aa403.1eaf18"
+            ]
+        ]
+    },
+    {
+        "id": "1a495fa6.a3ac7",
+        "type": "switch",
+        "z": "6a24dcbb.10a694",
+        "name": "Кнопка на выходе",
+        "property": "payload.entity_id",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "binary_sensor.xiaomi_exit_switch_lobby_158d0002135c59",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "997b4da4.db3c9",
+        "type": "switch",
+        "z": "6a24dcbb.10a694",
+        "name": "Тип нажатия",
+        "property": "payload.event.click_type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "single",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "double",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 510,
+        "y": 540,
+        "wires": [
+            [],
+            []
+        ]
     }
 ]

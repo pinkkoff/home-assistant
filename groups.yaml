@@ -20,5 +20,5 @@ all_lights:
 smb_at_home:
   name: Кто-то дома
   entities:
-    - device_tracker.iphone_pinkkoff
-    - device_tracker.iphone_pinkkoff
+    - person.anna
+    - person.vladimir

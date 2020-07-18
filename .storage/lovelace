@@ -25,6 +25,9 @@
                         },
                         {
                             "entity": "sensor.weather_precipitation"
+                        },
+                        {
+                            "entity": "sensor.time_to_work"
                         }
                     ],
                     "cards": [
@@ -854,6 +857,49 @@
                             ],
                             "show_header_toggle": false,
                             "title": "\u0421\u0435\u0442\u0435\u0432\u044b\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.nasmaster_cpu_load_total",
+                                    "name": "CPU load"
+                                },
+                                {
+                                    "entity": "sensor.nasmaster_memory_usage_real",
+                                    "name": "Memory used"
+                                },
+                                {
+                                    "entity": "sensor.nasmaster_volume_1_used_space",
+                                    "name": "Space used"
+                                },
+                                {
+                                    "entity": "sensor.nasmaster_volume_1_volume_used",
+                                    "name": "Space used %"
+                                },
+                                {
+                                    "entity": "sensor.nasmaster_drive_1_status",
+                                    "name": "Disk 1"
+                                },
+                                {
+                                    "entity": "sensor.nasmaster_drive_2_status",
+                                    "name": "Disk 2"
+                                },
+                                {
+                                    "entity": "sensor.nasmaster_drive_3_status",
+                                    "name": "Disk 3"
+                                },
+                                {
+                                    "entity": "sensor.nasmaster_drive_4_status",
+                                    "name": "Disk 4"
+                                },
+                                {
+                                    "entity": "sensor.nasmaster_volume_1_average_disk_temp",
+                                    "name": "Disk temp"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "NASMaster",
                             "type": "entities"
                         }
                     ],
