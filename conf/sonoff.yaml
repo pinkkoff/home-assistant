@@ -1,0 +1,6 @@
+# Sonoff
+sonoff:
+  username: !secret sonoff_user
+  password: !secret sonoff_pass
+  mode: local
+  reload: always  # update device list every time HA starts

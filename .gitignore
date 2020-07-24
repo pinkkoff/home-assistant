@@ -10,6 +10,7 @@
 !.storage/lovelace
 !node-red
 !node-red/flows.json
+!conf
 
 # Ignore folders.
 .cloud

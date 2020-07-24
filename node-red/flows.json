@@ -612,8 +612,9 @@
         "name": "Отправить push",
         "server": "6962e153.99eb9",
         "version": 1,
+        "debugenabled": false,
         "service_domain": "notify",
-        "service": "ios_iphone_all",
+        "service": "mobile_app_iphone_all",
         "entityId": "",
         "data": "{\"message\":\"Тестовая нотификация\",\"title\":\"Заголовок Push\",\"data\":{\"subtitle\":\"Подзаголовок\",\"push\":{\"thread-id\":\"example-notification-group\",\"badge\":\"0\"}}}",
         "dataType": "json",
@@ -654,8 +655,9 @@
         "name": "Отправить динам. push",
         "server": "6962e153.99eb9",
         "version": 1,
+        "debugenabled": false,
         "service_domain": "notify",
-        "service": "ios_iphone_all",
+        "service": "mobile_app_iphone_all",
         "entityId": "",
         "data": "{\"message\":\"{{payload}}\",\"title\":\"Динамический PUSH с действием\",\"data\":{\"subtitle\":\"Подзаголовок\",\"push\":{\"thread-id\":\"example-notification-group\",\"badge\":\"0\"}}}",
         "dataType": "json",
@@ -706,8 +708,9 @@
         "name": "Отправить динам. push с action",
         "server": "6962e153.99eb9",
         "version": 1,
+        "debugenabled": false,
         "service_domain": "notify",
-        "service": "ios_iphone_all",
+        "service": "mobile_app_iphone_all",
         "entityId": "",
         "data": "{\"message\":\"{{payload}}\",\"title\":\"Динамический PUSH с действием\",\"data\":{\"subtitle\":\"Нажми на меня\",\"push\":{\"category\":\"test\",\"thread-id\":\"example-notification-group\",\"badge\":\"0\"}}}",
         "dataType": "json",
@@ -2137,7 +2140,7 @@
         "version": 1,
         "debugenabled": false,
         "service_domain": "notify",
-        "service": "ios_iphone_all",
+        "service": "mobile_app_iphone_all",
         "entityId": "",
         "data": "{\"message\":\"Уровень задымления:{{data.attributes.Density}} \",\"title\":\"❗ОПАСНОСТЬ❗️ Возможен пожар на кухне🔥\",\"data\":{\"push\":{\"sound\":\"US-EN-Alexa-Smoke-Detected-Generic.wav\"}}}",
         "dataType": "json",
@@ -2177,7 +2180,8 @@
                 "27cdffa3.800e7",
                 "2e1e95f6.5bf28a",
                 "672d7f48.28336",
-                "a150322e.bbb5e"
+                "a150322e.bbb5e",
+                "4e74ee01.78737"
             ]
         ]
     },
@@ -2191,7 +2195,7 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 390,
+        "x": 230,
         "y": 500,
         "wires": []
     },
@@ -2206,7 +2210,7 @@
         "tostatus": false,
         "complete": "data",
         "targetType": "msg",
-        "x": 600,
+        "x": 400,
         "y": 500,
         "wires": []
     },
@@ -2242,7 +2246,8 @@
         "wires": [
             [
                 "ddfcfe38.1b09c",
-                "dae259f6.37a788"
+                "dae259f6.37a788",
+                "5661e385.1d916c"
             ],
             []
         ]
@@ -2278,7 +2283,7 @@
         "version": 1,
         "debugenabled": false,
         "service_domain": "notify",
-        "service": "ios_iphone_all",
+        "service": "mobile_app_iphone_all",
         "entityId": "",
         "data": "{\"title\":\"❗ОПАСНОСТЬ❗️Зафиксирована протечка💧\",\"message\":\"Устройство: {{data.new_state.attributes.friendly_name}}\",\"data\":{\"push\":{\"sound\":\"US-EN-Alexa-Water-Detected-Generic.wav\"}}}",
         "dataType": "json",
@@ -2506,28 +2511,6 @@
         "property": "payload",
         "x": 770,
         "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a5966c71.298fc",
-        "type": "server-state-changed",
-        "z": "ee1a9216.12937",
-        "name": "state input_n_2",
-        "server": "6962e153.99eb9",
-        "version": 1,
-        "entityidfilter": "input_number.test_input_number_2",
-        "entityidfiltertype": "exact",
-        "outputinitially": false,
-        "state_type": "num",
-        "haltifstate": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
-        "outputs": 1,
-        "output_only_on_state_change": true,
-        "x": 500,
-        "y": 60,
         "wires": [
             []
         ]
@@ -5520,8 +5503,7 @@
         "y": 400,
         "wires": [
             [
-                "8515fdc4.48d0d",
-                "8d482329.a3523"
+                "8515fdc4.48d0d"
             ]
         ]
     },
@@ -5530,28 +5512,13 @@
         "type": "debug",
         "z": "ee1a9216.12937",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "x": 1110,
         "y": 400,
-        "wires": []
-    },
-    {
-        "id": "8d482329.a3523",
-        "type": "debug",
-        "z": "ee1a9216.12937",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 1090,
-        "y": 440,
         "wires": []
     },
     {
@@ -6921,5 +6888,51 @@
         "x": 740,
         "y": 540,
         "wires": []
+    },
+    {
+        "id": "4e74ee01.78737",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "HA notification",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "persistent_notification",
+        "service": "create",
+        "entityId": "",
+        "data": "{\"message\":\"Уровень задымления:{{data.attributes.Density}} \",\"title\":\"❗ОПАСНОСТЬ❗️ Возможен пожар на кухне🔥\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 580,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5661e385.1d916c",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "HA notification",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "persistent_notification",
+        "service": "create",
+        "entityId": "",
+        "data": "{\"title\":\"❗ОПАСНОСТЬ❗️Зафиксирована протечка💧\",\"message\":\"Устройство: {{data.new_state.attributes.friendly_name}}\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 340,
+        "y": 640,
+        "wires": [
+            []
+        ]
     }
 ]

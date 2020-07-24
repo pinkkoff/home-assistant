@@ -6,7 +6,8 @@
                 {
                     "badges": [
                         {
-                            "entity": "group.smb_at_home"
+                            "entity": "group.smb_at_home",
+                            "name": "\u041b\u044e\u0434\u0438"
                         },
                         {
                             "entity": "person.vladimir"
@@ -15,25 +16,35 @@
                             "entity": "person.anna"
                         },
                         {
-                            "entity": "sensor.weather_symbol"
+                            "entity": "sensor.weather_symbol",
+                            "name": "\u041f\u043e\u0433\u043e\u0434\u0430"
                         },
                         {
-                            "entity": "sensor.weather_temperature"
+                            "entity": "sensor.gismeteo_temperature",
+                            "name": "\u0422\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430"
                         },
                         {
-                            "entity": "sensor.weather_humidity"
+                            "entity": "sensor.gismeteo_humidity",
+                            "name": "\u0412\u043b\u0430\u0436\u043d\u043e\u0441\u0442\u044c"
                         },
                         {
-                            "entity": "sensor.weather_precipitation"
+                            "entity": "sensor.gismeteo_wind_speed",
+                            "name": "\u0421\u043a\u043e\u0440\u043e\u0441\u0442\u044c \u0432\u0435\u0442\u0440\u0430"
                         },
                         {
-                            "entity": "sensor.time_to_work"
+                            "entity": "sensor.weather_precipitation",
+                            "name": "\u041e\u0441\u0430\u0434\u043a\u0438"
+                        },
+                        {
+                            "entity": "sensor.time_to_work",
+                            "name": "\u0414\u043e \u0440\u0430\u0431\u043e\u0442\u044b"
                         }
                     ],
                     "cards": [
                         {
-                            "entity": "weather.darksky_forecast",
-                            "name": "\u041f\u043e\u0433\u043e\u0434\u0430",
+                            "entity": "weather.gismeteo_forecast",
+                            "name": "\u0413\u0438\u0441\u043c\u0435\u0442\u0435\u043e",
+                            "show_forecast": true,
                             "type": "weather-forecast"
                         },
                         {
