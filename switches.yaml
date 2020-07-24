@@ -5,6 +5,12 @@
   host: "192.168.1.50"
   broadcast_address: "192.168.1.255"
   mac: !secret master_MAC
+  turn_off:
+    service: hassio.addon_stdin
+    data:
+      addon: core_rpc_shutdown
+      input: master
+
 #
 # Xiaomi humidifier dry mode switch
 - platform: template

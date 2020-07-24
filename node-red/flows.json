@@ -463,14 +463,26 @@
         "z": "6a24dcbb.10a694",
         "name": "",
         "server": "6962e153.99eb9",
-        "event_type": "",
-        "x": 80,
-        "y": 520,
+        "event_type": "xiaomi_aqara.click",
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "x": 130,
+        "y": 500,
         "wires": [
             [
                 "1079ba9.3aa4d45",
                 "43b2920d.b57dbc",
-                "1a495fa6.a3ac7"
+                "1a495fa6.a3ac7",
+                "5f57f8c7.61c608"
             ]
         ]
     },
@@ -491,7 +503,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 310,
+        "x": 390,
         "y": 460,
         "wires": [
             [
@@ -526,7 +538,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 510,
+        "x": 590,
         "y": 460,
         "wires": [
             [
@@ -553,7 +565,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 330,
+        "x": 410,
         "y": 380,
         "wires": [
             [
@@ -577,7 +589,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 590,
+        "x": 670,
         "y": 380,
         "wires": [
             []
@@ -4967,7 +4979,6 @@
         "id": "481c8a3b.2077b4",
         "type": "server-state-changed",
         "z": "6a24dcbb.10a694",
-        "d": true,
         "name": "Nobody at home",
         "server": "6962e153.99eb9",
         "version": 1,
@@ -4992,7 +5003,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 100,
-        "y": 620,
+        "y": 680,
         "wires": [
             [
                 "dfb8cec7.185bd"
@@ -5018,7 +5029,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 310,
-        "y": 620,
+        "y": 680,
         "wires": [
             []
         ]
@@ -5040,7 +5051,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 870,
+        "x": 950,
         "y": 440,
         "wires": [
             []
@@ -5919,7 +5930,7 @@
         "entity_location": "data",
         "override_data": "msg",
         "blockInputOverrides": true,
-        "x": 680,
+        "x": 760,
         "y": 460,
         "wires": [
             [
@@ -5947,7 +5958,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 880,
+        "x": 960,
         "y": 480,
         "wires": [
             []
@@ -5981,7 +5992,7 @@
         "outputs": 1,
         "output_only_on_state_change": true,
         "x": 100,
-        "y": 720,
+        "y": 780,
         "wires": [
             [
                 "8d1fb854.bba0a8"
@@ -6016,7 +6027,7 @@
         "outputs": 1,
         "output_only_on_state_change": true,
         "x": 100,
-        "y": 760,
+        "y": 820,
         "wires": [
             [
                 "62af881d.ff4758"
@@ -6051,7 +6062,7 @@
         "outputs": 1,
         "output_only_on_state_change": true,
         "x": 110,
-        "y": 920,
+        "y": 980,
         "wires": [
             [
                 "27ebd44c.e3f3ac"
@@ -6086,7 +6097,7 @@
         "outputs": 1,
         "output_only_on_state_change": true,
         "x": 100,
-        "y": 880,
+        "y": 940,
         "wires": [
             [
                 "6341b37a.e7400c"
@@ -6120,7 +6131,7 @@
         "sat": false,
         "sun": false,
         "x": 520,
-        "y": 760,
+        "y": 820,
         "wires": [
             [
                 "9eed354a.a77378"
@@ -6147,7 +6158,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 720,
+        "y": 780,
         "wires": [
             [
                 "3203ca81.91bd86"
@@ -6174,7 +6185,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 760,
+        "y": 820,
         "wires": [
             [
                 "3203ca81.91bd86"
@@ -6201,7 +6212,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 880,
+        "y": 940,
         "wires": [
             [
                 "e03e1925.8f6078"
@@ -6228,7 +6239,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 920,
+        "y": 980,
         "wires": [
             [
                 "e03e1925.8f6078"
@@ -6262,7 +6273,7 @@
         "sat": true,
         "sun": true,
         "x": 520,
-        "y": 880,
+        "y": 940,
         "wires": [
             [
                 "9eed354a.a77378"
@@ -6287,7 +6298,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 830,
-        "y": 780,
+        "y": 840,
         "wires": [
             [
                 "e632cf77.cc0a8"
@@ -6317,7 +6328,7 @@
         "repair": false,
         "outputs": 2,
         "x": 670,
-        "y": 820,
+        "y": 880,
         "wires": [
             [
                 "db6c59c5.925dd8"
@@ -6345,7 +6356,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 830,
-        "y": 860,
+        "y": 920,
         "wires": [
             []
         ]
@@ -6366,7 +6377,7 @@
         "randomUnits": "seconds",
         "drop": false,
         "x": 990,
-        "y": 780,
+        "y": 840,
         "wires": [
             [
                 "3a286c82.0f9944"
@@ -6391,7 +6402,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 1470,
-        "y": 780,
+        "y": 840,
         "wires": [
             []
         ]
@@ -6414,7 +6425,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 1150,
-        "y": 780,
+        "y": 840,
         "wires": [
             [
                 "4dae449d.1916fc"
@@ -6437,7 +6448,7 @@
         "randomUnits": "seconds",
         "drop": false,
         "x": 1310,
-        "y": 780,
+        "y": 840,
         "wires": [
             [
                 "69fb3b50.9c5084"
@@ -6472,7 +6483,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 110,
-        "y": 820,
+        "y": 880,
         "wires": [
             [
                 "daff24c8.53cb88"
@@ -6507,7 +6518,7 @@
         "to": "",
         "reg": false,
         "x": 280,
-        "y": 840,
+        "y": 900,
         "wires": [
             [
                 "3203ca81.91bd86",
@@ -6540,7 +6551,7 @@
         "to": "",
         "reg": false,
         "x": 290,
-        "y": 800,
+        "y": 860,
         "wires": [
             [
                 "3203ca81.91bd86",
@@ -6555,17 +6566,7 @@
         "name": "===================  Управление шторами ===================  ",
         "info": "",
         "x": 580,
-        "y": 680,
-        "wires": []
-    },
-    {
-        "id": "dc12805f.8f98b",
-        "type": "comment",
-        "z": "6a24dcbb.10a694",
-        "name": "Доделать!!!!",
-        "info": "",
-        "x": 90,
-        "y": 580,
+        "y": 740,
         "wires": []
     },
     {
@@ -6810,52 +6811,115 @@
         "id": "1a495fa6.a3ac7",
         "type": "switch",
         "z": "6a24dcbb.10a694",
-        "name": "Кнопка на выходе",
+        "d": true,
+        "name": "Wall switch kitchen",
         "property": "payload.entity_id",
         "propertyType": "msg",
         "rules": [
             {
                 "t": "eq",
-                "v": "binary_sensor.xiaomi_exit_switch_lobby_158d0002135c59",
+                "v": "binary_sensor.xiaomi_wall_switch_livingroom_kitchen_left",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "binary_sensor.xiaomi_wall_switch_livingroom_kitchen_both",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "binary_sensor.xiaomi_wall_switch_livingroom_kitchen_right",
                 "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 1,
-        "x": 310,
+        "outputs": 3,
+        "x": 390,
         "y": 540,
+        "wires": [
+            [
+                "5516d0d8.290ba"
+            ],
+            [
+                "5516d0d8.290ba",
+                "55d68db9.832fd4"
+            ],
+            [
+                "55d68db9.832fd4"
+            ]
+        ]
+    },
+    {
+        "id": "5516d0d8.290ba",
+        "type": "api-call-service",
+        "z": "6a24dcbb.10a694",
+        "name": "toggle sill light",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "toggle",
+        "entityId": "switch.xiaomi_wallswitch_livingroom_kitchen_sill",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 600,
+        "y": 520,
         "wires": [
             []
         ]
     },
     {
-        "id": "997b4da4.db3c9",
-        "type": "switch",
+        "id": "55d68db9.832fd4",
+        "type": "api-call-service",
         "z": "6a24dcbb.10a694",
-        "name": "Тип нажатия",
-        "property": "payload.event.click_type",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "single",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "double",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 510,
-        "y": 540,
+        "name": "toggle main kitchen light",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "toggle",
+        "entityId": "switch.xiaomi_wallswitch_livingroom_kitchen_main",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 630,
+        "y": 560,
         "wires": [
-            [],
             []
         ]
+    },
+    {
+        "id": "5f57f8c7.61c608",
+        "type": "debug",
+        "z": "6a24dcbb.10a694",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "1763e9d.5448716",
+        "type": "comment",
+        "z": "6a24dcbb.10a694",
+        "name": "Выключатель на кухне посылает 2 события сразу. Подождать решения.",
+        "info": "",
+        "x": 740,
+        "y": 540,
+        "wires": []
     }
 ]
