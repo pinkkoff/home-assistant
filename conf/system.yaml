@@ -38,9 +38,6 @@ hacs:
   python_script: true
   theme: true
 
-# Wake on LAN service
-wake_on_lan:
-
 # Yandex time
 sensor:
   - platform: yandex_maps

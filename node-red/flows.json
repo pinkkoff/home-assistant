@@ -2259,19 +2259,22 @@
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
         "version": 1,
+        "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
         "entityId": "",
-        "data": "{\"title\":\"❗*ОПАСНОСТЬ❗️Зафиксирована протечка*💧\",\"message\":\"Устройство: {{data.new_state.attributes.friendly_name}}\"}",
+        "data": "{\"title\":\"❗*ОПАСНОСТЬ❗️Зафиксирована протечка*💧\",\"message\":\"Устройство: {{data.new_state.attributes.friendly_name}}\",\"data\":{\"inline_keyboard\":[\"Перекрыть всю воду:/all_water_off\",\"Перекрыть хол воду:/cold_water_off, Перекрыть гор воду:/hot_water_off\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
+        "output_location": "payload",
+        "output_location_type": "msg",
         "mustacheAltTags": false,
         "x": 370,
         "y": 560,
         "wires": [
-            []
+            [
+                "97fb19bd.48d798"
+            ]
         ]
     },
     {
@@ -2770,7 +2773,7 @@
         "name": "===================  Climate messages  ===================",
         "info": "",
         "x": 590,
-        "y": 680,
+        "y": 700,
         "wires": []
     },
     {
@@ -2781,7 +2784,7 @@
         "server": "6962e153.99eb9",
         "event_type": "telegram_callback",
         "x": 130,
-        "y": 320,
+        "y": 420,
         "wires": [
             [
                 "cc89f692.d6b2c8",
@@ -2836,13 +2839,43 @@
                 "t": "eq",
                 "v": "/heater_balcony_auto_off",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/cold_water_off",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/hot_water_off",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/cold_water_on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/hot_water_on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/all_water_on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/all_water_off",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 8,
+        "outputs": 14,
         "x": 390,
-        "y": 320,
+        "y": 420,
         "wires": [
             [
                 "e9b4c9ba.bf10f8"
@@ -2867,6 +2900,24 @@
             ],
             [
                 "25315fc5.e7015"
+            ],
+            [
+                "2576a0ba.66e54"
+            ],
+            [
+                "5154f526.45fbfc"
+            ],
+            [
+                "7f55bcc5.1ea5d4"
+            ],
+            [
+                "8986b2d8.5f62e"
+            ],
+            [
+                "875aee40.3d639"
+            ],
+            [
+                "4666b0ee.6b512"
             ]
         ]
     },
@@ -3027,7 +3078,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 650,
+        "x": 660,
         "y": 380,
         "wires": [
             [
@@ -3075,7 +3126,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 660,
+        "x": 670,
         "y": 460,
         "wires": [
             [
@@ -3306,7 +3357,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 1220,
+        "x": 1240,
         "y": 400,
         "wires": [
             []
@@ -3319,7 +3370,7 @@
         "name": "Callback from messages",
         "info": "",
         "x": 130,
-        "y": 280,
+        "y": 380,
         "wires": []
     },
     {
@@ -3340,7 +3391,7 @@
         "server": "6962e153.99eb9",
         "event_type": "telegram_command",
         "x": 110,
-        "y": 780,
+        "y": 1000,
         "wires": [
             [
                 "487cf3ce.1cd95c"
@@ -3385,7 +3436,7 @@
         "repair": false,
         "outputs": 5,
         "x": 370,
-        "y": 860,
+        "y": 1080,
         "wires": [
             [
                 "d36a2541.f65648"
@@ -3432,7 +3483,7 @@
         "repair": false,
         "outputs": 3,
         "x": 370,
-        "y": 720,
+        "y": 940,
         "wires": [
             [
                 "3939679f.3d3bd8"
@@ -3462,7 +3513,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 550,
-        "y": 860,
+        "y": 1080,
         "wires": [
             [
                 "6ea8cee5.ab701"
@@ -3481,7 +3532,7 @@
         "complete": "payload",
         "targetType": "msg",
         "x": 750,
-        "y": 860,
+        "y": 1080,
         "wires": []
     },
     {
@@ -3491,7 +3542,7 @@
         "name": "Команды поцелуев",
         "info": "",
         "x": 410,
-        "y": 800,
+        "y": 1020,
         "wires": []
     },
     {
@@ -3501,7 +3552,7 @@
         "name": "/start, /help, /exit",
         "info": "",
         "x": 400,
-        "y": 660,
+        "y": 880,
         "wires": []
     },
     {
@@ -3521,7 +3572,7 @@
         "name": "===================  Command Actions  ===================",
         "info": "",
         "x": 610,
-        "y": 600,
+        "y": 820,
         "wires": []
     },
     {
@@ -3695,7 +3746,7 @@
         "name": "=======  Оповещения о выходе за границы  =======",
         "info": "",
         "x": 580,
-        "y": 720,
+        "y": 740,
         "wires": []
     },
     {
@@ -3726,22 +3777,22 @@
         "id": "46c7faf8.4acd04",
         "type": "subflow:7cf1202f.0fec5",
         "z": "8d422126.121a1",
-        "name": "< 2 - 35 <",
+        "name": "< 2 - 40 <",
         "env": [
             {
                 "name": "low",
-                "type": "num",
-                "value": "2"
+                "value": "2",
+                "type": "num"
             },
             {
                 "name": "high",
-                "type": "num",
-                "value": "35"
+                "value": "40",
+                "type": "num"
             },
             {
                 "name": "hysteresis",
-                "type": "str",
-                "value": "0.2"
+                "value": "0.4",
+                "type": "str"
             }
         ],
         "x": 300,
@@ -4697,7 +4748,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 780,
-        "y": 680,
+        "y": 900,
         "wires": [
             []
         ]
@@ -4711,7 +4762,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 580,
-        "y": 680,
+        "y": 900,
         "wires": [
             [
                 "2c10150f.85002a"
@@ -4735,7 +4786,7 @@
         "output_location_type": "msg",
         "mustacheAltTags": false,
         "x": 780,
-        "y": 720,
+        "y": 940,
         "wires": [
             []
         ]
@@ -4749,7 +4800,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 580,
-        "y": 720,
+        "y": 940,
         "wires": [
             [
                 "770476a9.72f118"
@@ -4773,7 +4824,7 @@
         "output_location_type": "msg",
         "mustacheAltTags": false,
         "x": 600,
-        "y": 760,
+        "y": 980,
         "wires": [
             []
         ]
@@ -4827,7 +4878,7 @@
         "name": "======  Остальные команды  ======",
         "info": "",
         "x": 470,
-        "y": 940,
+        "y": 1160,
         "wires": []
     },
     {
@@ -4873,7 +4924,7 @@
         "repair": false,
         "outputs": 6,
         "x": 380,
-        "y": 1060,
+        "y": 1280,
         "wires": [
             [
                 "22551676.fa9f7a"
@@ -4912,7 +4963,7 @@
         "output_location_type": "msg",
         "mustacheAltTags": false,
         "x": 640,
-        "y": 1060,
+        "y": 1280,
         "wires": [
             []
         ]
@@ -4939,7 +4990,7 @@
         "to": "",
         "reg": false,
         "x": 150,
-        "y": 900,
+        "y": 1120,
         "wires": [
             [
                 "cf4fe9f2.624b38",
@@ -6933,6 +6984,714 @@
         "y": 640,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "2576a0ba.66e54",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "Cold water off",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.sonoff_water_valve_cold_1000d5c788_1",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 640,
+        "y": 500,
+        "wires": [
+            [
+                "c9f520f3.8c3ca"
+            ]
+        ]
+    },
+    {
+        "id": "7f55bcc5.1ea5d4",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "Cold water on",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_off",
+        "entityId": "switch.sonoff_water_valve_cold_1000d5c788_1",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 640,
+        "y": 580,
+        "wires": [
+            [
+                "c9f520f3.8c3ca"
+            ]
+        ]
+    },
+    {
+        "id": "5154f526.45fbfc",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "Hot water off",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.sonoff_water_valve_hot_1000d5c788_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 630,
+        "y": 540,
+        "wires": [
+            [
+                "c9f520f3.8c3ca"
+            ]
+        ]
+    },
+    {
+        "id": "8986b2d8.5f62e",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "Hot water on",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_off",
+        "entityId": "switch.sonoff_water_valve_hot_1000d5c788_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 630,
+        "y": 620,
+        "wires": [
+            [
+                "c9f520f3.8c3ca"
+            ]
+        ]
+    },
+    {
+        "id": "875aee40.3d639",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "Cold water on",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_off",
+        "entityId": "switch.sonoff_water_valve_cold_1000d5c788_1",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 640,
+        "y": 660,
+        "wires": [
+            [
+                "4dea6e26.98e1e"
+            ]
+        ]
+    },
+    {
+        "id": "4dea6e26.98e1e",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "Hot water on",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_off",
+        "entityId": "switch.sonoff_water_valve_hot_1000d5c788_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 810,
+        "y": 660,
+        "wires": [
+            [
+                "c9f520f3.8c3ca"
+            ]
+        ]
+    },
+    {
+        "id": "4666b0ee.6b512",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "Cold water off",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.sonoff_water_valve_cold_1000d5c788_1",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 640,
+        "y": 700,
+        "wires": [
+            [
+                "ab41da24.e9d508"
+            ]
+        ]
+    },
+    {
+        "id": "ab41da24.e9d508",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "Hot water off",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.sonoff_water_valve_hot_1000d5c788_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 810,
+        "y": 700,
+        "wires": [
+            [
+                "c9f520f3.8c3ca"
+            ]
+        ]
+    },
+    {
+        "id": "319bd8ed.9a2ff8",
+        "type": "api-current-state",
+        "z": "96899f2.417176",
+        "name": "Cold water",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "switch.sonoff_water_valve_cold_1000d5c788_1",
+        "state_type": "str",
+        "state_location": "cold",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "blockInputOverrides": false,
+        "x": 1170,
+        "y": 560,
+        "wires": [
+            [
+                "9f9000e3.1a11d"
+            ]
+        ]
+    },
+    {
+        "id": "9f9000e3.1a11d",
+        "type": "api-current-state",
+        "z": "96899f2.417176",
+        "name": "Hot water",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "switch.sonoff_water_valve_hot_1000d5c788_2",
+        "state_type": "str",
+        "state_location": "hot",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "blockInputOverrides": false,
+        "x": 1320,
+        "y": 560,
+        "wires": [
+            [
+                "c1ff6317.8679"
+            ]
+        ]
+    },
+    {
+        "id": "83da2a85.0f23b8",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "Reply telegram msg",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "telegram_bot",
+        "service": "send_message",
+        "entityId": "",
+        "data": "{\"title\":\"*Отработка команды перекрытия воды*\",\"message\":\"Холодная вода: *{{cold}}* \\nГорячая вода: *{{hot}}*.\",\"target\":\"{{payload.event.message.chat.id}}\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1680,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1ff6317.8679",
+        "type": "change",
+        "z": "96899f2.417176",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "cold",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "Перекрыта",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "cold",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "Открыта",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "hot",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "Перекрыта",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "hot",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "Открыта",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1480,
+        "y": 560,
+        "wires": [
+            [
+                "83da2a85.0f23b8"
+            ]
+        ]
+    },
+    {
+        "id": "c9f520f3.8c3ca",
+        "type": "delay",
+        "z": "96899f2.417176",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1020,
+        "y": 560,
+        "wires": [
+            [
+                "319bd8ed.9a2ff8"
+            ]
+        ]
+    },
+    {
+        "id": "fd2f6101.90452",
+        "type": "trigger",
+        "z": "8d422126.121a1",
+        "name": "",
+        "op1": "",
+        "op2": "close",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "20",
+        "extend": false,
+        "units": "min",
+        "reset": "reset",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 870,
+        "y": 540,
+        "wires": [
+            [
+                "51bf03d1.9f011c"
+            ]
+        ]
+    },
+    {
+        "id": "58e8c486.85682c",
+        "type": "server-events",
+        "z": "8d422126.121a1",
+        "name": "",
+        "server": "6962e153.99eb9",
+        "event_type": "telegram_callback",
+        "x": 610,
+        "y": 620,
+        "wires": [
+            [
+                "c998b6f3.7b5fa8"
+            ]
+        ]
+    },
+    {
+        "id": "c998b6f3.7b5fa8",
+        "type": "switch",
+        "z": "8d422126.121a1",
+        "name": "None?",
+        "property": "payload.event.data",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "/none",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 790,
+        "y": 620,
+        "wires": [
+            [
+                "ba3111c3.57249"
+            ]
+        ]
+    },
+    {
+        "id": "51bf03d1.9f011c",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "Cold water off",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.sonoff_water_valve_cold_1000d5c788_1",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1040,
+        "y": 560,
+        "wires": [
+            [
+                "2216b551.bad07a"
+            ]
+        ]
+    },
+    {
+        "id": "2216b551.bad07a",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "Hot water off",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.sonoff_water_valve_hot_1000d5c788_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1210,
+        "y": 560,
+        "wires": [
+            [
+                "c24b9d64.01d8d"
+            ]
+        ]
+    },
+    {
+        "id": "c24b9d64.01d8d",
+        "type": "delay",
+        "z": "8d422126.121a1",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1360,
+        "y": 560,
+        "wires": [
+            [
+                "57854170.58ad4"
+            ]
+        ]
+    },
+    {
+        "id": "57854170.58ad4",
+        "type": "api-current-state",
+        "z": "8d422126.121a1",
+        "name": "Cold water",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "switch.sonoff_water_valve_cold_1000d5c788_1",
+        "state_type": "str",
+        "state_location": "cold",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "blockInputOverrides": false,
+        "x": 1510,
+        "y": 560,
+        "wires": [
+            [
+                "99038a1a.013638"
+            ]
+        ]
+    },
+    {
+        "id": "99038a1a.013638",
+        "type": "api-current-state",
+        "z": "8d422126.121a1",
+        "name": "Hot water",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "switch.sonoff_water_valve_hot_1000d5c788_2",
+        "state_type": "str",
+        "state_location": "hot",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "blockInputOverrides": false,
+        "x": 1660,
+        "y": 560,
+        "wires": [
+            [
+                "d3f45c3b.11ebf"
+            ]
+        ]
+    },
+    {
+        "id": "d3f45c3b.11ebf",
+        "type": "change",
+        "z": "8d422126.121a1",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "cold",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "Перекрыта",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "cold",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "Открыта",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "hot",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "Перекрыта",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "hot",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "Открыта",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1820,
+        "y": 560,
+        "wires": [
+            [
+                "96625867.6a4a48"
+            ]
+        ]
+    },
+    {
+        "id": "ba3111c3.57249",
+        "type": "change",
+        "z": "8d422126.121a1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reset",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 620,
+        "wires": [
+            [
+                "1de6157b.8b846b",
+                "fd2f6101.90452"
+            ]
+        ]
+    },
+    {
+        "id": "96625867.6a4a48",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "Send telegram msg to All",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "notify",
+        "service": "telegram_chat_all",
+        "entityId": "",
+        "data": "{\"title\":\"❗*Автоматическое выключение воды*❗\",\"message\":\"Нет реакции на протечку, вода закрыта автоматически. \\nХолодная вода: *{{cold}}* \\nГорячая вода: *{{hot}}*.\",\"data\":{\"inline_keyboard\":[\"Открыть всю воду:/all_water_on\",\"Открыть холодную:/cold_water_on, Открыть горячую:/hot_water_on\",\"Ничего не делать:/none\"]}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 2030,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "97fb19bd.48d798",
+        "type": "api-current-state",
+        "z": "8d422126.121a1",
+        "name": "anbd home?",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "home",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "group.smb_at_home",
+        "state_type": "str",
+        "state_location": "home",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "blockInputOverrides": false,
+        "x": 590,
+        "y": 560,
+        "wires": [
+            [
+                "fd2f6101.90452"
+            ],
+            [
+                "1de6157b.8b846b"
+            ]
+        ]
+    },
+    {
+        "id": "1de6157b.8b846b",
+        "type": "trigger",
+        "z": "8d422126.121a1",
+        "name": "",
+        "op1": "",
+        "op2": "close",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "1",
+        "extend": false,
+        "units": "min",
+        "reset": "reset",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 870,
+        "y": 580,
+        "wires": [
+            [
+                "51bf03d1.9f011c"
+            ]
         ]
     }
 ]

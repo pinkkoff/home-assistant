@@ -119,6 +119,13 @@ sensor:
         device_class: battery
   - platform: template
     sensors:
+      xiaomi_water_leak_livingroom_2_battery:
+        friendly_name: "Заряд в датчике протечки на кухне (пол)"
+        unit_of_measurement: '%'
+        value_template: "{{ state_attr('binary_sensor.xiaomi_water_leak_livingroom_2_158d000477651e', 'battery_level') }}"
+        device_class: battery
+  - platform: template
+    sensors:
       xiaomi_motion_bathroom_battery:
         friendly_name: "Заряд в датчике движения в ванной"
         unit_of_measurement: '%'

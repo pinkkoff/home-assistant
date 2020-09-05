@@ -128,10 +128,15 @@
                                 },
                                 {
                                     "entity": "cover.xiaomi_curtain_bedroom_158d0004118cca"
+                                },
+                                {
+                                    "entity": "switch.sonoff_water_valve_cold_1000d5c788_1"
+                                },
+                                {
+                                    "entity": "switch.sonoff_water_valve_hot_1000d5c788_2"
                                 }
                             ],
                             "show_header_toggle": true,
-                            "state_color": true,
                             "title": "\u0423\u043c\u043d\u044b\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430",
                             "type": "entities"
                         }
@@ -553,6 +558,21 @@
                             "show_header_toggle": false,
                             "state_color": true,
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.sonoff_water_valve_cold_1000d5c788_1",
+                                    "name": "\u0425\u043e\u043b\u043e\u0434\u043d\u0430\u044f \u0432\u043e\u0434\u0430"
+                                },
+                                {
+                                    "entity": "switch.sonoff_water_valve_hot_1000d5c788_2",
+                                    "name": "\u0413\u043e\u0440\u044f\u0447\u0430\u044f \u0432\u043e\u0434\u0430"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "\u041f\u0435\u0440\u0435\u043a\u0440\u044b\u0442\u044c \u0432\u043e\u0434\u0443",
+                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:door",
@@ -817,6 +837,9 @@
                                 {
                                     "entity": "sensor.xiaomi_water_leak_livingroom_battery",
                                     "name": "\u0414\u0430\u0442\u0447\u0438\u043a \u043f\u0440\u043e\u0442\u0435\u0447\u043a\u0438 \u043d\u0430 \u043a\u0443\u0445\u043d\u0435"
+                                },
+                                {
+                                    "entity": "sensor.xiaomi_water_leak_livingroom_2_battery"
                                 }
                             ],
                             "show_header_toggle": false,
