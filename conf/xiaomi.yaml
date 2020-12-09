@@ -10,8 +10,14 @@ xiaomi_aqara:
 # Fans (humidifiers)
 fan:
   - platform: xiaomi_miio
+    host: 192.168.1.93
+    token: !secret xiaomi_humfan_bedroom_token 
+  - platform: xiaomi_miio
+    host: 192.168.1.92
+    token: !secret xiaomi_humfan_livingroom_1_token
+  - platform: xiaomi_miio
     host: 192.168.1.86
-    token: !secret xiaomi_humfan_token
+    token: !secret xiaomi_humfan_livingroom_2_token
 
 # Yeelight
 yeelight:
@@ -142,16 +148,32 @@ sensor:
   - platform: template
     sensors:
       xiaomi_humidifier_bedroom_water_level:
-        friendly_name: "Уровень воды в увлажнителе"
+        friendly_name: "Уровень воды в увлажнителе (спальня)"
         unit_of_measurement: '%'
         value_template: "{{ [state_attr('fan.xiaomi_humidifier_bedroom', 'depth') / 1.2, 100] | min | int }}"
         icon_template: "mdi:cup"
+  - platform: template
+    sensors:
+      xiaomi_humidifier_livingroom_1_water_level:
+        friendly_name: "Уровень воды в увлажнителе (гостиная 1)"
+        unit_of_measurement: '%'
+        value_template: "{{ [state_attr('fan.xiaomi_humidifier_livingroom_1', 'depth') / 1.2, 100] | min | int }}"
+        icon_template: "mdi:cup"
+  - platform: template
+    sensors:
+      xiaomi_humidifier_livingroom_2_water_level:
+        friendly_name: "Уровень воды в увлажнителе (гостиная 2)"
+        unit_of_measurement: '%'
+        value_template: "{{ [state_attr('fan.xiaomi_humidifier_livingroom_2', 'depth') / 1.2, 100] | min | int }}"
+        icon_template: "mdi:cup"
+
 
 ###
 ### Switches ###
 
 switch:
 # Xiaomi humidifier dry mode switch
+## Увлажнитель в спальне
   - platform: template
     switches:
       xiaomi_humidifier_bedroom_dry_mode:
@@ -165,14 +187,99 @@ switch:
           service: xiaomi_miio.fan_set_dry_off 
           data:
             entity_id: fan.xiaomi_humidifier_bedroom
+  - platform: template
+    switches:
+      xiaomi_humidifier_bedroom_child_lock:
+        friendly_name: "Режим защиты от детей в увлажнителе в спальне"
+        value_template: "{{ is_state_attr('fan.xiaomi_humidifier_bedroom', 'child_lock', true) }}"
+        turn_on:
+          service: xiaomi_miio.fan_set_child_lock_on 
+          data:
+            entity_id: fan.xiaomi_humidifier_bedroom
+        turn_off:
+          service: xiaomi_miio.fan_set_child_lock_off 
+          data:
+            entity_id: fan.xiaomi_humidifier_bedroom
+## Увлажнитель в гостиной 1
+  - platform: template
+    switches:
+      xiaomi_humidifier_livingroom_1_dry_mode:
+        friendly_name: "Режим DRY в увлажнителе в гостиной 1"
+        value_template: "{{ is_state_attr('fan.xiaomi_humidifier_livingroom_1', 'dry', true) }}"
+        turn_on:
+          service: xiaomi_miio.fan_set_dry_on 
+          data:
+            entity_id: fan.xiaomi_humidifier_livingroom_1
+        turn_off:
+          service: xiaomi_miio.fan_set_dry_off 
+          data:
+            entity_id: fan.xiaomi_humidifier_livingroom_1
+  - platform: template
+    switches:
+      xiaomi_humidifier_livingroom_1_child_lock:
+        friendly_name: "Режим защиты от детей в увлажнителе в гостиной 1"
+        value_template: "{{ is_state_attr('fan.xiaomi_humidifier_livingroom_1', 'child_lock', true) }}"
+        turn_on:
+          service: xiaomi_miio.fan_set_child_lock_on 
+          data:
+            entity_id: fan.xiaomi_humidifier_livingroom_1
+        turn_off:
+          service: xiaomi_miio.fan_set_child_lock_off 
+          data:
+            entity_id: fan.xiaomi_humidifier_livingroom_1
+## Увлажнитель в гостиной 2
+  - platform: template
+    switches:
+      xiaomi_humidifier_livingroom_2_dry_mode:
+        friendly_name: "Режим DRY в увлажнителе в гостиной 2"
+        value_template: "{{ is_state_attr('fan.xiaomi_humidifier_livingroom_2', 'dry', true) }}"
+        turn_on:
+          service: xiaomi_miio.fan_set_dry_on 
+          data:
+            entity_id: fan.xiaomi_humidifier_livingroom_2
+        turn_off:
+          service: xiaomi_miio.fan_set_dry_off 
+          data:
+            entity_id: fan.xiaomi_humidifier_livingroom_2
+  - platform: template
+    switches:
+      xiaomi_humidifier_livingroom_2_child_lock:
+        friendly_name: "Режим защиты от детей в увлажнителе в гостиной 2"
+        value_template: "{{ is_state_attr('fan.xiaomi_humidifier_livingroom_2', 'child_lock', true) }}"
+        turn_on:
+          service: xiaomi_miio.fan_set_child_lock_on 
+          data:
+            entity_id: fan.xiaomi_humidifier_livingroom_2
+        turn_off:
+          service: xiaomi_miio.fan_set_child_lock_off 
+          data:
+            entity_id: fan.xiaomi_humidifier_livingroom_2
 
 ###
 ### Input selects ###
 
 input_select:
-# Humidifier mode
+# Humidifier mode bedroom
   xiaomi_humidifier_bedroom_mode:
     name: "Режим работы увлажнителя в спальне"
+    options:
+      - silent
+      - medium
+      - high
+      - auto
+    icon: mdi:concourse-ci
+# Humidifier mode livingroom 1
+  xiaomi_humidifier_livingroom_1_mode:
+    name: "Режим работы увлажнителя 1 в гостиной"
+    options:
+      - silent
+      - medium
+      - high
+      - auto
+    icon: mdi:concourse-ci
+# Humidifier mode livingroom 2
+  xiaomi_humidifier_livingroom_2_mode:
+    name: "Режим работы увлажнителя 2 в гостиной"
     options:
       - silent
       - medium
@@ -184,15 +291,26 @@ input_select:
 ### Input numbers ###
 
 input_number:
-# Humidifier target humidity
+# Humidifier target humidity bedroom
   xiaomi_humidifier_bedroom_target_hum:
-    name: "Целевая влажность увлажнителя в спальне"
+    name: "Целевая влажность в спальне"
     unit_of_measurement: '%'
     min: 30
     max: 80
     step: 10
     mode: slider
     icon: mdi:water-percent
+# Humidifier target humidity bedroom
+  xiaomi_humidifier_livingroom_target_hum:
+    name: "Целевая влажность в гостиной"
+    unit_of_measurement: '%'
+    min: 30
+    max: 80
+    step: 10
+    mode: slider
+    icon: mdi:water-percent
+
+
 # balcony auto heater
   auto_heater_balcony_day_temp_min: # Min temp in balcony during day
     name: "Min T днем на балконе"
@@ -278,8 +396,8 @@ climate:
 ### Automations ###
 
 automation:
-# Xiaomi Humidifier mode
-  - alias: Xiaomi Humidifier mode changed in HA
+# Xiaomi Humidifier mode bedroom
+  - alias: Xiaomi Humidifier bedroom mode changed in HA
     trigger:
       entity_id: input_select.xiaomi_humidifier_bedroom_mode
       platform: state
@@ -303,8 +421,58 @@ automation:
       entity_id: input_select.xiaomi_humidifier_bedroom_mode
       data_template:
         option: "{{ state_attr('fan.xiaomi_humidifier_bedroom', 'mode') }}"
-# Xiaomi Humidifier target humidity
-  - alias: Xiaomi Humidifier target humidity
+# Xiaomi Humidifier mode livingroom 1
+  - alias: Xiaomi Humidifier livingroom 1 mode changed in HA
+    trigger:
+      entity_id: input_select.xiaomi_humidifier_livingroom_1_mode
+      platform: state
+    condition:
+      condition: template
+      value_template: "{{ (state_attr('fan.xiaomi_humidifier_livingroom_1', 'mode')) != (states('input_select.xiaomi_humidifier_livingroom_1_mode')) }}"
+    action:
+      service: fan.set_speed
+      data_template:
+        entity_id: fan.xiaomi_humidifier_livingroom_1
+        speed: "{{ states('input_select.xiaomi_humidifier_livingroom_1_mode') }}"
+  - alias: Xiaomi Humidifier mode changed
+    trigger:
+      platform: state
+      entity_id: fan.xiaomi_humidifier_livingroom_1
+    condition:
+      condition: template
+      value_template: "{{ (state_attr('fan.xiaomi_humidifier_livingroom_1', 'mode')) != (states('input_select.xiaomi_humidifier_livingroom_1_mode')) }}"
+    action:
+      service: input_select.select_option
+      entity_id: input_select.xiaomi_humidifier_livingroom_1_mode
+      data_template:
+        option: "{{ state_attr('fan.xiaomi_humidifier_livingroom_1', 'mode') }}"
+# Xiaomi Humidifier mode livingroom 2
+  - alias: Xiaomi Humidifier livingroom 2 mode changed in HA
+    trigger:
+      entity_id: input_select.xiaomi_humidifier_livingroom_2_mode
+      platform: state
+    condition:
+      condition: template
+      value_template: "{{ (state_attr('fan.xiaomi_humidifier_livingroom_2', 'mode')) != (states('input_select.xiaomi_humidifier_livingroom_2_mode')) }}"
+    action:
+      service: fan.set_speed
+      data_template:
+        entity_id: fan.xiaomi_humidifier_livingroom_2
+        speed: "{{ states('input_select.xiaomi_humidifier_livingroom_2_mode') }}"
+  - alias: Xiaomi Humidifier mode changed
+    trigger:
+      platform: state
+      entity_id: fan.xiaomi_humidifier_livingroom_2
+    condition:
+      condition: template
+      value_template: "{{ (state_attr('fan.xiaomi_humidifier_livingroom_2', 'mode')) != (states('input_select.xiaomi_humidifier_livingroom_2_mode')) }}"
+    action:
+      service: input_select.select_option
+      entity_id: input_select.xiaomi_humidifier_livingroom_2_mode
+      data_template:
+        option: "{{ state_attr('fan.xiaomi_humidifier_livingroom_2', 'mode') }}"
+# Xiaomi Humidifier bedroom target humidity
+  - alias: Xiaomi Humidifier bedroom target humidity
     trigger:
       entity_id: input_number.xiaomi_humidifier_bedroom_target_hum
       platform: state
@@ -313,3 +481,25 @@ automation:
       data_template:
         entity_id: fan.xiaomi_humidifier_bedroom
         humidity: "{{ (states('input_number.xiaomi_humidifier_bedroom_target_hum')) | int }}"
+# Xiaomi Humidifier livingroom target humidity
+  - alias: Xiaomi Humidifier livingroom target humidity
+    trigger:
+      entity_id: input_number.xiaomi_humidifier_livingroom_target_hum
+      platform: state
+    action:
+      - service: xiaomi_miio.fan_set_target_humidity
+        data_template:
+          entity_id: fan.xiaomi_humidifier_livingroom_1
+          humidity: "{{ (states('input_number.xiaomi_humidifier_livingroom_target_hum')) | int }}"
+      - service: xiaomi_miio.fan_set_target_humidity
+        data_template:
+          entity_id: fan.xiaomi_humidifier_livingroom_2
+          humidity: "{{ (states('input_number.xiaomi_humidifier_livingroom_target_hum')) | int }}"
+#      - service: xiaomi_miio.fan_set_target_humidity
+#        data:
+#          entity_id: fan.xiaomi_humidifier_livingroom_1
+#          humidity: "{{ (states('input_number.xiaomi_humidifier_livingroom_target_hum')) | int }}"
+#      - service: xiaomi_miio.fan_set_target_humidity
+#        data:
+#          entity_id: fan.xiaomi_humidifier_livingroom_2
+#          humidity: "{{ (states('input_number.xiaomi_humidifier_livingroom_target_hum')) | int }}"

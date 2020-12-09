@@ -10,15 +10,16 @@ weather:
 
 # Weather sensors
 sensor:
-  - platform: yr
-    name: Weather
-    #forecast: 24
-    monitored_conditions:
-      - temperature
-      - symbol
-      - precipitation
-      - windSpeed
-      - humidity
+# YR platform deprecated
+#  - platform: yr
+#    name: Weather
+#    #forecast: 24
+#    monitored_conditions:
+#      - temperature
+#      - symbol
+#      - precipitation
+#      - windSpeed
+#      - humidity
   - platform: gismeteo
     name: gismeteo
     monitored_conditions:

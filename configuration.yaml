@@ -20,3 +20,6 @@ homeassistant:
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+
+# Fix compression error in yandex alice integration
+yandex_smart_home_fix:

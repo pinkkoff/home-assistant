@@ -2327,7 +2327,7 @@
         "output_location_type": "none",
         "mustacheAltTags": false,
         "x": 530,
-        "y": 80,
+        "y": 100,
         "wires": [
             []
         ]
@@ -2349,7 +2349,7 @@
         "outputs": 2,
         "output_only_on_state_change": true,
         "x": 140,
-        "y": 80,
+        "y": 100,
         "wires": [
             [
                 "ed6e47de.4b74e8"
@@ -5013,6 +5013,7 @@
         "id": "481c8a3b.2077b4",
         "type": "server-state-changed",
         "z": "6a24dcbb.10a694",
+        "d": true,
         "name": "Nobody at home",
         "server": "6962e153.99eb9",
         "version": 1,
@@ -5372,8 +5373,8 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "eq",
-                "v": "fan.xiaomi_humidifier_bedroom",
+                "t": "cont",
+                "v": "xiaomi_humidifier",
                 "vt": "str"
             },
             {
@@ -5384,7 +5385,7 @@
         "repair": false,
         "outputs": 2,
         "x": 340,
-        "y": 80,
+        "y": 100,
         "wires": [
             [],
             [
@@ -7393,14 +7394,22 @@
                 "t": "eq",
                 "v": "/none",
                 "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "water_off",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 1,
+        "outputs": 2,
         "x": 790,
         "y": 620,
         "wires": [
+            [
+                "ba3111c3.57249"
+            ],
             [
                 "ba3111c3.57249"
             ]
