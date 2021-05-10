@@ -1,6 +1,6 @@
-device_tracker:
-# Keenetic router
-  - platform: keenetic_ndms2
-    host: 192.168.1.1
-    username: !secret router_user
-    password: !secret router_pass
+##device_tracker:
+### Keenetic router
+##  - platform: keenetic_ndms2
+##    host: 192.168.1.1
+##    username: !secret router_user
+##    password: !secret router_pass

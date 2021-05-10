@@ -8,16 +8,16 @@ xiaomi_aqara:
     - key: !secret xiaomi_gateway_key
 
 # Fans (humidifiers)
-fan:
-  - platform: xiaomi_miio
-    host: 192.168.1.93
-    token: !secret xiaomi_humfan_bedroom_token 
-  - platform: xiaomi_miio
-    host: 192.168.1.92
-    token: !secret xiaomi_humfan_livingroom_1_token
-  - platform: xiaomi_miio
-    host: 192.168.1.86
-    token: !secret xiaomi_humfan_livingroom_2_token
+#fan:
+#  - platform: xiaomi_miio
+#    host: 192.168.1.93
+#    token: !secret xiaomi_humfan_bedroom_token 
+#  - platform: xiaomi_miio
+#    host: 192.168.1.92
+#    token: !secret xiaomi_humfan_livingroom_1_token
+#  - platform: xiaomi_miio
+#    host: 192.168.1.86
+#    token: !secret xiaomi_humfan_livingroom_2_token
 
 # Yeelight
 yeelight:

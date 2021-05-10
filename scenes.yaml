@@ -1,0 +1,9 @@
+- id: '1612124488589'
+  name: '11'
+  entities:
+    switch.xiaomi_wallswitch_cloackroom_light:
+      voltage: 3.6
+      battery_level: 100
+      friendly_name: Свет в гардеробной
+      icon: mdi:vanity-light
+      state: 'off'
