@@ -941,7 +941,7 @@
         "type": "server-state-changed",
         "z": "16ff52c4.88944d",
         "d": true,
-        "name": "МиХ� температура днем",
+        "name": "Мин температура днем",
         "server": "6962e153.99eb9",
         "version": 1,
         "entityidfilter": "input_number.auto_heater_balcony_day_temp_min",
@@ -1663,7 +1663,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 810,
+        "x": 930,
         "y": 1400,
         "wires": [
             []
@@ -2324,11 +2324,12 @@
         "id": "d603d959.56b778",
         "type": "api-call-service",
         "z": "8d422126.121a1",
-        "name": "Send telegram msg to All",
+        "name": "Send telegram msg to Diag",
         "server": "6962e153.99eb9",
         "version": 1,
+        "debugenabled": false,
         "service_domain": "notify",
-        "service": "telegram_chat_all",
+        "service": "telegram_chat_diag",
         "entityId": "",
         "data": "{\"title\":\"⚠️*Устройство недоступно в HA*\",\"message\":\"Имя устройства: *{{data.new_state.attributes.friendly_name}}*\"}",
         "dataType": "json",
@@ -2336,7 +2337,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 530,
+        "x": 540,
         "y": 100,
         "wires": [
             []
@@ -3763,7 +3764,7 @@
         "type": "function",
         "z": "8d422126.121a1",
         "name": "msg temp",
-        "func": "// inputs var\nvar device_name = msg.data.new_state.attributes.friendly_name;\nvar curr_temp = msg.value;\nvar status = msg.payload;\n\n// Доступные иконки\n// 🥵 🥶 🙂 ☀️❄️👍\n\nif (status == \"high\") {\n    msg.title=\"🥵 *Стало слишком жарко!*\"\n} else if (status == \"normal\") {\n    msg.title=\"🙂 *Температура вернулась в норму.*\"\n} else if (status == \"low\") {\n    msg.title=\"🥶 *СтХ�ло слишком холодно!*\"\n} else {\n    msg.title=\"*Ошибка! Проверь flow оповещения по температуре.*\"\n}\n\nmsg.message = \"Устройство: *\" +  device_name + \"*.\\\\n \" +\n            \"Текущая температура: *\" + curr_temp + \"°C*.\"; \n\nreturn msg;",
+        "func": "// inputs var\nvar device_name = msg.data.new_state.attributes.friendly_name;\nvar curr_temp = msg.value;\nvar status = msg.payload;\n\n// Доступные иконки\n// 🥵 🥶 🙂 ☀️❄️👍\n\nif (status == \"high\") {\n    msg.title=\"🥵 *Стало слишком жарко!*\"\n} else if (status == \"normal\") {\n    msg.title=\"🙂 *Температура вернулась в норму.*\"\n} else if (status == \"low\") {\n    msg.title=\"🥶 *Стало слишком холодно!*\"\n} else {\n    msg.title=\"*Ошибка! Проверь flow оповещения по температуре.*\"\n}\n\nmsg.message = \"Устройство: *\" +  device_name + \"*.\\\\n \" +\n            \"Текущая температура: *\" + curr_temp + \"°C*.\"; \n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 520,
@@ -4848,6 +4849,9 @@
         "func": "message = \"👋 Привет, \" + msg.payload.event.from_first + \"!\\n\" +\n`Я бот Pinkkoff Smart Home.\n\nМое предназначение - оповещать о различных событиях внутри умного дома и реагировать на них.\nМои возможности:\n- оповещения о событиях\n- реакция на кнопки внутри сообщений\n- выполнение команд\n\nНажми на */help* чтобы узнать подробности!\n\n `\nmsg.payload.message = message.replace(/\\n/g, '\\\\n')\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 580,
         "y": 1140,
         "wires": [
@@ -4884,7 +4888,7 @@
         "type": "function",
         "z": "96899f2.417176",
         "name": "help msg",
-        "func": "message = \"Chat ID: \" + msg.payload.event.chat_id +\n\"\\nUser ID: \" + msg.payload.event.user_id +\n`\nТы можешь управлять кнопками снизу или вводом соответствующих команд.\n*Список доступных комманд*:\n*/start* - привХ�тственное сообщение\n*/help* - помощь по командам\n*/status* - статус устройств дома\n*/climate* - климат дома\n*/all_light_off* - выключить весь свет\n*/all_off* - выключить всевозможные устройства\n*/nobody_home* - никого нет дома\n*/smbd_home* - дома кто-то есть\n*/exit* - закрыть панель с кнопками\n`\n//message = message.replace(/_/g, '\\\\\\\\_') //экранирование символов _ для markdown\nmessage = message.replace(/\\n/g, '\\\\n') // экранирование перехода строки для json\nmsg.payload.message = message\nreturn msg;",
+        "func": "message = \"Chat ID: \" + msg.payload.event.chat_id +\n\"\\nUser ID: \" + msg.payload.event.user_id +\n`\nТы можешь управлять кнопками снизу или вводом соответствующих команд.\n*Список доступных комманд*:\n*/start* - приветственное сообщение\n*/help* - помощь по командам\n*/status* - статус устройств дома\n*/climate* - климат дома\n*/all_light_off* - выключить весь свет\n*/all_off* - выключить всевозможные устройства\n*/nobody_home* - никого нет дома\n*/smbd_home* - дома кто-то есть\n*/exit* - закрыть панель с кнопками\n`\n//message = message.replace(/_/g, '\\\\\\\\_') //экранирование символов _ для markdown\nmessage = message.replace(/\\n/g, '\\\\n') // экранирование перехода строки для json\nmsg.payload.message = message\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 580,
@@ -5467,15 +5471,21 @@
                 "vt": "str"
             },
             {
+                "t": "cont",
+                "v": "gismeteo",
+                "vt": "str"
+            },
+            {
                 "t": "else"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 2,
+        "outputs": 3,
         "x": 340,
         "y": 100,
         "wires": [
+            [],
             [],
             [
                 "d603d959.56b778"
@@ -5557,7 +5567,7 @@
         "entity_location": "",
         "override_data": "none",
         "blockInputOverrides": false,
-        "x": 900,
+        "x": 1020,
         "y": 1440,
         "wires": [
             [
@@ -5582,7 +5592,7 @@
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 750,
+        "x": 870,
         "y": 1440,
         "wires": [
             [
@@ -5601,13 +5611,13 @@
         "service_domain": "notify",
         "service": "telegram_chat_all",
         "entityId": "",
-        "data": "{\"title\":\"*Слишком мало воды\",\"message\":\"Увлажнитель в спалѥ�не был выключен (статус: {{humidifier}})\"}",
+        "data": "{\"title\":\"*Слишком мало воды\",\"message\":\"Увлажнитель в спальне был выключен (статус: {{humidifier}})\"}",
         "dataType": "json",
         "mergecontext": "",
         "output_location": "",
         "output_location_type": "none",
         "mustacheAltTags": false,
-        "x": 1080,
+        "x": 1200,
         "y": 1440,
         "wires": [
             []
@@ -6687,7 +6697,7 @@
         "start": "",
         "inout": "out",
         "property": "payload",
-        "x": 610,
+        "x": 730,
         "y": 1400,
         "wires": [
             [
@@ -6705,7 +6715,7 @@
         "start": "",
         "inout": "out",
         "property": "payload",
-        "x": 610,
+        "x": 730,
         "y": 1440,
         "wires": [
             [
@@ -6732,7 +6742,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
+        "x": 470,
         "y": 1420,
         "wires": [
             [
@@ -7798,7 +7808,7 @@
         "type": "trigger-state",
         "z": "8d422126.121a1",
         "d": true,
-        "name": "Вода в баке < 25%",
+        "name": "воды в баке < 25%",
         "server": "6962e153.99eb9",
         "exposeToHomeAssistant": false,
         "haConfig": [
@@ -8379,6 +8389,7 @@
         "gap": "2",
         "start": "",
         "inout": "out",
+        "septopics": true,
         "property": "payload",
         "x": 370,
         "y": 2020,
@@ -8628,6 +8639,7 @@
         "id": "d6c2dba9.558c28",
         "type": "server-state-changed",
         "z": "8d422126.121a1",
+        "d": true,
         "name": "Увлажнитель в гостиной (2)",
         "server": "6962e153.99eb9",
         "version": 1,
@@ -8926,6 +8938,7 @@
         "id": "c4666e43.e2848",
         "type": "api-call-service",
         "z": "8d422126.121a1",
+        "d": true,
         "name": "Send message to All",
         "server": "6962e153.99eb9",
         "version": 1,
@@ -10276,6 +10289,59 @@
         "y": 1220,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "7ed9a95e.354688",
+        "type": "comment",
+        "z": "8d422126.121a1",
+        "name": "Включить когда используются увлажнители",
+        "info": "",
+        "x": 350,
+        "y": 1940,
+        "wires": []
+    },
+    {
+        "id": "fa3a06f3.8f1d58",
+        "type": "api-call-service",
+        "z": "ee1a9216.12937",
+        "name": "Send telegram msg to All",
+        "server": "6962e153.99eb9",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "notify",
+        "service": "telegram_chat_diag",
+        "entityId": "",
+        "data": "{\"title\":\"Тестовое сообщение\",\"message\":\"в диагностический чат\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 930,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca1aaf2d.a165b",
+        "type": "inject",
+        "z": "ee1a9216.12937",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 720,
+        "y": 300,
+        "wires": [
+            [
+                "fa3a06f3.8f1d58"
+            ]
         ]
     }
 ]

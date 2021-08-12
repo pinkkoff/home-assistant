@@ -10,6 +10,7 @@ telegram_bot:
       - !secret telegram_bot_allowed_chat_id_pinkkoff
       - !secret telegram_bot_allowed_chat_id_fludshorty
       - !secret telegram_bot_allowed_chat_id_all
+      - !secret telegram_bot_allowed_chat_id_diag
 
 # iOS integration
 ios:
@@ -49,3 +50,6 @@ notify:
   - name: telegram_chat_all
     platform: telegram
     chat_id: !secret telegram_bot_allowed_chat_id_all
+  - name: telegram_chat_diag
+    platform: telegram
+    chat_id: !secret telegram_bot_allowed_chat_id_diag
