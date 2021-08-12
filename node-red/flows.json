@@ -92,7 +92,12 @@
     {
         "id": "6962e153.99eb9",
         "type": "server",
-        "name": "Home Assistant"
+        "name": "Home Assistant",
+        "version": 1,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true
     },
     {
         "id": "ac5fa68f.43b8d8",
@@ -197,7 +202,7 @@
         "d": true,
         "name": "Движение в ванной",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "binary_sensor.xiaomi_motion_bathroom_158d0002b6e8e6",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -207,6 +212,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 110,
         "y": 100,
         "wires": [
@@ -246,19 +274,15 @@
         "z": "6a24dcbb.10a694",
         "name": "Режим авто включен?",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "halt_if": "on",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_boolean.auto_light_bedroom_switch",
         "state_type": "str",
-        "state_location": "",
-        "override_payload": "none",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [],
         "x": 340,
         "y": 100,
         "wires": [
@@ -274,19 +298,15 @@
         "z": "6a24dcbb.10a694",
         "name": "Свет включен?",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "halt_if": "on",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "light.gateway_light_7c49eb1babbf",
         "state_type": "str",
-        "state_location": "",
-        "override_payload": "none",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [],
         "x": 560,
         "y": 100,
         "wires": [
@@ -379,16 +399,16 @@
         "z": "6a24dcbb.10a694",
         "name": "Включить свет",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "light",
         "service": "turn_on",
         "entityId": "light.gateway_light_7c49eb1babbf",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1160,
         "y": 140,
         "wires": [
@@ -401,16 +421,16 @@
         "z": "6a24dcbb.10a694",
         "name": "Выключить свет",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "light",
         "service": "turn_off",
         "entityId": "light.gateway_light_7c49eb1babbf",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1330,
         "y": 100,
         "wires": [
@@ -423,19 +443,15 @@
         "z": "6a24dcbb.10a694",
         "name": "< 50 lx",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "halt_if": "50",
         "halt_if_type": "num",
         "halt_if_compare": "lt",
-        "override_topic": false,
         "entity_id": "sensor.xiaomi_illumin_bathroom_158d0002b6e8e6",
         "state_type": "str",
-        "state_location": "",
-        "override_payload": "none",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [],
         "x": 730,
         "y": 140,
         "wires": [
@@ -462,6 +478,7 @@
         "z": "6a24dcbb.10a694",
         "name": "",
         "server": "6962e153.99eb9",
+        "version": 1,
         "event_type": "xiaomi_aqara.click",
         "exposeToHomeAssistant": false,
         "haConfig": [
@@ -472,6 +489,27 @@
             {
                 "property": "icon",
                 "value": ""
+            }
+        ],
+        "waitForRunning": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "event_type",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
             }
         ],
         "x": 130,
@@ -578,16 +616,16 @@
         "z": "6a24dcbb.10a694",
         "name": "Включить ночник",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "switch",
         "service": "toggle",
         "entityId": "switch.plug_158d0002677bd3",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 670,
         "y": 380,
         "wires": [
@@ -610,7 +648,7 @@
         "z": "6169ae85.ebde",
         "name": "Отправить push",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "mobile_app_iphone_all",
@@ -618,9 +656,9 @@
         "data": "{\"message\":\"Тестовая нотификация\",\"title\":\"Заголовок Push\",\"data\":{\"subtitle\":\"Подзаголовок\",\"push\":{\"thread-id\":\"example-notification-group\",\"badge\":\"0\"}}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 290,
         "y": 80,
         "wires": [
@@ -653,7 +691,7 @@
         "z": "6169ae85.ebde",
         "name": "Отправить динам. push",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "mobile_app_iphone_all",
@@ -661,9 +699,9 @@
         "data": "{\"message\":\"{{payload}}\",\"title\":\"Динамический PUSH с действием\",\"data\":{\"subtitle\":\"Подзаголовок\",\"push\":{\"thread-id\":\"example-notification-group\",\"badge\":\"0\"}}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 310,
         "y": 180,
         "wires": [
@@ -706,7 +744,7 @@
         "z": "6169ae85.ebde",
         "name": "Отправить динам. push с action",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "mobile_app_iphone_all",
@@ -714,9 +752,9 @@
         "data": "{\"message\":\"{{payload}}\",\"title\":\"Динамический PUSH с действием\",\"data\":{\"subtitle\":\"Нажми на меня\",\"push\":{\"category\":\"test\",\"thread-id\":\"example-notification-group\",\"badge\":\"0\"}}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 340,
         "y": 280,
         "wires": [
@@ -784,6 +822,7 @@
         "d": true,
         "name": "Вода в баке < 25%",
         "server": "6962e153.99eb9",
+        "version": 0,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -839,7 +878,29 @@
         "z": "ee1a9216.12937",
         "name": "",
         "server": "6962e153.99eb9",
+        "version": 1,
         "event_type": "telegram_callback",
+        "waitForRunning": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "event_type",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            }
+        ],
         "x": 130,
         "y": 80,
         "wires": [
@@ -854,7 +915,29 @@
         "z": "ee1a9216.12937",
         "name": "",
         "server": "6962e153.99eb9",
+        "version": 1,
         "event_type": "telegram_text",
+        "waitForRunning": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "event_type",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            }
+        ],
         "x": 120,
         "y": 140,
         "wires": [
@@ -869,7 +952,29 @@
         "z": "ee1a9216.12937",
         "name": "",
         "server": "6962e153.99eb9",
+        "version": 1,
         "event_type": "telegram_command",
+        "waitForRunning": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "event_type",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            }
+        ],
         "x": 140,
         "y": 200,
         "wires": [
@@ -910,16 +1015,16 @@
         "z": "6169ae85.ebde",
         "name": "Edit previous message",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "telegram_bot",
         "service": "edit_message",
         "entityId": "",
         "data": "{\"message_id\":\"{{payload.message_id}}\",\"chat_id\":\"{{payload.chat_id}}\",\"message\":\"{{payload.message_text}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 360,
         "y": 380,
         "wires": [
@@ -943,7 +1048,7 @@
         "d": true,
         "name": "Мин температура днем",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "input_number.auto_heater_balcony_day_temp_min",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -953,6 +1058,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 130,
         "y": 220,
         "wires": [
@@ -968,7 +1096,7 @@
         "d": true,
         "name": "Мин температура ночью",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "input_number.auto_heater_balcony_night_temp_min",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -978,6 +1106,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 130,
         "y": 260,
         "wires": [
@@ -993,7 +1144,7 @@
         "d": true,
         "name": "Изменение диапазона",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "input_number.auto_heater_balcony_temp_range",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -1003,6 +1154,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 120,
         "y": 180,
         "wires": [
@@ -1018,7 +1192,7 @@
         "d": true,
         "name": "Изменение температуры",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "sensor.xiaomi_thp_temperature_balcony_158d0002389f84",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -1028,6 +1202,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 130,
         "y": 100,
         "wires": [
@@ -1042,19 +1239,28 @@
         "z": "16ff52c4.88944d",
         "name": "Auto heat on?",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "halt_if": "on",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_boolean.auto_heater_balcony_switch",
         "state_type": "str",
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
         "x": 420,
         "y": 140,
         "wires": [
@@ -1146,19 +1352,28 @@
         "z": "16ff52c4.88944d",
         "name": "Дневная T",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_number.auto_heater_balcony_day_temp_min",
         "state_type": "num",
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
         "x": 650,
         "y": 60,
         "wires": [
@@ -1173,19 +1388,28 @@
         "z": "16ff52c4.88944d",
         "name": "Ночная T",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_number.auto_heater_balcony_night_temp_min",
         "state_type": "num",
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
         "x": 640,
         "y": 100,
         "wires": [
@@ -1242,19 +1466,28 @@
         "z": "16ff52c4.88944d",
         "name": "Диапазон",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_number.auto_heater_balcony_temp_range",
         "state_type": "num",
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
         "x": 640,
         "y": 140,
         "wires": [
@@ -1296,19 +1529,28 @@
         "z": "16ff52c4.88944d",
         "name": "Температура",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "sensor.xiaomi_thp_temperature_balcony_158d0002389f84",
         "state_type": "num",
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
         "x": 660,
         "y": 180,
         "wires": [
@@ -1490,16 +1732,16 @@
         "z": "16ff52c4.88944d",
         "name": "Включить обогреватель",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "switch",
         "service": "turn_on",
         "entityId": "switch.plug_158d00032d5e8b",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1490,
         "y": 100,
         "wires": [
@@ -1512,16 +1754,16 @@
         "z": "16ff52c4.88944d",
         "name": "Выключить обогреватель",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "switch",
         "service": "turn_off",
         "entityId": "switch.plug_158d00032d5e8b",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1500,
         "y": 160,
         "wires": [
@@ -1545,7 +1787,7 @@
         "d": true,
         "name": "Включение авто подогрева",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "input_boolean.auto_heater_balcony_switch",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -1555,6 +1797,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 140,
         "y": 60,
         "wires": [
@@ -1599,19 +1864,28 @@
         "z": "16ff52c4.88944d",
         "name": "Обогреватель",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "switch.plug_158d00032d5e8b",
         "state_type": "str",
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
         "x": 660,
         "y": 220,
         "wires": [
@@ -1653,16 +1927,16 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg with actions",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "notify",
         "service": "telegram_chat_all",
         "entityId": "",
         "data": "{\"title\":\"*Увлажнитель*\",\"message\":\"В увлажнителе осталось {{payload}}% воды. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить увлажнитель:/humidifier_off\",\"Поставить на мин. режим:/humidifier_low\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 930,
         "y": 1400,
         "wires": [
@@ -1673,8 +1947,9 @@
         "id": "ae3b5f3b.86655",
         "type": "ha-get-entities",
         "z": "8d422126.121a1",
-        "server": "6962e153.99eb9",
         "name": "Battery < 20",
+        "server": "6962e153.99eb9",
+        "version": 0,
         "rules": [
             {
                 "property": "attributes.battery_level",
@@ -1744,7 +2019,7 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -1752,9 +2027,9 @@
         "data": "{\"title\":\"🔋 *Низкий заряд батарейки*\",\"message\":\"Устройство *{{payload.attributes.friendly_name}}* имеет заряд *{{payload.attributes.battery_level}}%*.\\n Необходимо заменить батарейку.\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 570,
         "y": 200,
         "wires": [
@@ -1765,8 +2040,9 @@
         "id": "412e5894.6b01e8",
         "type": "ha-get-entities",
         "z": "8d422126.121a1",
-        "server": "6962e153.99eb9",
         "name": "Battery < 10",
+        "server": "6962e153.99eb9",
+        "version": 0,
         "rules": [
             {
                 "property": "attributes.battery_level",
@@ -1866,16 +2142,16 @@
         "z": "6169ae85.ebde",
         "name": "Send telegram msg to Pinkkoff",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "notify",
         "service": "telegram_chat_pinkkoff",
         "entityId": "",
         "data": "{\"title\":\"*Тестовое сообщение*\",\"message\":\"Это сообщение пришло от Умного Дома.\\n Классно получилось?\",\"data\":{\"inline_keyboard\":[\"Володечка молодец:/command1, Ну такое...:/command2\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 370,
         "y": 480,
         "wires": [
@@ -1908,16 +2184,16 @@
         "z": "6169ae85.ebde",
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "notify",
         "service": "telegram_chat_all",
         "entityId": "",
         "data": "{\"title\":\"*Тестовое сообщение*\",\"message\":\"Это сообщение пришло от *Умного Дома*.\\n Классно получилось?\",\"data\":{\"inline_keyboard\":[\"Володечка молодец:/command1, Ну такое...:/command2\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 350,
         "y": 600,
         "wires": [
@@ -1950,16 +2226,16 @@
         "z": "6169ae85.ebde",
         "name": "Send telegram msg to Fludshorty",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "notify",
         "service": "telegram_chat_fludshorty",
         "entityId": "",
         "data": "{\"title\":\"*Тестовое сообщение*\",\"message\":\"Это сообщение пришло от *Умного Дома*. Классно получилось?.\",\"data\":{\"inline_keyboard\":[\"Володечка молодец:/command1, Ну такое...:/command2\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 380,
         "y": 540,
         "wires": [
@@ -1980,8 +2256,9 @@
         "id": "ee16f913.ca49a8",
         "type": "ha-get-entities",
         "z": "6169ae85.ebde",
-        "server": "6962e153.99eb9",
         "name": "Все entities",
+        "server": "6962e153.99eb9",
+        "version": 0,
         "rules": [
             {
                 "property": "entity_id",
@@ -2099,7 +2376,7 @@
         "z": "8d422126.121a1",
         "name": "Smoke sensor ON",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "binary_sensor.xiaomi_smoke_kitchen_158d00028229a1",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -2109,6 +2386,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 110,
         "y": 460,
         "wires": [
@@ -2124,7 +2424,7 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -2132,9 +2432,9 @@
         "data": "{\"title\":\"❗️*ОПАСНОСТЬ❗️ Возможен пожар на кухне*🔥\",\"message\":\"Уровень задымления: {{data.attributes.Density}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 610,
         "y": 420,
         "wires": [
@@ -2147,7 +2447,7 @@
         "z": "8d422126.121a1",
         "name": "Send sound push to all",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "mobile_app_iphone_all",
@@ -2155,9 +2455,9 @@
         "data": "{\"message\":\"Уровень задымления:{{data.attributes.Density}} \",\"title\":\"❗ОПАСНОСТЬ❗️ Возможен пожар на кухне🔥\",\"data\":{\"push\":{\"sound\":\"US-EN-Alexa-Smoke-Detected-Generic.wav\"}}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 600,
         "y": 460,
         "wires": [
@@ -2170,19 +2470,28 @@
         "z": "8d422126.121a1",
         "name": "Задымленность",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "binary_sensor.xiaomi_smoke_kitchen_158d00028229a1",
         "state_type": "str",
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
         "x": 330,
         "y": 460,
         "wires": [
@@ -2230,7 +2539,7 @@
         "z": "8d422126.121a1",
         "name": "Leak sensor ON",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -2251,6 +2560,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 580,
         "wires": [
@@ -2268,7 +2600,7 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -2276,9 +2608,16 @@
         "data": "{\"title\":\"❗*ОПАСНОСТЬ❗️Зафиксирована протечка*💧\",\"message\":\"Устройство: {{data.new_state.attributes.friendly_name}}\",\"data\":{\"inline_keyboard\":[\"Перекрыть всю воду:/all_water_off\",\"Перекрыть хол воду:/cold_water_off, Перекрыть гор воду:/hot_water_off\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "payload",
-        "output_location_type": "msg",
         "mustacheAltTags": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "data"
+            }
+        ],
+        "queue": "none",
         "x": 370,
         "y": 560,
         "wires": [
@@ -2293,7 +2632,7 @@
         "z": "8d422126.121a1",
         "name": "Send sound push to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "mobile_app_iphone_all",
@@ -2301,9 +2640,9 @@
         "data": "{\"title\":\"❗ОПАСНОСТЬ❗️Зафиксирована протечка💧\",\"message\":\"Устройство: {{data.new_state.attributes.friendly_name}}\",\"data\":{\"push\":{\"sound\":\"US-EN-Alexa-Water-Detected-Generic.wav\"}}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 360,
         "y": 600,
         "wires": [
@@ -2326,7 +2665,7 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg to Diag",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_diag",
@@ -2334,9 +2673,9 @@
         "data": "{\"title\":\"⚠️*Устройство недоступно в HA*\",\"message\":\"Имя устройства: *{{data.new_state.attributes.friendly_name}}*\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 540,
         "y": 100,
         "wires": [
@@ -2349,7 +2688,7 @@
         "z": "8d422126.121a1",
         "name": "State change to unavailable ",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": ".*",
         "entityidfiltertype": "regex",
         "outputinitially": false,
@@ -2359,6 +2698,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 140,
         "y": 100,
         "wires": [
@@ -2813,7 +3175,29 @@
         "z": "96899f2.417176",
         "name": "",
         "server": "6962e153.99eb9",
+        "version": 1,
         "event_type": "telegram_callback",
+        "waitForRunning": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "event_type",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            }
+        ],
         "x": 130,
         "y": 420,
         "wires": [
@@ -3029,7 +3413,7 @@
         "z": "96899f2.417176",
         "name": "None - Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -3037,9 +3421,9 @@
         "data": "{\"message\":\"Действий не выбрано.\",\"target\":\"{{payload.event.message.chat.id}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 680,
         "y": 180,
         "wires": [
@@ -3052,16 +3436,16 @@
         "z": "96899f2.417176",
         "name": "Включить увлажнитель",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "fan",
         "service": "turn_on",
         "entityId": "fan.xiaomi_humidifier_bedroom",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 670,
         "y": 220,
         "wires": [
@@ -3076,16 +3460,16 @@
         "z": "96899f2.417176",
         "name": "Выключить увлажнитель",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "fan",
         "service": "turn_off",
         "entityId": "fan.xiaomi_humidifier_bedroom",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 670,
         "y": 260,
         "wires": [
@@ -3100,16 +3484,16 @@
         "z": "96899f2.417176",
         "name": "Увлажнитель на минимум",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "fan",
         "service": "set_speed",
         "entityId": "fan.xiaomi_humidifier_bedroom",
         "data": "{\"speed\":\"silent\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 680,
         "y": 300,
         "wires": [
@@ -3124,16 +3508,16 @@
         "z": "96899f2.417176",
         "name": "Heater balcony ON",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "switch",
         "service": "turn_on",
         "entityId": "switch.plug_158d00032d5e8b",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 650,
         "y": 580,
         "wires": [
@@ -3148,16 +3532,16 @@
         "z": "96899f2.417176",
         "name": "Heater balcony OFF",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "switch",
         "service": "turn_off",
         "entityId": "switch.plug_158d00032d5e8b",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 660,
         "y": 620,
         "wires": [
@@ -3172,16 +3556,16 @@
         "z": "96899f2.417176",
         "name": "Auto heat balcony ON",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "input_boolean",
         "service": "turn_on",
         "entityId": "input_boolean.auto_heater_balcony_switch",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 660,
         "y": 660,
         "wires": [
@@ -3196,16 +3580,16 @@
         "z": "96899f2.417176",
         "name": "Auto heat balcony OFF",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "input_boolean",
         "service": "turn_off",
         "entityId": "input_boolean.auto_heater_balcony_switch",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 670,
         "y": 700,
         "wires": [
@@ -3236,19 +3620,22 @@
         "z": "96899f2.417176",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_bedroom",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 900,
         "y": 240,
         "wires": [
@@ -3263,19 +3650,22 @@
         "z": "96899f2.417176",
         "name": "humidifier_speed",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_select.xiaomi_humidifier_bedroom_mode",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 930,
         "y": 300,
         "wires": [
@@ -3290,19 +3680,22 @@
         "z": "96899f2.417176",
         "name": "Heater",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "switch.plug_158d00032d5e8b",
         "state_type": "str",
-        "state_location": "heater",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "heater",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 870,
         "y": 640,
         "wires": [
@@ -3317,16 +3710,16 @@
         "z": "96899f2.417176",
         "name": "Edit previous message",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "telegram_bot",
         "service": "edit_message",
         "entityId": "",
         "data": "{\"message_id\":\"{{payload.message_id}}\",\"chat_id\":\"{{payload.chat_id}}\",\"message\":\"{{payload.message_text}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 860,
         "y": 120,
         "wires": [
@@ -3341,7 +3734,7 @@
         "z": "96899f2.417176",
         "name": "Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -3349,9 +3742,9 @@
         "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Статус увлажнителя: {{humidifier}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1160,
         "y": 240,
         "wires": [
@@ -3364,7 +3757,7 @@
         "z": "96899f2.417176",
         "name": "Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -3372,9 +3765,9 @@
         "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Режим работы увлажнителя: {{humidifier}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1160,
         "y": 300,
         "wires": [
@@ -3387,19 +3780,22 @@
         "z": "96899f2.417176",
         "name": "Auto heat balcony",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_boolean.auto_heater_balcony_switch",
         "state_type": "str",
-        "state_location": "auto_heat",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "auto_heat",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1020,
         "y": 640,
         "wires": [
@@ -3429,7 +3825,7 @@
         "z": "96899f2.417176",
         "name": "Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -3437,9 +3833,9 @@
         "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Статус обогревателя: *{{heater}}* \\nСтатус автоподогрева: *{{auto_heat}}*.\",\"target\":\"{{payload.event.message.chat.id}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1240,
         "y": 640,
         "wires": [
@@ -3472,7 +3868,29 @@
         "z": "96899f2.417176",
         "name": "telegram_command",
         "server": "6962e153.99eb9",
+        "version": 1,
         "event_type": "telegram_command",
+        "waitForRunning": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "event_type",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            }
+        ],
         "x": 110,
         "y": 1240,
         "wires": [
@@ -3585,7 +4003,7 @@
         "z": "96899f2.417176",
         "name": "Send telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -3593,9 +4011,9 @@
         "data": "{\"title\":\"*Выполнение команды*\",\"message\":\"Целую {{payload.event.args.0}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 550,
         "y": 1320,
         "wires": [
@@ -3665,7 +4083,7 @@
         "z": "8d422126.121a1",
         "name": "Temp bedroom",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -3686,6 +4104,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 840,
         "wires": [
@@ -3730,7 +4171,7 @@
         "z": "8d422126.121a1",
         "name": "Temp bathroom",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -3751,6 +4192,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 800,
         "wires": [
@@ -3797,16 +4261,16 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "notify",
         "service": "telegram_chat_all",
         "entityId": "",
         "data": "{\"title\":\"{{title}}\",\"message\":\"{{message}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 750,
         "y": 880,
         "wires": [
@@ -3839,7 +4303,7 @@
         "z": "8d422126.121a1",
         "name": "state temp balcony",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "sensor.xiaomi_thp_temperature_balcony_158d0002389f84",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -3849,6 +4313,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 1060,
         "wires": [
@@ -3893,19 +4380,22 @@
         "z": "8d422126.121a1",
         "name": "heater balcony",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "switch.plug_158d00032d5e8b",
         "state_type": "habool",
-        "state_location": "heater",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "heater",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 530,
         "y": 1020,
         "wires": [
@@ -3920,19 +4410,22 @@
         "z": "8d422126.121a1",
         "name": "auto heater balcony",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_boolean.auto_heater_balcony_switch",
         "state_type": "habool",
-        "state_location": "auto",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "auto",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 530,
         "y": 1060,
         "wires": [
@@ -3966,7 +4459,7 @@
         "d": true,
         "name": "Send telegram msg with actions",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -3974,9 +4467,9 @@
         "data": "{\"title\":\"{{title}}\",\"message\":\"{{message}}\",\"data\":{\"inline_keyboard\":[\"Вкл обогрев:/heater_balcony_on, Выкл обогрев:/heater_balcony_off\",\"Вкл авто обогрев:/heater_balcony_auto_on, Выкл авто обогрев:/heater_balcony_auto_off\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 830,
         "y": 1060,
         "wires": [
@@ -4014,7 +4507,7 @@
         "z": "8d422126.121a1",
         "name": "state hum bedroom",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "sensor.xiaomi_thp_humidity_bedroom_158d00025f03f5",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -4024,6 +4517,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 110,
         "y": 1200,
         "wires": [
@@ -4068,19 +4584,22 @@
         "z": "8d422126.121a1",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_bedroom",
         "state_type": "habool",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 540,
         "y": 1160,
         "wires": [
@@ -4095,19 +4614,22 @@
         "z": "8d422126.121a1",
         "name": "water level",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "sensor.xiaomi_humidifier_bedroom_water_level",
         "state_type": "num",
-        "state_location": "water_level",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "water_level",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 530,
         "y": 1200,
         "wires": [
@@ -4139,16 +4661,16 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg with actions",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "notify",
         "service": "telegram_chat_all",
         "entityId": "",
         "data": "{\"title\":\"{{title}}\",\"message\":\"{{message}}\",\"data\":{\"inline_keyboard\":[\"Вкл увлажнитель:/humidifier_on, Выкл увлажнитель:/humidifier_off\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 830,
         "y": 1200,
         "wires": [
@@ -4217,19 +4739,15 @@
         "z": "6a24dcbb.10a694",
         "name": "Auto mode on?",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "halt_if": "on",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_boolean.auto_light_bedroom_switch",
         "state_type": "str",
-        "state_location": "",
-        "override_payload": "none",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [],
         "x": 560,
         "y": 220,
         "wires": [
@@ -4245,19 +4763,15 @@
         "z": "6a24dcbb.10a694",
         "name": "GW light off?",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "halt_if": "off",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "light.gateway_light_7c49eb1babbf",
         "state_type": "str",
-        "state_location": "",
-        "override_payload": "none",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [],
         "x": 730,
         "y": 220,
         "wires": [
@@ -4275,19 +4789,15 @@
         "z": "6a24dcbb.10a694",
         "name": "< 50 lx",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "halt_if": "50",
         "halt_if_type": "num",
         "halt_if_compare": "lt",
-        "override_topic": false,
         "entity_id": "sensor.xiaomi_illumin_bathroom_158d0002b6e8e6",
         "state_type": "str",
-        "state_location": "",
-        "override_payload": "none",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [],
         "x": 890,
         "y": 220,
         "wires": [
@@ -4326,16 +4836,16 @@
         "z": "6a24dcbb.10a694",
         "name": "Включить свет",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "light",
         "service": "turn_on",
         "entityId": "light.gateway_light_7c49eb1babbf",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1240,
         "y": 220,
         "wires": [
@@ -4348,16 +4858,16 @@
         "z": "6a24dcbb.10a694",
         "name": "Выключить свет",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "light",
         "service": "turn_off",
         "entityId": "light.gateway_light_7c49eb1babbf",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1550,
         "y": 300,
         "wires": [
@@ -4434,7 +4944,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Движение в ванной",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "binary_sensor.xiaomi_motion_bathroom_158d0002b6e8e6",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -4444,6 +4954,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 110,
         "y": 240,
         "wires": [
@@ -4580,7 +5113,7 @@
         "z": "8d422126.121a1",
         "name": "Роутер",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "binary_sensor.router_ping",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -4590,6 +5123,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 70,
         "y": 1640,
         "wires": [
@@ -4607,7 +5163,7 @@
         "z": "8d422126.121a1",
         "name": "NASMaster",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "binary_sensor.nasmaster_ping",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -4617,6 +5173,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 90,
         "y": 1760,
         "wires": [
@@ -4634,7 +5213,7 @@
         "z": "8d422126.121a1",
         "name": "Xiaomi GW",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "binary_sensor.xiaomi_gw1_ping",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -4644,6 +5223,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 90,
         "y": 1720,
         "wires": [
@@ -4661,7 +5263,7 @@
         "z": "8d422126.121a1",
         "name": "Humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "binary_sensor.xiaomi_humidifier_bedroom_ping",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -4671,6 +5273,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 80,
         "y": 1680,
         "wires": [
@@ -4688,7 +5313,7 @@
         "z": "8d422126.121a1",
         "name": "Odroid 1",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "binary_sensor.odroid1_ping",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -4698,6 +5323,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 80,
         "y": 1840,
         "wires": [
@@ -4715,7 +5363,7 @@
         "z": "8d422126.121a1",
         "name": "Odroid 2",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "binary_sensor.odroid2_ping",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -4725,6 +5373,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 80,
         "y": 1880,
         "wires": [
@@ -4742,16 +5413,16 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg to All (unavailable)",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "notify",
         "service": "telegram_chat_all",
         "entityId": "",
         "data": "{\"title\":\"⚠️ *Устройство недоступно*\",\"message\":\"Устройство *{{data.new_state.attributes.friendly_name}}* недоступно по сети.\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 550,
         "y": 1780,
         "wires": [
@@ -4774,7 +5445,7 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg to All (available)",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -4782,9 +5453,9 @@
         "data": "{\"title\":\"✅ *Устройство снова в сети*\",\"message\":\"Устройство *{{data.new_state.attributes.friendly_name}}* снова доступно по сети.\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 550,
         "y": 1700,
         "wires": [
@@ -4797,7 +5468,7 @@
         "z": "8d422126.121a1",
         "name": "KidNAS",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "entityidfilter": "binary_sensor.kidnas_ping",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -4807,6 +5478,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 70,
         "y": 1800,
         "wires": [
@@ -4824,7 +5518,7 @@
         "z": "96899f2.417176",
         "name": "Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -4832,9 +5526,9 @@
         "data": "{\"message\":\"{{{payload.message}}}\",\"target\":\"{{payload.event.chat_id}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 780,
         "y": 1140,
         "wires": [
@@ -4866,7 +5560,7 @@
         "z": "96899f2.417176",
         "name": "Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -4874,9 +5568,16 @@
         "data": "{\"message\":\"{{{payload.message}}}\",\"target\":\"{{payload.event.chat_id}}\",\"keyboard\":[\"/start, /help\",\"/status, /climate\",\"/all_light_off, /all_off\",\"/nobody_home, /smbd_home\",\"/exit\"]}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "payload",
-        "output_location_type": "msg",
         "mustacheAltTags": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "data"
+            }
+        ],
+        "queue": "none",
         "x": 780,
         "y": 1180,
         "wires": [
@@ -4905,16 +5606,23 @@
         "z": "96899f2.417176",
         "name": "Exit message",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "telegram_bot",
         "service": "send_message",
         "entityId": "",
         "data": "{\"message\":\"Нажми /help если нужна помощь\",\"target\":\"{{payload.event.chat_id}}\",\"keyboard\":[]}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "payload",
-        "output_location_type": "msg",
         "mustacheAltTags": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "data"
+            }
+        ],
+        "queue": "none",
         "x": 600,
         "y": 1220,
         "wires": [
@@ -4927,16 +5635,23 @@
         "z": "ee1a9216.12937",
         "name": "Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "telegram_bot",
         "service": "send_message",
         "entityId": "",
         "data": "{\"message\":\"/sss \\n /sss\\\\_s \\n /sss\\\\_ss\",\"target\":\"137569677\",\"keyboard\":[\"/start, /help\",\"/status, /climate\",\"/all_light_off, /all_of\",\"/nobody_home, /smbd_home\",\"/exit\"]}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "payload",
-        "output_location_type": "msg",
         "mustacheAltTags": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "data"
+            }
+        ],
+        "queue": "none",
         "x": 980,
         "y": 200,
         "wires": [
@@ -5044,7 +5759,7 @@
         "z": "96899f2.417176",
         "name": "Сообщение заглушка",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -5052,9 +5767,16 @@
         "data": "{\"message\":\"Прости, команда находится в разработке\",\"target\":\"{{payload.event.chat_id}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "payload",
-        "output_location_type": "msg",
         "mustacheAltTags": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "data"
+            }
+        ],
+        "queue": "none",
         "x": 640,
         "y": 1520,
         "wires": [
@@ -5109,7 +5831,7 @@
         "d": true,
         "name": "Nobody at home",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -5130,6 +5852,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 680,
         "wires": [
@@ -5145,7 +5890,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Turn off the lights",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_off",
@@ -5153,9 +5898,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 310,
         "y": 680,
         "wires": [
@@ -5168,7 +5913,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Turn off the lights",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_off",
@@ -5176,9 +5921,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 950,
         "y": 440,
         "wires": [
@@ -5191,7 +5936,7 @@
         "z": "16ff52c4.88944d",
         "name": "Вытяжка",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -5212,6 +5957,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 80,
         "y": 380,
         "wires": [
@@ -5250,19 +6018,15 @@
         "z": "16ff52c4.88944d",
         "name": "fan on?",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "halt_if": "on",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "switch.xiaomi_wallswitch_bathroom_fan",
         "state_type": "str",
-        "state_location": "",
-        "override_payload": "none",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [],
         "x": 420,
         "y": 380,
         "wires": [
@@ -5278,7 +6042,7 @@
         "z": "16ff52c4.88944d",
         "name": "Turn fan off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_off",
@@ -5286,9 +6050,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 570,
         "y": 380,
         "wires": [
@@ -5311,7 +6075,7 @@
         "z": "16ff52c4.88944d",
         "name": "Влажность в ванной",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -5332,6 +6096,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 120,
         "y": 480,
         "wires": [
@@ -5346,19 +6133,15 @@
         "z": "16ff52c4.88944d",
         "name": "fan on?",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "halt_if": "on",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "switch.xiaomi_wallswitch_bathroom_fan",
         "state_type": "str",
-        "state_location": "",
-        "override_payload": "none",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [],
         "x": 660,
         "y": 480,
         "wires": [
@@ -5374,7 +6157,7 @@
         "z": "16ff52c4.88944d",
         "name": "Turn fan on",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_on",
@@ -5382,9 +6165,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 810,
         "y": 480,
         "wires": [
@@ -5407,19 +6190,28 @@
         "z": "16ff52c4.88944d",
         "name": "влажность в ванной",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "sensor.xiaomi_thp_humidity_bedroom_158d00025f03f5",
         "state_type": "num",
-        "state_location": "hum",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "hum",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
         "x": 340,
         "y": 480,
         "wires": [
@@ -5499,6 +6291,7 @@
         "d": true,
         "name": "Вода в баке < 15%",
         "server": "6962e153.99eb9",
+        "version": 0,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -5554,19 +6347,22 @@
         "z": "8d422126.121a1",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_bedroom",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1020,
         "y": 1440,
         "wires": [
@@ -5581,7 +6377,7 @@
         "z": "8d422126.121a1",
         "name": "Humidifier off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_off",
@@ -5589,9 +6385,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 870,
         "y": 1440,
         "wires": [
@@ -5606,7 +6402,7 @@
         "z": "8d422126.121a1",
         "name": "Send message to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -5614,9 +6410,9 @@
         "data": "{\"title\":\"*Слишком мало воды\",\"message\":\"Увлажнитель в спальне был выключен (статус: {{humidifier}})\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1200,
         "y": 1440,
         "wires": [
@@ -5629,7 +6425,7 @@
         "z": "ee1a9216.12937",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -5650,6 +6446,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 840,
         "y": 400,
         "wires": [
@@ -5678,7 +6497,7 @@
         "z": "8d422126.121a1",
         "name": "Temp living room",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -5699,6 +6518,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 880,
         "wires": [
@@ -5713,7 +6555,7 @@
         "z": "8d422126.121a1",
         "name": "Temp corridor",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -5734,6 +6576,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 90,
         "y": 920,
         "wires": [
@@ -5748,7 +6613,7 @@
         "z": "8d422126.121a1",
         "name": "Temp cloakroom",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -5769,6 +6634,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 960,
         "wires": [
@@ -5783,7 +6671,7 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -5791,9 +6679,9 @@
         "data": "{\"title\":\"{{title}}\",\"message\":\"{{message}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 810,
         "y": 1100,
         "wires": [
@@ -5836,7 +6724,7 @@
         "z": "16ff52c4.88944d",
         "name": "Set temp in HA",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -5857,6 +6745,29 @@
         "halt_if_compare": "is_not",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 640,
         "wires": [
@@ -5882,7 +6793,7 @@
         "z": "16ff52c4.88944d",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "climate",
         "service": "set_temperature",
@@ -5890,9 +6801,9 @@
         "data": "{\"temperature\":\"{{payload}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 740,
         "y": 640,
         "wires": [
@@ -5905,7 +6816,7 @@
         "z": "16ff52c4.88944d",
         "name": "Change settemp",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -5926,6 +6837,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 740,
         "wires": [
@@ -5940,7 +6874,7 @@
         "z": "16ff52c4.88944d",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "input_number",
         "service": "set_value",
@@ -5948,9 +6882,9 @@
         "data": "{\"value\":\"{{payload}} \"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 740,
         "y": 740,
         "wires": [
@@ -5963,19 +6897,22 @@
         "z": "16ff52c4.88944d",
         "name": "curr settemp",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "sensor.tuya_floorheater_bathroom_currsettemp",
         "state_type": "num",
-        "state_location": "currsettemp",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "currsettemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 290,
         "y": 640,
         "wires": [
@@ -6035,19 +6972,28 @@
         "z": "6a24dcbb.10a694",
         "name": "all_lights",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "halt_if": "on",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "group.all_lights",
         "state_type": "str",
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
         "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
         "x": 760,
         "y": 460,
         "wires": [
@@ -6065,7 +7011,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Turn on corridor light",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_on",
@@ -6073,9 +7019,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 960,
         "y": 480,
         "wires": [
@@ -6088,7 +7034,7 @@
         "z": "6a24dcbb.10a694",
         "name": " Open in weekday",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -6109,6 +7055,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 780,
         "wires": [
@@ -6123,7 +7092,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Close in weekday",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -6144,6 +7113,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 820,
         "wires": [
@@ -6158,7 +7150,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Close in weekend",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -6179,6 +7171,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 110,
         "y": 980,
         "wires": [
@@ -6193,7 +7208,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Open in weekend",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -6214,6 +7229,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 100,
         "y": 940,
         "wires": [
@@ -6404,7 +7442,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Curtain 15%",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "cover",
         "service": "set_cover_position",
@@ -6412,9 +7450,9 @@
         "data": "{\"position\":15}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 830,
         "y": 840,
         "wires": [
@@ -6462,7 +7500,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Curtain close",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "cover",
         "service": "close_cover",
@@ -6470,9 +7508,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 830,
         "y": 920,
         "wires": [
@@ -6508,7 +7546,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Curtain open",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "cover",
         "service": "open_cover",
@@ -6516,9 +7554,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1470,
         "y": 840,
         "wires": [
@@ -6531,7 +7569,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Curtain 30%",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "cover",
         "service": "set_cover_position",
@@ -6539,9 +7577,9 @@
         "data": "{\"position\":30}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1150,
         "y": 840,
         "wires": [
@@ -6579,7 +7617,7 @@
         "z": "6a24dcbb.10a694",
         "name": "Auto curtain control",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -6600,6 +7638,29 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 110,
         "y": 880,
         "wires": [
@@ -6787,7 +7848,7 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -6795,9 +7856,9 @@
         "data": "{\"title\":\"🔋 *Низкий заряд батарейки*\",\"message\":\"*{{payload.attributes.friendly_name}}* равен *{{payload.state}}%*.\\n Необходимо заменить батарейку.\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1310,
         "y": 200,
         "wires": [
@@ -6828,8 +7889,9 @@
         "id": "3447f846.ef1768",
         "type": "ha-get-entities",
         "z": "8d422126.121a1",
-        "server": "6962e153.99eb9",
         "name": "Battery < 20",
+        "server": "6962e153.99eb9",
+        "version": 0,
         "rules": [
             {
                 "property": "entity_id",
@@ -6897,8 +7959,9 @@
         "id": "9e29e9bf.ef8a08",
         "type": "ha-get-entities",
         "z": "8d422126.121a1",
-        "server": "6962e153.99eb9",
         "name": "Battery < 10",
+        "server": "6962e153.99eb9",
+        "version": 0,
         "rules": [
             {
                 "property": "entity_id",
@@ -6975,7 +8038,7 @@
         "z": "6a24dcbb.10a694",
         "name": "toggle sill light",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "toggle",
@@ -6983,9 +8046,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 600,
         "y": 520,
         "wires": [
@@ -6998,7 +8061,7 @@
         "z": "6a24dcbb.10a694",
         "name": "toggle main kitchen light",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "toggle",
@@ -7006,9 +8069,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 630,
         "y": 560,
         "wires": [
@@ -7047,7 +8110,7 @@
         "z": "8d422126.121a1",
         "name": "HA notification",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "persistent_notification",
         "service": "create",
@@ -7055,9 +8118,9 @@
         "data": "{\"message\":\"Уровень задымления:{{data.attributes.Density}} \",\"title\":\"❗ОПАСНОСТЬ❗️ Возможен пожар на кухне🔥\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 580,
         "y": 500,
         "wires": [
@@ -7070,7 +8133,7 @@
         "z": "8d422126.121a1",
         "name": "HA notification",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "persistent_notification",
         "service": "create",
@@ -7078,9 +8141,9 @@
         "data": "{\"title\":\"❗ОПАСНОСТЬ❗️Зафиксирована протечка💧\",\"message\":\"Устройство: {{data.new_state.attributes.friendly_name}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 340,
         "y": 640,
         "wires": [
@@ -7093,7 +8156,7 @@
         "z": "96899f2.417176",
         "name": "Cold water off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_on",
@@ -7101,9 +8164,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 640,
         "y": 740,
         "wires": [
@@ -7118,7 +8181,7 @@
         "z": "96899f2.417176",
         "name": "Cold water on",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_off",
@@ -7126,9 +8189,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 640,
         "y": 820,
         "wires": [
@@ -7143,7 +8206,7 @@
         "z": "96899f2.417176",
         "name": "Hot water off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_on",
@@ -7151,9 +8214,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 630,
         "y": 780,
         "wires": [
@@ -7168,7 +8231,7 @@
         "z": "96899f2.417176",
         "name": "Hot water on",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_off",
@@ -7176,9 +8239,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 630,
         "y": 860,
         "wires": [
@@ -7193,7 +8256,7 @@
         "z": "96899f2.417176",
         "name": "Cold water on",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_off",
@@ -7201,9 +8264,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 640,
         "y": 900,
         "wires": [
@@ -7218,7 +8281,7 @@
         "z": "96899f2.417176",
         "name": "Hot water on",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_off",
@@ -7226,9 +8289,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 810,
         "y": 900,
         "wires": [
@@ -7243,7 +8306,7 @@
         "z": "96899f2.417176",
         "name": "Cold water off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_on",
@@ -7251,9 +8314,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 640,
         "y": 940,
         "wires": [
@@ -7268,7 +8331,7 @@
         "z": "96899f2.417176",
         "name": "Hot water off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_on",
@@ -7276,9 +8339,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 810,
         "y": 940,
         "wires": [
@@ -7293,19 +8356,22 @@
         "z": "96899f2.417176",
         "name": "Cold water",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "switch.sonoff_water_valve_cold_1000d5c788_1",
         "state_type": "str",
-        "state_location": "cold",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "cold",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1170,
         "y": 800,
         "wires": [
@@ -7320,19 +8386,22 @@
         "z": "96899f2.417176",
         "name": "Hot water",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "switch.sonoff_water_valve_hot_1000d5c788_2",
         "state_type": "str",
-        "state_location": "hot",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "hot",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1320,
         "y": 800,
         "wires": [
@@ -7347,7 +8416,7 @@
         "z": "96899f2.417176",
         "name": "Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -7355,9 +8424,9 @@
         "data": "{\"title\":\"*Отработка команды перекрытия воды*\",\"message\":\"Холодная вода: *{{cold}}* \\nГорячая вода: *{{hot}}*.\",\"target\":\"{{payload.event.message.chat.id}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1680,
         "y": 780,
         "wires": [
@@ -7473,7 +8542,29 @@
         "z": "8d422126.121a1",
         "name": "",
         "server": "6962e153.99eb9",
+        "version": 1,
         "event_type": "telegram_callback",
+        "waitForRunning": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "event_type",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            }
+        ],
         "x": 610,
         "y": 620,
         "wires": [
@@ -7521,7 +8612,7 @@
         "z": "8d422126.121a1",
         "name": "Cold water off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_on",
@@ -7529,9 +8620,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1040,
         "y": 560,
         "wires": [
@@ -7546,7 +8637,7 @@
         "z": "8d422126.121a1",
         "name": "Hot water off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "switch",
         "service": "turn_on",
@@ -7554,9 +8645,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1210,
         "y": 560,
         "wires": [
@@ -7594,19 +8685,22 @@
         "z": "8d422126.121a1",
         "name": "Cold water",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "switch.sonoff_water_valve_cold_1000d5c788_1",
         "state_type": "str",
-        "state_location": "cold",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "cold",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1510,
         "y": 560,
         "wires": [
@@ -7621,19 +8715,22 @@
         "z": "8d422126.121a1",
         "name": "Hot water",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "switch.sonoff_water_valve_hot_1000d5c788_2",
         "state_type": "str",
-        "state_location": "hot",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "hot",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1660,
         "y": 560,
         "wires": [
@@ -7732,7 +8829,7 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -7740,9 +8837,9 @@
         "data": "{\"title\":\"❗*Автоматическое выключение воды*❗\",\"message\":\"Нет реакции на протечку, вода закрыта автоматически. \\nХолодная вода: *{{cold}}* \\nГорячая вода: *{{hot}}*.\",\"data\":{\"inline_keyboard\":[\"Открыть всю воду:/all_water_on\",\"Открыть холодную:/cold_water_on, Открыть горячую:/hot_water_on\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 2030,
         "y": 560,
         "wires": [
@@ -7755,19 +8852,22 @@
         "z": "8d422126.121a1",
         "name": "anbd home?",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "halt_if": "home",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "group.smb_at_home",
         "state_type": "str",
-        "state_location": "home",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "home",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 590,
         "y": 560,
         "wires": [
@@ -7810,6 +8910,7 @@
         "d": true,
         "name": "воды в баке < 25%",
         "server": "6962e153.99eb9",
+        "version": 0,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -7866,6 +8967,7 @@
         "d": true,
         "name": "Вода в баке < 15%",
         "server": "6962e153.99eb9",
+        "version": 0,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -7921,16 +9023,16 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg with actions",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "service_domain": "notify",
         "service": "telegram_chat_all",
         "entityId": "",
         "data": "{\"title\":\"*Увлажнитель*\",\"message\":\"В увлажнителе осталось {{payload}}% воды. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить увлажнитель:/humidifier_off\",\"Поставить на мин. режим:/humidifier_low\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 370,
         "y": 1500,
         "wires": [
@@ -7943,7 +9045,7 @@
         "z": "8d422126.121a1",
         "name": "Humidifier off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_off",
@@ -7951,9 +9053,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 310,
         "y": 1540,
         "wires": [
@@ -7968,19 +9070,22 @@
         "z": "8d422126.121a1",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_bedroom",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 460,
         "y": 1540,
         "wires": [
@@ -7995,7 +9100,7 @@
         "z": "8d422126.121a1",
         "name": "Send message to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -8003,9 +9108,9 @@
         "data": "{\"title\":\"*Слишком мало воды\",\"message\":\"Увлажнитель в спальне был выключен (статус: {{humidifier}})\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 640,
         "y": 1540,
         "wires": [
@@ -8465,7 +9570,7 @@
         "z": "8d422126.121a1",
         "name": "Увлажнитель в спальне",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -8486,6 +9591,29 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 130,
         "y": 1980,
         "wires": [
@@ -8500,7 +9628,7 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg with actions",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -8508,9 +9636,9 @@
         "data": "{\"title\":\"*Увлажнитель*\",\"message\":\"{{data.new_state.attributes.friendly_name}}: {{payload}}%. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить увлажнитель:/humidifier_bedroom_off\",\"Поставить на мин. режим:/humidifier_bedroom_low\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1350,
         "y": 1900,
         "wires": [
@@ -8523,7 +9651,7 @@
         "z": "8d422126.121a1",
         "name": "Humidifier off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_off",
@@ -8531,9 +9659,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1290,
         "y": 2060,
         "wires": [
@@ -8548,19 +9676,22 @@
         "z": "8d422126.121a1",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_bedroom",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1440,
         "y": 2060,
         "wires": [
@@ -8575,7 +9706,7 @@
         "z": "8d422126.121a1",
         "name": "Send message to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -8583,9 +9714,9 @@
         "data": "{\"title\":\"*Слишком мало воды*\",\"message\":\"Увлажнитель в спальне был выключен (статус: {{humidifier}})\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1620,
         "y": 2060,
         "wires": [
@@ -8598,7 +9729,7 @@
         "z": "8d422126.121a1",
         "name": "Увлажнитель в гостиной (1)",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -8627,6 +9758,26 @@
         "ignorePrevStateUnavailable": false,
         "ignoreCurrentStateUnknown": false,
         "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 140,
         "y": 2020,
         "wires": [
@@ -8642,7 +9793,7 @@
         "d": true,
         "name": "Увлажнитель в гостиной (2)",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -8671,6 +9822,26 @@
         "ignorePrevStateUnavailable": false,
         "ignoreCurrentStateUnknown": false,
         "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
         "x": 140,
         "y": 2060,
         "wires": [
@@ -8726,7 +9897,7 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg with actions",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -8734,9 +9905,9 @@
         "data": "{\"title\":\"*Увлажнитель*\",\"message\":\"{{data.new_state.attributes.friendly_name}}: {{payload}}%. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить увлажнитель:/humidifier_livingroom1_off\",\"Поставить на мин. режим:/humidifier_livingroom1_low\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1350,
         "y": 1940,
         "wires": [
@@ -8749,7 +9920,7 @@
         "z": "8d422126.121a1",
         "name": "Send telegram msg with actions",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -8757,9 +9928,9 @@
         "data": "{\"title\":\"*Увлажнитель*\",\"message\":\"{{data.new_state.attributes.friendly_name}}: {{payload}}%. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить увлажнитель:/humidifier_livingroom2_off\",\"Поставить на мин. режим:/humidifier_livingroom2_low\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1350,
         "y": 1980,
         "wires": [
@@ -8813,7 +9984,7 @@
         "z": "8d422126.121a1",
         "name": "Humidifier off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_off",
@@ -8821,9 +9992,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1290,
         "y": 2100,
         "wires": [
@@ -8838,7 +10009,7 @@
         "z": "8d422126.121a1",
         "name": "Humidifier off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_off",
@@ -8846,9 +10017,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1290,
         "y": 2140,
         "wires": [
@@ -8863,19 +10034,22 @@
         "z": "8d422126.121a1",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_livingroom_1",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1440,
         "y": 2100,
         "wires": [
@@ -8890,19 +10064,22 @@
         "z": "8d422126.121a1",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_livingroom_2",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1440,
         "y": 2140,
         "wires": [
@@ -8917,7 +10094,7 @@
         "z": "8d422126.121a1",
         "name": "Send message to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -8925,9 +10102,9 @@
         "data": "{\"title\":\"*Слишком мало воды*\",\"message\":\"Увлажнитель в гостиной 1 был выключен (статус: {{humidifier}})\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1620,
         "y": 2100,
         "wires": [
@@ -8941,7 +10118,7 @@
         "d": true,
         "name": "Send message to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -8949,9 +10126,9 @@
         "data": "{\"title\":\"*Слишком мало воды*\",\"message\":\"Увлажнитель в гостиной 2 был выключен (статус: {{humidifier}})\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1620,
         "y": 2140,
         "wires": [
@@ -8964,7 +10141,7 @@
         "z": "96899f2.417176",
         "name": "Включить увлажнитель",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_on",
@@ -8972,9 +10149,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 670,
         "y": 340,
         "wires": [
@@ -8989,7 +10166,7 @@
         "z": "96899f2.417176",
         "name": "Выключить увлажнитель",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_off",
@@ -8997,9 +10174,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 670,
         "y": 380,
         "wires": [
@@ -9014,7 +10191,7 @@
         "z": "96899f2.417176",
         "name": "Увлажнитель на минимум",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "set_speed",
@@ -9022,9 +10199,9 @@
         "data": "{\"speed\":\"silent\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 680,
         "y": 420,
         "wires": [
@@ -9039,19 +10216,22 @@
         "z": "96899f2.417176",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_livingroom_1",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 900,
         "y": 360,
         "wires": [
@@ -9066,19 +10246,22 @@
         "z": "96899f2.417176",
         "name": "humidifier_speed",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_select.xiaomi_humidifier_livingroom_1_mode",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 930,
         "y": 420,
         "wires": [
@@ -9093,7 +10276,7 @@
         "z": "96899f2.417176",
         "name": "Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -9101,9 +10284,9 @@
         "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Статус увлажнителя: {{humidifier}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1160,
         "y": 360,
         "wires": [
@@ -9116,7 +10299,7 @@
         "z": "96899f2.417176",
         "name": "Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -9124,9 +10307,9 @@
         "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Режим работы увлажнителя: {{humidifier}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1160,
         "y": 420,
         "wires": [
@@ -9139,7 +10322,7 @@
         "z": "96899f2.417176",
         "name": "Включить увлажнитель",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_on",
@@ -9147,9 +10330,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 670,
         "y": 460,
         "wires": [
@@ -9164,7 +10347,7 @@
         "z": "96899f2.417176",
         "name": "Выключить увлажнитель",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_off",
@@ -9172,9 +10355,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 670,
         "y": 500,
         "wires": [
@@ -9189,7 +10372,7 @@
         "z": "96899f2.417176",
         "name": "Увлажнитель на минимум",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "set_speed",
@@ -9197,9 +10380,9 @@
         "data": "{\"speed\":\"silent\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 680,
         "y": 540,
         "wires": [
@@ -9214,19 +10397,22 @@
         "z": "96899f2.417176",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_livingroom_2",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 900,
         "y": 480,
         "wires": [
@@ -9241,19 +10427,22 @@
         "z": "96899f2.417176",
         "name": "humidifier_speed",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_select.xiaomi_humidifier_livingroom_2_mode",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 930,
         "y": 540,
         "wires": [
@@ -9268,7 +10457,7 @@
         "z": "96899f2.417176",
         "name": "Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -9276,9 +10465,9 @@
         "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Статус увлажнителя: {{humidifier}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1160,
         "y": 480,
         "wires": [
@@ -9291,7 +10480,7 @@
         "z": "96899f2.417176",
         "name": "Reply telegram msg",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "telegram_bot",
         "service": "send_message",
@@ -9299,9 +10488,9 @@
         "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Режим работы увлажнителя: {{humidifier}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1160,
         "y": 540,
         "wires": [
@@ -9355,19 +10544,22 @@
         "z": "16ff52c4.88944d",
         "name": "input settemp",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "input_number.tuya_floorheater_bathroom_settemp",
         "state_type": "num",
-        "state_location": "settemp",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "settemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 300,
         "y": 740,
         "wires": [
@@ -9579,7 +10771,7 @@
         "z": "ee1a9216.12937",
         "name": "Send telegram msg with actions",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -9587,9 +10779,9 @@
         "data": "{\"title\":\"*Увлажнитель*\",\"message\":\"{{data.new_state.attributes.friendly_name}}: {{payload}}%. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить увлажнитель:/humidifier_bedroom_off\",\"Поставить на мин. режим:/humidifier_bedroom_low\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1230,
         "y": 720,
         "wires": [
@@ -9602,7 +10794,7 @@
         "z": "ee1a9216.12937",
         "name": "Humidifier off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_off",
@@ -9610,9 +10802,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1170,
         "y": 880,
         "wires": [
@@ -9627,19 +10819,22 @@
         "z": "ee1a9216.12937",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_bedroom",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1320,
         "y": 880,
         "wires": [
@@ -9654,7 +10849,7 @@
         "z": "ee1a9216.12937",
         "name": "Send message to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -9662,9 +10857,9 @@
         "data": "{\"title\":\"*Слишком мало воды\",\"message\":\"Увлажнитель в спальне был выключен (статус: {{humidifier}})\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1500,
         "y": 880,
         "wires": [
@@ -9718,7 +10913,7 @@
         "z": "ee1a9216.12937",
         "name": "Send telegram msg with actions",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -9726,9 +10921,9 @@
         "data": "{\"title\":\"*Увлажнитель*\",\"message\":\"{{data.new_state.attributes.friendly_name}}: {{payload}}%. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить увлажнитель:/humidifier_livingroom1_off\",\"Поставить на мин. режим:/humidifier_livingroom1_low\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1230,
         "y": 760,
         "wires": [
@@ -9741,7 +10936,7 @@
         "z": "ee1a9216.12937",
         "name": "Send telegram msg with actions",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -9749,9 +10944,9 @@
         "data": "{\"title\":\"*Увлажнитель*\",\"message\":\"{{data.new_state.attributes.friendly_name}}: {{payload}}%. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить увлажнитель:/humidifier_livingroom2_off\",\"Поставить на мин. режим:/humidifier_livingroom2_low\",\"Ничего не делать:/none\"]}}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1230,
         "y": 800,
         "wires": [
@@ -9805,7 +11000,7 @@
         "z": "ee1a9216.12937",
         "name": "Humidifier off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_off",
@@ -9813,9 +11008,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1170,
         "y": 920,
         "wires": [
@@ -9830,7 +11025,7 @@
         "z": "ee1a9216.12937",
         "name": "Humidifier off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_off",
@@ -9838,9 +11033,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1170,
         "y": 960,
         "wires": [
@@ -9855,19 +11050,22 @@
         "z": "ee1a9216.12937",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_livingroom_1",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1320,
         "y": 920,
         "wires": [
@@ -9882,19 +11080,22 @@
         "z": "ee1a9216.12937",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_livingroom_2",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1320,
         "y": 960,
         "wires": [
@@ -9909,7 +11110,7 @@
         "z": "ee1a9216.12937",
         "name": "Send message to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -9917,9 +11118,9 @@
         "data": "{\"title\":\"*Слишком мало воды\",\"message\":\"Увлажнитель в гостиной 1 был выключен (статус: {{humidifier}})\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1500,
         "y": 920,
         "wires": [
@@ -9932,7 +11133,7 @@
         "z": "ee1a9216.12937",
         "name": "Send message to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_all",
@@ -9940,9 +11141,9 @@
         "data": "{\"title\":\"*Слишком мало воды\",\"message\":\"Увлажнитель в гостиной 2 был выключен (статус: {{humidifier}})\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1500,
         "y": 960,
         "wires": [
@@ -10145,7 +11346,7 @@
         "z": "ee1a9216.12937",
         "name": "Humidifier off",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "fan",
         "service": "turn_off",
@@ -10153,9 +11354,9 @@
         "data": "",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1150,
         "y": 1160,
         "wires": [
@@ -10170,19 +11371,22 @@
         "z": "ee1a9216.12937",
         "name": "humidifier",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "override_topic": false,
         "entity_id": "fan.xiaomi_humidifier_livingroom_1",
         "state_type": "str",
-        "state_location": "humidifier",
-        "override_payload": "msg",
-        "entity_location": "",
-        "override_data": "none",
         "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
         "x": 1300,
         "y": 1160,
         "wires": [
@@ -10197,7 +11401,7 @@
         "z": "ee1a9216.12937",
         "name": "Send message to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_pinkkoff",
@@ -10205,9 +11409,9 @@
         "data": "{\"title\":\"*Слишком мало воды*\",\"message\":\"Увлажнитель в гостиной 1 был выключен(статус {{humidifier}})\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1500,
         "y": 1120,
         "wires": [
@@ -10274,7 +11478,7 @@
         "z": "ee1a9216.12937",
         "name": "Send message to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_pinkkoff",
@@ -10282,9 +11486,9 @@
         "data": "{\"title\":\"*Слишком мало воды*\",\"message\":\"Увлажнитель в гостиной 1 был выключен (статус: {{humidifier}})\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 1500,
         "y": 1220,
         "wires": [
@@ -10307,7 +11511,7 @@
         "z": "ee1a9216.12937",
         "name": "Send telegram msg to All",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 3,
         "debugenabled": false,
         "service_domain": "notify",
         "service": "telegram_chat_diag",
@@ -10315,9 +11519,9 @@
         "data": "{\"title\":\"Тестовое сообщение\",\"message\":\"в диагностический чат\"}",
         "dataType": "json",
         "mergecontext": "",
-        "output_location": "",
-        "output_location_type": "none",
         "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
         "x": 930,
         "y": 300,
         "wires": [
@@ -10329,6 +11533,15 @@
         "type": "inject",
         "z": "ee1a9216.12937",
         "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
         "repeat": "",
         "crontab": "",
         "once": false,

@@ -931,7 +931,7 @@
                                             "severity": {
                                                 "green": 0,
                                                 "red": 80,
-                                                "yellow": 50
+                                                "yellow": 60
                                             },
                                             "theme": "default",
                                             "type": "gauge"

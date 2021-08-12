@@ -12,7 +12,7 @@ homeassistant:
   time_zone: Europe/Moscow
   # Customization file
   customize: !include customize.yaml
-  
+
   ### All my config yaml files in dir conf: ###
   packages: !include_dir_named conf
 
@@ -22,4 +22,10 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 
 # Fix compression error in yandex alice integration
-yandex_smart_home_fix:
+#yandex_smart_home_fix:
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.30.33.0/24
+    - 192.168.1.100
