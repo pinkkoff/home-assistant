@@ -1,0 +1,5 @@
+# Loading Xiaomi Miio Vacuum via platform setup is deprecated; Please remove it from your configuration
+#vacuum:
+#  - platform: xiaomi_miio
+#    host: 192.168.1.94
+#    token: !secret xiaomi_vacuum_roborock_key

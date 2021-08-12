@@ -1,0 +1,31 @@
+### Wheater forecasting ###
+
+# Weather forecast provisers
+weather:
+  - platform: darksky
+    name: darksky_forecast
+    api_key: !secret dark_sky_api_key
+  - platform: gismeteo
+    name: gismeteo_forecast
+
+# Weather sensors
+sensor:
+# YR platform deprecated
+#  - platform: yr
+#    name: Weather
+#    #forecast: 24
+#    monitored_conditions:
+#      - temperature
+#      - symbol
+#      - precipitation
+#      - windSpeed
+#      - humidity
+  - platform: gismeteo
+    name: gismeteo
+    monitored_conditions:
+      - weather
+      - temperature
+      - wind_speed
+      - humidity
+      - rain
+      - snow

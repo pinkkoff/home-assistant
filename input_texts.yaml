@@ -1,5 +1,0 @@
-#
-# Test entities
-test_input_text_1:
-  name: "Test input text"
-  initial: Some Text

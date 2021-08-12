@@ -1,0 +1,73 @@
+###
+### Integrations ###
+
+# Wake on LAN service
+wake_on_lan:
+
+# Synology
+#synology_dsm:
+#  - host: nasmaster_url
+#    username: nasmaster_username
+#    password: nasmaster_pass
+
+###
+### Binary sensors ###
+binary_sensor:
+# Ping sensors
+  - platform: ping
+    host: 192.168.1.1
+    name: "router_ping"
+  - platform: ping
+    host: 192.168.1.100
+    name: "NASMaster_ping"
+  - platform: ping
+    host: 192.168.1.20
+    name: "KidNAS_ping"
+  - platform: ping
+    host: 192.168.1.50
+    name: "master_ping"
+  - platform: ping
+    host: 192.168.1.75
+    name: "odroid1_ping"
+  - platform: ping
+    host: 192.168.1.80
+    name: "odroid2_ping"
+  - platform: ping
+    host: 192.168.1.85
+    name: "xiaomi_gw1_ping"
+  - platform: ping
+    host: 192.168.1.86
+    name: "xiaomi_humidifier_bedroom_ping"
+
+###
+### Sensors ###
+sensor:
+# System monitor
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_use_percent
+      - type: processor_use
+      - type: last_boot
+# Temp pi4 cpu
+  - platform: command_line
+    name: CPU_temp
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) | round(1) }}'
+
+###
+### Switch ###
+switch:
+# Wake on LAN switch. Indicate working comp
+  - platform: wake_on_lan
+    name: "WoL Master"
+    host: "192.168.1.50"
+    broadcast_address: "192.168.1.255"
+    mac: !secret master_MAC
+    turn_off:
+      service: hassio.addon_stdin
+      data:
+        addon: core_rpc_shutdown
+        input: master

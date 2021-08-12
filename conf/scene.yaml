@@ -1,0 +1,19 @@
+scene:
+  - name: TV light
+    entities:
+      light.yeelight_bedroom_ceiling_light: "off"
+      switch.xiaomi_wallswitch_bedroom_spots: "off"
+      switch.xiaomi_wallswitch_bedroom_night_right: "on"
+      switch.xiaomi_wallswitch_bedroom_night_left: "on"
+      light.yeelight_bedroom_ceiling_light_nightlight:
+        state: "on"
+        brightness: 25
+  - name: night light
+    entities:
+      light.yeelight_bedroom_ceiling_light: "off"
+      switch.xiaomi_wallswitch_bedroom_spots: "off"
+      switch.xiaomi_wallswitch_bedroom_night_right: "off"
+      switch.xiaomi_wallswitch_bedroom_night_left: "off"
+      light.yeelight_bedroom_ceiling_light_nightlight:
+        state: "on"
+        brightness: 10

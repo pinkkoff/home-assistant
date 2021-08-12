@@ -1,0 +1,24 @@
+# Весь свет в доме
+all_lights:
+  name: Свет в доме
+  entities:
+    - switch.xiaomi_wallswitch_corridor_light
+    - switch.xiaomi_wallswitch_bedroom_night_left
+    - switch.xiaomi_wallswitch_bedroom_night_right
+    - switch.xiaomi_wallswitch_bedroom_spots
+    - light.yeelight_bedroom_ceiling_light
+    - light.yeelight_bedroom_ceiling_light_nightlight
+    - switch.xiaomi_wallswitch_balcony_light
+    - switch.xiaomi_wallswitch_bathroom_light
+    - switch.xiaomi_wallswitch_livingroom_tvzone
+    - switch.xiaomi_wallswitch_livingroom_pczone
+    - switch.xiaomi_wallswitch_cloackroom_light
+    - switch.xiaomi_wallswitch_livingroom_kitchen_main
+    - switch.xiaomi_wallswitch_livingroom_kitchen_sill
+#
+# Есть ли кто-то дома
+smb_at_home:
+  name: Кто-то дома
+  entities:
+    - person.anna
+    - person.vladimir

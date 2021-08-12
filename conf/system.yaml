@@ -1,0 +1,46 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+frontend:
+  themes: !include_dir_merge_named ../themes
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+  
+#logger
+logger:
+  default: info
+  
+# Discover some devices automatically
+discovery:
+
+# Databases
+influxdb:
+  username: homeassistant
+  password: !secret influxdb_password
+  max_retries: 3
+  default_measurement: state
+  component_config_glob:
+    sensor.*humidity*:
+      override_measurement: humidity
+    sensor.*temperature*:
+      override_measurement: temperature
+    sensor.*pressure*:
+      override_measurement: pressure
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+# HACS
+hacs:
+  token: !secret HACS_github_token
+  appdaemon: true
+  python_script: true
+  theme: true
+
+# Yandex time
+sensor:
+  - platform: yandex_maps
+    start: !secret home_addr
+    destination: !secret jet_addr
+    name: Time to work

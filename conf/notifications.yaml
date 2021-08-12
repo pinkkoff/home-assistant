@@ -1,0 +1,55 @@
+# Telegram integration
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_bot_api_key
+#    proxy_url: !secret telegram_bot_proxy_url
+#    proxy_params:
+#      username: !secret telegram_bot_proxy_username
+#      password: !secret telegram_bot_proxy_password
+    allowed_chat_ids:
+      - !secret telegram_bot_allowed_chat_id_pinkkoff
+      - !secret telegram_bot_allowed_chat_id_fludshorty
+      - !secret telegram_bot_allowed_chat_id_all
+      - !secret telegram_bot_allowed_chat_id_diag
+
+# iOS integration
+ios:
+#  push:
+#    categories:
+#      - name: "Тестовый PUSH c кнопками" # Дружелюбное имя
+#        identifier: 'test' # Маленькими буквами и без спец знаков. Это категория PUSH
+#        actions:
+#          - identifier: 'ALARM'
+#            title: 'Жуткий алярм'
+#            activationMode: 'background'
+#            authenticationRequired: true
+#            destructive: true
+#            behavior: 'default'
+#          - identifier: 'SILENCE_ALARM'
+#            title: 'Небольшой алярм'
+#            activationMode: 'background'
+#            authenticationRequired: true
+#            destructive: false
+#            behavior: 'textInput'
+#            textInputButtonTitle: 'Кнопка input!'
+#            textInputPlaceholder: 'Placeholder для текста'
+
+# Notifications
+notify:
+  - name: mobile_app_iphone_all
+    platform: group
+    services:
+      - service: mobile_app_iphone_pinkkoff
+      - service: mobile_app_iphone_anechka
+  - name: telegram_chat_pinkkoff
+    platform: telegram
+    chat_id: !secret telegram_bot_allowed_chat_id_pinkkoff
+  - name: telegram_chat_fludshorty
+    platform: telegram
+    chat_id: !secret telegram_bot_allowed_chat_id_fludshorty
+  - name: telegram_chat_all
+    platform: telegram
+    chat_id: !secret telegram_bot_allowed_chat_id_all
+  - name: telegram_chat_diag
+    platform: telegram
+    chat_id: !secret telegram_bot_allowed_chat_id_diag

@@ -1,0 +1,87 @@
+###
+### Yandex Integrations ###
+yandex_smart_home:
+  filter:
+    include_entities:
+    # Light
+      - switch.xiaomi_wallswitch_balcony_light
+      - switch.xiaomi_wallswitch_bathroom_fan
+      - switch.xiaomi_wallswitch_bathroom_light
+      - switch.xiaomi_wallswitch_bedroom_night_left
+      - switch.xiaomi_wallswitch_bedroom_night_right
+      - switch.xiaomi_wallswitch_bedroom_spots
+      - switch.xiaomi_wallswitch_cloackroom_light
+      - switch.xiaomi_wallswitch_corridor_light
+      - switch.xiaomi_wallswitch_livingroom_kitchen_main
+      - switch.xiaomi_wallswitch_livingroom_kitchen_sill
+      - switch.xiaomi_wallswitch_livingroom_pczone
+      - switch.xiaomi_wallswitch_livingroom_tvzone
+      - light.yeelight_bedroom_ceiling_light
+      - light.yeelight_bedroom_ceiling_light_nightlight
+    # Switch
+      - switch.wol_master
+      - switch.plug_158d00032d5e8b
+    # Humidifier, vacuum, curtans
+      - fan.xiaomi_humidifier_bedroom
+      - fan.xiaomi_humidifier_livingroom_1
+      - fan.xiaomi_humidifier_livingroom_2
+      - cover.xiaomi_curtain_bedroom_158d0004118cca
+      - vacuum.xiaomi_vacuum_cleaner
+    # Sensors (Temperature and Humidity, Smoke)
+      - sensor.xiaomi_thp_humidity_balcony_158d0002389f84
+      - sensor.xiaomi_thp_humidity_bathroom_158d00025f14c5
+      - sensor.xiaomi_thp_humidity_bedroom_158d00025f03f5
+      - sensor.xiaomi_thp_humidity_cloackroom_158d0004656f6d
+      - sensor.xiaomi_thp_humidity_corridor_158d000465887b
+      - sensor.xiaomi_thp_humidity_livingroom_158d00046581b5
+      - sensor.xiaomi_thp_temperature_balcony_158d0002389f84
+      - sensor.xiaomi_thp_temperature_bathroom_158d00025f14c5
+      - sensor.xiaomi_thp_temperature_bedroom_158d00025f03f5
+      - sensor.xiaomi_thp_temperature_cloackroom_158d0004656f6d
+      - sensor.xiaomi_thp_temperature_corridor_158d000465887b
+      - sensor.xiaomi_thp_temperature_livingroom_158d00046581b5
+      #- binary_sensor.xiaomi_smoke_kitchen_158d00028229a1
+    # Water
+      - switch.sonoff_water_valve_cold_inverse
+      - switch.sonoff_water_valve_hot_inverse
+    # Other
+      - group.smb_at_home
+      - person.vladimir
+      - person.anna
+      - input_number.tuya_floorheater_bathroom_settemp
+
+  entity_config:
+    fan.xiaomi_humidifier_bedroom:
+      name: "Увлажнитель"
+      type: devices.types.humidifier
+      properties:
+        - type: temperature
+          entity: sensor.xiaomi_thp_temperature_bedroom_158d00025f03f5
+        - type: humidity
+          entity: sensor.xiaomi_thp_humidity_bedroom_158d00025f03f5
+        - type: water_level
+          entity: sensor.xiaomi_humidifier_bedroom_water_level 
+    fan.xiaomi_humidifier_livingroom_1:
+      name: "Увлажнитель 1"
+      type: devices.types.humidifier
+      properties:
+        - type: temperature
+          entity: sensor.xiaomi_thp_temperature_livingroom_158d00046581b5
+        - type: humidity
+          entity: sensor.xiaomi_thp_humidity_livingroom_158d00046581b5
+        - type: water_level
+          entity: sensor.xiaomi_humidifier_livingroom_1_water_level
+    fan.xiaomi_humidifier_livingroom_2:
+      name: "Увлажнитель 2"
+      type: devices.types.humidifier
+      properties:
+        - type: temperature
+          entity: sensor.xiaomi_thp_temperature_livingroom_158d00046581b5
+        - type: humidity
+          entity: sensor.xiaomi_thp_humidity_livingroom_158d00046581b5
+        - type: water_level
+          entity: sensor.xiaomi_humidifier_livingroom_2_water_level
+    switch.sonoff_water_valve_cold_inverse:
+      name: "Холодная вода"
+    switch.sonoff_water_valve_hot_inverse:
+      name: "Горячая вода"
