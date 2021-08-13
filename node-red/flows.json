@@ -3232,11 +3232,6 @@
             },
             {
                 "t": "eq",
-                "v": "/humidifier_bedroom_low",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
                 "v": "/humidifier_livingroom1_on",
                 "vt": "str"
             },
@@ -3247,17 +3242,22 @@
             },
             {
                 "t": "eq",
-                "v": "/humidifier_livingroom1_low",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
                 "v": "/humidifier_livingroom2_on",
                 "vt": "str"
             },
             {
                 "t": "eq",
                 "v": "/humidifier_livingroom2_off",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/humidifier_bedroom_low",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/humidifier_livingroom1_low",
                 "vt": "str"
             },
             {
@@ -3332,22 +3332,22 @@
                 "568b62ab.d5d33c"
             ],
             [
-                "38b92f09.fe737"
-            ],
-            [
                 "7c24ad0f.1f1af4"
             ],
             [
                 "91d11aad.052aa8"
             ],
             [
-                "730d5f3e.7e2f2"
-            ],
-            [
                 "76cbb35c.d4e1cc"
             ],
             [
                 "acab0086.93d8b"
+            ],
+            [
+                "38b92f09.fe737"
+            ],
+            [
+                "730d5f3e.7e2f2"
             ],
             [
                 "141f999d.ea6f16"
@@ -3437,14 +3437,22 @@
         "name": "Включить увлажнитель",
         "server": "6962e153.99eb9",
         "version": 3,
-        "service_domain": "fan",
+        "debugenabled": false,
+        "service_domain": "humidifier",
         "service": "turn_on",
-        "entityId": "fan.xiaomi_humidifier_bedroom",
+        "entityId": "humidifier.xiaomi_humfan_bedroom",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
         "mustacheAltTags": false,
-        "outputProperties": [],
+        "outputProperties": [
+            {
+                "property": "humidifier",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "config"
+            }
+        ],
         "queue": "none",
         "x": 670,
         "y": 220,
@@ -3461,9 +3469,10 @@
         "name": "Выключить увлажнитель",
         "server": "6962e153.99eb9",
         "version": 3,
-        "service_domain": "fan",
+        "debugenabled": false,
+        "service_domain": "humidifier",
         "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_bedroom",
+        "entityId": "humidifier.xiaomi_humfan_bedroom",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
@@ -3485,17 +3494,18 @@
         "name": "Увлажнитель на минимум",
         "server": "6962e153.99eb9",
         "version": 3,
-        "service_domain": "fan",
-        "service": "set_speed",
-        "entityId": "fan.xiaomi_humidifier_bedroom",
-        "data": "{\"speed\":\"silent\"}",
+        "debugenabled": false,
+        "service_domain": "humidifier",
+        "service": "set_mode",
+        "entityId": "humidifier.xiaomi_humfan_bedroom",
+        "data": "{\"mode\":\"Silent\"}",
         "dataType": "json",
         "mergecontext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
         "x": 680,
-        "y": 300,
+        "y": 460,
         "wires": [
             [
                 "f72cd7a9.82ba28"
@@ -3625,7 +3635,7 @@
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_bedroom",
+        "entity_id": "humidifier.xiaomi_humfan_bedroom",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -3636,11 +3646,11 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 900,
+        "x": 880,
         "y": 240,
         "wires": [
             [
-                "92f3a4a8.d63858"
+                "3526051a.46a61a"
             ]
         ]
     },
@@ -3648,14 +3658,14 @@
         "id": "f72cd7a9.82ba28",
         "type": "api-current-state",
         "z": "96899f2.417176",
-        "name": "humidifier_speed",
+        "name": "humidifier_mode",
         "server": "6962e153.99eb9",
         "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "input_select.xiaomi_humidifier_bedroom_mode",
+        "entity_id": "humidifier.xiaomi_humfan_bedroom",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -3663,14 +3673,14 @@
                 "property": "humidifier",
                 "propertyType": "msg",
                 "value": "",
-                "valueType": "entityState"
+                "valueType": "entity"
             }
         ],
         "x": 930,
-        "y": 300,
+        "y": 460,
         "wires": [
             [
-                "6aa0aef2.7d79b"
+                "41ae8c12.a9fde4"
             ]
         ]
     },
@@ -3729,52 +3739,6 @@
         ]
     },
     {
-        "id": "92f3a4a8.d63858",
-        "type": "api-call-service",
-        "z": "96899f2.417176",
-        "name": "Reply telegram msg",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "telegram_bot",
-        "service": "send_message",
-        "entityId": "",
-        "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Статус увлажнителя: {{humidifier}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1160,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6aa0aef2.7d79b",
-        "type": "api-call-service",
-        "z": "96899f2.417176",
-        "name": "Reply telegram msg",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "telegram_bot",
-        "service": "send_message",
-        "entityId": "",
-        "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Режим работы увлажнителя: {{humidifier}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1160,
-        "y": 300,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "ea84e225.c4a3b",
         "type": "api-current-state",
         "z": "96899f2.417176",
@@ -3796,7 +3760,7 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 1020,
+        "x": 1030,
         "y": 640,
         "wires": [
             [
@@ -4589,7 +4553,7 @@
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_bedroom",
+        "entity_id": "humidifier.xiaomi_humfan_bedroom",
         "state_type": "habool",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -6352,7 +6316,7 @@
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_bedroom",
+        "entity_id": "humidifier.xiaomi_humfan_bedroom",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -6379,9 +6343,9 @@
         "server": "6962e153.99eb9",
         "version": 3,
         "debugenabled": false,
-        "service_domain": "fan",
+        "service_domain": "humidifier",
         "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_bedroom",
+        "entityId": "humidifier.xiaomi_humfan_bedroom",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
@@ -8428,7 +8392,7 @@
         "outputProperties": [],
         "queue": "none",
         "x": 1680,
-        "y": 780,
+        "y": 800,
         "wires": [
             []
         ]
@@ -8482,7 +8446,7 @@
         "to": "",
         "reg": false,
         "x": 1480,
-        "y": 780,
+        "y": 800,
         "wires": [
             [
                 "83da2a85.0f23b8"
@@ -9047,9 +9011,9 @@
         "server": "6962e153.99eb9",
         "version": 3,
         "debugenabled": false,
-        "service_domain": "fan",
+        "service_domain": "humidifier",
         "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_bedroom",
+        "entityId": "humidifier.xiaomi_humfan_bedroom",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
@@ -9075,7 +9039,7 @@
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_bedroom",
+        "entity_id": "humidifier.xiaomi_humfan_bedroom",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -9568,6 +9532,7 @@
         "id": "80930b4f.bc8188",
         "type": "server-state-changed",
         "z": "8d422126.121a1",
+        "d": true,
         "name": "Увлажнитель в спальне",
         "server": "6962e153.99eb9",
         "version": 3,
@@ -9594,6 +9559,11 @@
         "for": "0",
         "forType": "num",
         "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
         "outputProperties": [
             {
                 "property": "payload",
@@ -9653,9 +9623,9 @@
         "server": "6962e153.99eb9",
         "version": 3,
         "debugenabled": false,
-        "service_domain": "fan",
+        "service_domain": "humidifier",
         "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_bedroom",
+        "entityId": "humidifier.xiaomi_humfan_bedroom",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
@@ -9681,7 +9651,7 @@
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_bedroom",
+        "entity_id": "humidifier.xiaomi_humfan_bedroom",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -9727,6 +9697,7 @@
         "id": "673be74.0123518",
         "type": "server-state-changed",
         "z": "8d422126.121a1",
+        "d": true,
         "name": "Увлажнитель в гостиной (1)",
         "server": "6962e153.99eb9",
         "version": 3,
@@ -9986,9 +9957,9 @@
         "server": "6962e153.99eb9",
         "version": 3,
         "debugenabled": false,
-        "service_domain": "fan",
+        "service_domain": "humidifier",
         "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_livingroom_1",
+        "entityId": "humidifier.xiaomi_humfan_livingroom_1",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
@@ -10011,9 +9982,9 @@
         "server": "6962e153.99eb9",
         "version": 3,
         "debugenabled": false,
-        "service_domain": "fan",
+        "service_domain": "humidifier",
         "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_livingroom_2",
+        "entityId": "humidifier.xiaomi_humfan_livingroom_2",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
@@ -10039,7 +10010,7 @@
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_livingroom_1",
+        "entity_id": "humidifier.xiaomi_humfan_livingroom_1",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -10069,7 +10040,7 @@
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_livingroom_2",
+        "entity_id": "humidifier.xiaomi_humfan_livingroom_2",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -10143,9 +10114,34 @@
         "server": "6962e153.99eb9",
         "version": 3,
         "debugenabled": false,
-        "service_domain": "fan",
+        "service_domain": "humidifier",
         "service": "turn_on",
-        "entityId": "fan.xiaomi_humidifier_livingroom_1",
+        "entityId": "humidifier.xiaomi_humfan_livingroom_1",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 670,
+        "y": 300,
+        "wires": [
+            [
+                "c5e6c44e.affa88"
+            ]
+        ]
+    },
+    {
+        "id": "91d11aad.052aa8",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "Выключить увлажнитель",
+        "server": "6962e153.99eb9",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "humidifier",
+        "service": "turn_off",
+        "entityId": "humidifier.xiaomi_humfan_livingroom_1",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
@@ -10161,31 +10157,6 @@
         ]
     },
     {
-        "id": "91d11aad.052aa8",
-        "type": "api-call-service",
-        "z": "96899f2.417176",
-        "name": "Выключить увлажнитель",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "fan",
-        "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_livingroom_1",
-        "data": "",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 670,
-        "y": 380,
-        "wires": [
-            [
-                "c5e6c44e.affa88"
-            ]
-        ]
-    },
-    {
         "id": "730d5f3e.7e2f2",
         "type": "api-call-service",
         "z": "96899f2.417176",
@@ -10193,17 +10164,17 @@
         "server": "6962e153.99eb9",
         "version": 3,
         "debugenabled": false,
-        "service_domain": "fan",
-        "service": "set_speed",
-        "entityId": "fan.xiaomi_humidifier_livingroom_1",
-        "data": "{\"speed\":\"silent\"}",
+        "service_domain": "humidifier",
+        "service": "set_mode",
+        "entityId": "humidifier.xiaomi_humfan_livingroom_1",
+        "data": "{\"mode\":\"Silent\"}",
         "dataType": "json",
         "mergecontext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
         "x": 680,
-        "y": 420,
+        "y": 500,
         "wires": [
             [
                 "7c7d7b95.b0f9c4"
@@ -10221,7 +10192,7 @@
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_livingroom_1",
+        "entity_id": "humidifier.xiaomi_humfan_livingroom_1",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -10232,8 +10203,8 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 900,
-        "y": 360,
+        "x": 880,
+        "y": 320,
         "wires": [
             [
                 "3526051a.46a61a"
@@ -10244,14 +10215,14 @@
         "id": "7c7d7b95.b0f9c4",
         "type": "api-current-state",
         "z": "96899f2.417176",
-        "name": "humidifier_speed",
+        "name": "humidifier_mode",
         "server": "6962e153.99eb9",
         "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "input_select.xiaomi_humidifier_livingroom_1_mode",
+        "entity_id": "humidifier.xiaomi_humfan_livingroom_1",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -10259,11 +10230,11 @@
                 "property": "humidifier",
                 "propertyType": "msg",
                 "value": "",
-                "valueType": "entityState"
+                "valueType": "entity"
             }
         ],
         "x": 930,
-        "y": 420,
+        "y": 500,
         "wires": [
             [
                 "41ae8c12.a9fde4"
@@ -10288,7 +10259,7 @@
         "outputProperties": [],
         "queue": "none",
         "x": 1160,
-        "y": 360,
+        "y": 320,
         "wires": [
             []
         ]
@@ -10304,14 +10275,14 @@
         "service_domain": "telegram_bot",
         "service": "send_message",
         "entityId": "",
-        "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Режим работы увлажнителя: {{humidifier}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
+        "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Режим работы увлажнителя: {{humidifier.attributes.mode}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
         "dataType": "json",
         "mergecontext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
         "x": 1160,
-        "y": 420,
+        "y": 500,
         "wires": [
             []
         ]
@@ -10324,9 +10295,9 @@
         "server": "6962e153.99eb9",
         "version": 3,
         "debugenabled": false,
-        "service_domain": "fan",
+        "service_domain": "humidifier",
         "service": "turn_on",
-        "entityId": "fan.xiaomi_humidifier_livingroom_2",
+        "entityId": "humidifier.xiaomi_humfan_livingroom_2",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
@@ -10334,7 +10305,7 @@
         "outputProperties": [],
         "queue": "none",
         "x": 670,
-        "y": 460,
+        "y": 380,
         "wires": [
             [
                 "7ae32185.34e66"
@@ -10349,9 +10320,9 @@
         "server": "6962e153.99eb9",
         "version": 3,
         "debugenabled": false,
-        "service_domain": "fan",
+        "service_domain": "humidifier",
         "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_livingroom_2",
+        "entityId": "humidifier.xiaomi_humfan_livingroom_2",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
@@ -10359,7 +10330,7 @@
         "outputProperties": [],
         "queue": "none",
         "x": 670,
-        "y": 500,
+        "y": 420,
         "wires": [
             [
                 "7ae32185.34e66"
@@ -10374,10 +10345,10 @@
         "server": "6962e153.99eb9",
         "version": 3,
         "debugenabled": false,
-        "service_domain": "fan",
-        "service": "set_speed",
-        "entityId": "fan.xiaomi_humidifier_livingroom_2",
-        "data": "{\"speed\":\"silent\"}",
+        "service_domain": "humidifier",
+        "service": "set_mode",
+        "entityId": "humidifier.xiaomi_humfan_livingroom_2",
+        "data": "{\"mode\":\"Silent\"}",
         "dataType": "json",
         "mergecontext": "",
         "mustacheAltTags": false,
@@ -10402,7 +10373,7 @@
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_livingroom_2",
+        "entity_id": "humidifier.xiaomi_humfan_livingroom_2",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -10413,11 +10384,11 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 900,
-        "y": 480,
+        "x": 880,
+        "y": 400,
         "wires": [
             [
-                "64dcfe1f.909c6"
+                "3526051a.46a61a"
             ]
         ]
     },
@@ -10425,14 +10396,14 @@
         "id": "11455700.626da9",
         "type": "api-current-state",
         "z": "96899f2.417176",
-        "name": "humidifier_speed",
+        "name": "humidifier_mode",
         "server": "6962e153.99eb9",
         "version": 2,
         "outputs": 1,
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "input_select.xiaomi_humidifier_livingroom_2_mode",
+        "entity_id": "humidifier.xiaomi_humfan_livingroom_2",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -10440,61 +10411,15 @@
                 "property": "humidifier",
                 "propertyType": "msg",
                 "value": "",
-                "valueType": "entityState"
+                "valueType": "entity"
             }
         ],
         "x": 930,
         "y": 540,
         "wires": [
             [
-                "9b9525dc.7ddaa8"
+                "41ae8c12.a9fde4"
             ]
-        ]
-    },
-    {
-        "id": "64dcfe1f.909c6",
-        "type": "api-call-service",
-        "z": "96899f2.417176",
-        "name": "Reply telegram msg",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "telegram_bot",
-        "service": "send_message",
-        "entityId": "",
-        "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Статус увлажнителя: {{humidifier}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1160,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "9b9525dc.7ddaa8",
-        "type": "api-call-service",
-        "z": "96899f2.417176",
-        "name": "Reply telegram msg",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "telegram_bot",
-        "service": "send_message",
-        "entityId": "",
-        "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Режим работы увлажнителя: {{humidifier}}\",\"target\":\"{{payload.event.message.chat.id}}\"}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1160,
-        "y": 540,
-        "wires": [
-            []
         ]
     },
     {
@@ -10766,107 +10691,6 @@
         ]
     },
     {
-        "id": "c1d78a2b.f1a848",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Send telegram msg with actions",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "notify",
-        "service": "telegram_chat_all",
-        "entityId": "",
-        "data": "{\"title\":\"*Увлажнитель*\",\"message\":\"{{data.new_state.attributes.friendly_name}}: {{payload}}%. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить увлажнитель:/humidifier_bedroom_off\",\"Поставить на мин. режим:/humidifier_bedroom_low\",\"Ничего не делать:/none\"]}}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1230,
-        "y": 720,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4d57ce51.c74c5",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Humidifier off",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "fan",
-        "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_bedroom",
-        "data": "",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1170,
-        "y": 880,
-        "wires": [
-            [
-                "45cb79d6.cb7b08"
-            ]
-        ]
-    },
-    {
-        "id": "45cb79d6.cb7b08",
-        "type": "api-current-state",
-        "z": "ee1a9216.12937",
-        "name": "humidifier",
-        "server": "6962e153.99eb9",
-        "version": 2,
-        "outputs": 1,
-        "halt_if": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_bedroom",
-        "state_type": "str",
-        "blockInputOverrides": false,
-        "outputProperties": [
-            {
-                "property": "humidifier",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entityState"
-            }
-        ],
-        "x": 1320,
-        "y": 880,
-        "wires": [
-            [
-                "2cc9a9c.dfca056"
-            ]
-        ]
-    },
-    {
-        "id": "2cc9a9c.dfca056",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Send message to All",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "notify",
-        "service": "telegram_chat_all",
-        "entityId": "",
-        "data": "{\"title\":\"*Слишком мало воды\",\"message\":\"Увлажнитель в спальне был выключен (статус: {{humidifier}})\"}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1500,
-        "y": 880,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "55794825.a79888",
         "type": "switch",
         "z": "ee1a9216.12937",
@@ -10896,60 +10720,8 @@
         "x": 1010,
         "y": 760,
         "wires": [
-            [
-                "c1d78a2b.f1a848"
-            ],
-            [
-                "a59dcfe4.aacf5"
-            ],
-            [
-                "8a9b1ef5.7527b"
-            ]
-        ]
-    },
-    {
-        "id": "a59dcfe4.aacf5",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Send telegram msg with actions",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "notify",
-        "service": "telegram_chat_all",
-        "entityId": "",
-        "data": "{\"title\":\"*Увлажнитель*\",\"message\":\"{{data.new_state.attributes.friendly_name}}: {{payload}}%. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить увлажнитель:/humidifier_livingroom1_off\",\"Поставить на мин. режим:/humidifier_livingroom1_low\",\"Ничего не делать:/none\"]}}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1230,
-        "y": 760,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8a9b1ef5.7527b",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Send telegram msg with actions",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "notify",
-        "service": "telegram_chat_all",
-        "entityId": "",
-        "data": "{\"title\":\"*Увлажнитель*\",\"message\":\"{{data.new_state.attributes.friendly_name}}: {{payload}}%. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить увлажнитель:/humidifier_livingroom2_off\",\"Поставить на мин. режим:/humidifier_livingroom2_low\",\"Ничего не делать:/none\"]}}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1230,
-        "y": 800,
-        "wires": [
+            [],
+            [],
             []
         ]
     },
@@ -10983,170 +10755,8 @@
         "x": 1010,
         "y": 920,
         "wires": [
-            [
-                "4d57ce51.c74c5"
-            ],
-            [
-                "27b23fcb.5a0af"
-            ],
-            [
-                "9e6eefe3.cc831"
-            ]
-        ]
-    },
-    {
-        "id": "27b23fcb.5a0af",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Humidifier off",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "fan",
-        "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_livingroom_1",
-        "data": "",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1170,
-        "y": 920,
-        "wires": [
-            [
-                "fd4dce89.2537"
-            ]
-        ]
-    },
-    {
-        "id": "9e6eefe3.cc831",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Humidifier off",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "fan",
-        "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_livingroom_2",
-        "data": "",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1170,
-        "y": 960,
-        "wires": [
-            [
-                "ce97635b.9a4fd"
-            ]
-        ]
-    },
-    {
-        "id": "fd4dce89.2537",
-        "type": "api-current-state",
-        "z": "ee1a9216.12937",
-        "name": "humidifier",
-        "server": "6962e153.99eb9",
-        "version": 2,
-        "outputs": 1,
-        "halt_if": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_livingroom_1",
-        "state_type": "str",
-        "blockInputOverrides": false,
-        "outputProperties": [
-            {
-                "property": "humidifier",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entityState"
-            }
-        ],
-        "x": 1320,
-        "y": 920,
-        "wires": [
-            [
-                "6df6aabc.ea46b4"
-            ]
-        ]
-    },
-    {
-        "id": "ce97635b.9a4fd",
-        "type": "api-current-state",
-        "z": "ee1a9216.12937",
-        "name": "humidifier",
-        "server": "6962e153.99eb9",
-        "version": 2,
-        "outputs": 1,
-        "halt_if": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_livingroom_2",
-        "state_type": "str",
-        "blockInputOverrides": false,
-        "outputProperties": [
-            {
-                "property": "humidifier",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entityState"
-            }
-        ],
-        "x": 1320,
-        "y": 960,
-        "wires": [
-            [
-                "29457315.20913c"
-            ]
-        ]
-    },
-    {
-        "id": "6df6aabc.ea46b4",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Send message to All",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "notify",
-        "service": "telegram_chat_all",
-        "entityId": "",
-        "data": "{\"title\":\"*Слишком мало воды\",\"message\":\"Увлажнитель в гостиной 1 был выключен (статус: {{humidifier}})\"}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1500,
-        "y": 920,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "29457315.20913c",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Send message to All",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "notify",
-        "service": "telegram_chat_all",
-        "entityId": "",
-        "data": "{\"title\":\"*Слишком мало воды\",\"message\":\"Увлажнитель в гостиной 2 был выключен (статус: {{humidifier}})\"}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1500,
-        "y": 960,
-        "wires": [
+            [],
+            [],
             []
         ]
     },
@@ -11339,161 +10949,6 @@
         "x": 1050,
         "y": 1020,
         "wires": []
-    },
-    {
-        "id": "6b2c8fce.b3058",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Humidifier off",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "fan",
-        "service": "turn_off",
-        "entityId": "fan.xiaomi_humidifier_livingroom_1",
-        "data": "",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1150,
-        "y": 1160,
-        "wires": [
-            [
-                "ba54f4b2.94c088"
-            ]
-        ]
-    },
-    {
-        "id": "ba54f4b2.94c088",
-        "type": "api-current-state",
-        "z": "ee1a9216.12937",
-        "name": "humidifier",
-        "server": "6962e153.99eb9",
-        "version": 2,
-        "outputs": 1,
-        "halt_if": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
-        "entity_id": "fan.xiaomi_humidifier_livingroom_1",
-        "state_type": "str",
-        "blockInputOverrides": false,
-        "outputProperties": [
-            {
-                "property": "humidifier",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entityState"
-            }
-        ],
-        "x": 1300,
-        "y": 1160,
-        "wires": [
-            [
-                "f3a0ea4a.a662a8"
-            ]
-        ]
-    },
-    {
-        "id": "50eda503.da802c",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Send message to All",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "notify",
-        "service": "telegram_chat_pinkkoff",
-        "entityId": "",
-        "data": "{\"title\":\"*Слишком мало воды*\",\"message\":\"Увлажнитель в гостиной 1 был выключен(статус {{humidifier}})\"}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1500,
-        "y": 1120,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d7a283dc.ff6eb",
-        "type": "inject",
-        "z": "ee1a9216.12937",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "51",
-        "payloadType": "num",
-        "x": 930,
-        "y": 1140,
-        "wires": [
-            [
-                "6b2c8fce.b3058"
-            ]
-        ]
-    },
-    {
-        "id": "3876de2d.285032",
-        "type": "change",
-        "z": "ee1a9216.12937",
-        "name": "Low",
-        "rules": [
-            {
-                "t": "set",
-                "p": "rbe",
-                "pt": "msg",
-                "to": "low",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 930,
-        "y": 1180,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f3a0ea4a.a662a8",
-        "type": "api-call-service",
-        "z": "ee1a9216.12937",
-        "name": "Send message to All",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "notify",
-        "service": "telegram_chat_pinkkoff",
-        "entityId": "",
-        "data": "{\"title\":\"*Слишком мало воды*\",\"message\":\"Увлажнитель в гостиной 1 был выключен (статус: {{humidifier}})\"}",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1500,
-        "y": 1220,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "7ed9a95e.354688",

@@ -22,9 +22,12 @@ yandex_smart_home:
       - switch.wol_master
       - switch.plug_158d00032d5e8b
     # Humidifier, vacuum, curtans
-      - fan.xiaomi_humidifier_bedroom
-      - fan.xiaomi_humidifier_livingroom_1
-      - fan.xiaomi_humidifier_livingroom_2
+      - humidifier.xiaomi_humfan_bedroom
+      - humidifier.xiaomi_humfan_livingroom_1
+      - humidifier.xiaomi_humfan_livingroom_2
+#      - fan.xiaomi_humidifier_bedroom
+#      - fan.xiaomi_humidifier_livingroom_1
+#      - fan.xiaomi_humidifier_livingroom_2
       - cover.xiaomi_curtain_bedroom_158d0004118cca
       - vacuum.xiaomi_vacuum_cleaner
     # Sensors (Temperature and Humidity, Smoke)
@@ -51,7 +54,7 @@ yandex_smart_home:
       - input_number.tuya_floorheater_bathroom_settemp
 
   entity_config:
-    fan.xiaomi_humidifier_bedroom:
+    humidifier.xiaomi_humfan_bedroom:
       name: "Увлажнитель"
       type: devices.types.humidifier
       properties:
@@ -61,7 +64,7 @@ yandex_smart_home:
           entity: sensor.xiaomi_thp_humidity_bedroom_158d00025f03f5
         - type: water_level
           entity: sensor.xiaomi_humidifier_bedroom_water_level 
-    fan.xiaomi_humidifier_livingroom_1:
+    humidifier.xiaomi_humfan_livingroom_1:
       name: "Увлажнитель 1"
       type: devices.types.humidifier
       properties:
@@ -71,7 +74,7 @@ yandex_smart_home:
           entity: sensor.xiaomi_thp_humidity_livingroom_158d00046581b5
         - type: water_level
           entity: sensor.xiaomi_humidifier_livingroom_1_water_level
-    fan.xiaomi_humidifier_livingroom_2:
+    humidifier.xiaomi_humfan_livingroom_2:
       name: "Увлажнитель 2"
       type: devices.types.humidifier
       properties:
