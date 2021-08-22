@@ -23,7 +23,7 @@ sensor:
   - platform: gismeteo
     name: gismeteo
     monitored_conditions:
-      - weather
+      - condition
       - temperature
       - wind_speed
       - humidity
