@@ -963,48 +963,53 @@
                             "entities": [
                                 {
                                     "entity": "binary_sensor.router_ping",
-                                    "name": "\u0420\u043e\u0443\u0442\u0435\u0440",
-                                    "state_color": true
+                                    "name": "\u0420\u043e\u0443\u0442\u0435\u0440"
                                 },
                                 {
                                     "entity": "binary_sensor.xiaomi_gw1_ping",
-                                    "name": "\u0428\u043b\u044e\u0437 Xiaomi",
-                                    "state_color": true
-                                },
-                                {
-                                    "entity": "binary_sensor.xiaomi_humidifier_bedroom_ping",
-                                    "name": "\u0423\u0432\u043b\u0430\u0436\u043d\u0438\u0442\u0435\u043b\u044c",
-                                    "state_color": true
-                                },
-                                {
-                                    "entity": "binary_sensor.nasmaster_ping",
-                                    "name": "NASMaster",
-                                    "state_color": true
-                                },
-                                {
-                                    "entity": "binary_sensor.kidnas_ping",
-                                    "name": "KidNas",
-                                    "state_color": true
-                                },
-                                {
-                                    "entity": "binary_sensor.master_ping",
-                                    "name": "\u041a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440",
-                                    "state_color": true
+                                    "name": "\u0428\u043b\u044e\u0437 Xiaomi"
                                 },
                                 {
                                     "entity": "binary_sensor.odroid1_ping",
-                                    "name": "Odroid 1",
-                                    "state_color": true
+                                    "name": "Odroid 1"
                                 },
                                 {
                                     "entity": "binary_sensor.odroid2_ping",
-                                    "name": "Odroid 2",
-                                    "state_color": true
+                                    "name": "Odroid 2"
+                                },
+                                {
+                                    "entity": "binary_sensor.nasmaster_ping",
+                                    "name": "NASMaster"
+                                },
+                                {
+                                    "entity": "binary_sensor.kidnas_ping",
+                                    "name": "KidNas"
+                                },
+                                {
+                                    "entity": "binary_sensor.master_ping",
+                                    "name": "\u041a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440"
+                                },
+                                {
+                                    "entity": "binary_sensor.yandex_station_livingroom_ping",
+                                    "name": "\u042f\u043d\u0434\u0435\u043a\u0441 \u0421\u0442\u0430\u043d\u0446\u0438\u044f"
+                                },
+                                {
+                                    "entity": "binary_sensor.xiaomi_humidifier_bedroom_ping",
+                                    "name": "\u0423\u0432\u043b\u0430\u0436\u043d\u0438\u0442\u0435\u043b\u044c \u0432 \u0441\u043f\u0430\u043b\u044c\u043d\u0435"
+                                },
+                                {
+                                    "entity": "binary_sensor.xiaomi_humidifier_livingroom_1_ping",
+                                    "name": "\u0423\u0432\u043b\u0430\u0436\u043d\u0438\u0442\u0435\u043b\u044c (PC)"
+                                },
+                                {
+                                    "entity": "binary_sensor.xiaomi_humidifier_livingroom_2_ping",
+                                    "name": "\u0423\u0432\u043b\u0430\u0436\u043d\u0438\u0442\u0435\u043b\u044c (TV)"
                                 }
                             ],
                             "show_header_toggle": false,
                             "title": "\u0421\u0435\u0442\u0435\u0432\u044b\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430",
-                            "type": "entities"
+                            "type": "entities",
+                            "state_color": true
                         },
                         {
                             "entities": [

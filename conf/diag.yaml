@@ -36,8 +36,17 @@ binary_sensor:
     host: 192.168.1.85
     name: "xiaomi_gw1_ping"
   - platform: ping
-    host: 192.168.1.86
+    host: 192.168.1.93
     name: "xiaomi_humidifier_bedroom_ping"
+  - platform: ping
+    host: 192.168.1.92
+    name: "xiaomi_humidifier_livingroom_1_ping"
+  - platform: ping
+    host: 192.168.1.86
+    name: "xiaomi_humidifier_livingroom_2_ping"
+  - platform: ping
+    host: 192.168.1.95
+    name: "yandex_station_livingroom_ping"
 
 ###
 ### Sensors ###
