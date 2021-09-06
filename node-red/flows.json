@@ -3225,11 +3225,16 @@
                 "t": "eq",
                 "v": "/all_water_off",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/all_lights_off",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 20,
+        "outputs": 21,
         "x": 390,
         "y": 420,
         "wires": [
@@ -3292,6 +3297,9 @@
             ],
             [
                 "4666b0ee.6b512"
+            ],
+            [
+                "efca58619d6c8e41"
             ]
         ]
     },
@@ -3690,6 +3698,8 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
         "x": 1070,
         "y": 120,
         "wires": []
@@ -5703,7 +5713,6 @@
         "id": "481c8a3b.2077b4",
         "type": "server-state-changed",
         "z": "6a24dcbb.10a694",
-        "d": true,
         "name": "Nobody at home",
         "server": "6962e153.99eb9",
         "version": 3,
@@ -5727,9 +5736,14 @@
         "halt_if_compare": "is",
         "outputs": 2,
         "output_only_on_state_change": true,
-        "for": "0",
+        "for": "5",
         "forType": "num",
         "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
         "outputProperties": [
             {
                 "property": "payload",
@@ -5751,34 +5765,11 @@
             }
         ],
         "x": 100,
-        "y": 680,
+        "y": 660,
         "wires": [
             [
-                "dfb8cec7.185bd"
+                "da71aaf5498e2018"
             ],
-            []
-        ]
-    },
-    {
-        "id": "dfb8cec7.185bd",
-        "type": "api-call-service",
-        "z": "6a24dcbb.10a694",
-        "name": "Turn off the lights",
-        "server": "6962e153.99eb9",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "switch",
-        "service": "turn_off",
-        "entityId": "group.all_lights",
-        "data": "",
-        "dataType": "json",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 310,
-        "y": 680,
-        "wires": [
             []
         ]
     },
@@ -7737,7 +7728,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 370,
-        "y": 600,
+        "y": 580,
         "wires": []
     },
     {
@@ -10677,5 +10668,135 @@
                 "4d093ac3.d0c914"
             ]
         ]
+    },
+    {
+        "id": "da71aaf5498e2018",
+        "type": "api-current-state",
+        "z": "6a24dcbb.10a694",
+        "name": "",
+        "server": "6962e153.99eb9",
+        "version": 2,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "group.all_lights",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 350,
+        "y": 660,
+        "wires": [
+            [
+                "2d6e6e38650250c0"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2d6e6e38650250c0",
+        "type": "api-call-service",
+        "z": "6a24dcbb.10a694",
+        "name": "Send telegram msg to All",
+        "server": "6962e153.99eb9",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "notify",
+        "service": "telegram_chat_all",
+        "entityId": "",
+        "data": "{\"title\":\"*💡 Свет включен*\",\"message\":\"Никого нет дома более 5 минут, а свет остался включен. Что сделать?\",\"data\":{\"inline_keyboard\":[\"Выключить свет:/all_lights_off, Ничего не делать:/none\"]}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "data"
+            }
+        ],
+        "queue": "none",
+        "x": 630,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "efca58619d6c8e41",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "All lights off",
+        "server": "6962e153.99eb9",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_off",
+        "entityId": "group.all_lights",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 630,
+        "y": 980,
+        "wires": [
+            [
+                "e49bf2904015b92b"
+            ]
+        ]
+    },
+    {
+        "id": "e49bf2904015b92b",
+        "type": "api-call-service",
+        "z": "96899f2.417176",
+        "name": "Reply telegram msg",
+        "server": "6962e153.99eb9",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "telegram_bot",
+        "service": "send_message",
+        "entityId": "",
+        "data": "{\"title\":\"*Отработка команды*\",\"message\":\"Свет выключен\",\"target\":\"{{payload.event.message.chat.id}}\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 840,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7af45eafe85c0ff1",
+        "type": "comment",
+        "z": "6a24dcbb.10a694",
+        "name": "Выключение света если никого нет дома",
+        "info": "",
+        "x": 180,
+        "y": 620,
+        "wires": []
     }
 ]

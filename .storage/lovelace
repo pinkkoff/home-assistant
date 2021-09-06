@@ -7,23 +7,14 @@
             "views": [
                 {
                     "icon": "mdi:home-city-outline",
-                    "panel": false,
                     "path": "default_view",
                     "title": "\u0413\u043b\u0430\u0432\u043d\u044b\u0439 \u044d\u043a\u0440\u0430\u043d",
                     "badges": [
-                        {
-                            "entity": "group.smb_at_home",
-                            "name": "\u041b\u044e\u0434\u0438"
-                        },
                         {
                             "entity": "person.vladimir"
                         },
                         {
                             "entity": "person.anna"
-                        },
-                        {
-                            "entity": "weather.gismeteo_forecast",
-                            "name": "\u041f\u043e\u0433\u043e\u0434\u0430"
                         },
                         {
                             "entity": "sensor.gismeteo_temperature",
