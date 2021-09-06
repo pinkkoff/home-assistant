@@ -8822,7 +8822,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 510,
+        "x": 530,
         "y": 2020,
         "wires": [
             [
@@ -8855,7 +8855,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 630,
+        "x": 650,
         "y": 2020,
         "wires": [
             [
@@ -8882,7 +8882,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 650,
+        "x": 670,
         "y": 2060,
         "wires": [
             [
@@ -8900,7 +8900,7 @@
         "start": "",
         "inout": "out",
         "property": "rbe",
-        "x": 790,
+        "x": 810,
         "y": 2020,
         "wires": [
             [
@@ -8919,7 +8919,7 @@
         "inout": "out",
         "septopics": true,
         "property": "payload",
-        "x": 370,
+        "x": 390,
         "y": 2020,
         "wires": [
             [
@@ -8946,7 +8946,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 640,
+        "x": 660,
         "y": 1980,
         "wires": [
             [
@@ -8976,7 +8976,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 940,
+        "x": 960,
         "y": 2020,
         "wires": [
             [
@@ -9006,7 +9006,7 @@
                 "value": ""
             }
         ],
-        "entityidfilter": "sensor.xiaomi_humidifier_bedroom_water_level",
+        "entityidfilter": "sensor.xiaomi_humfan_bedroom_water_level",
         "entityidfiltertype": "exact",
         "outputinitially": false,
         "state_type": "num",
@@ -9068,7 +9068,7 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 1350,
+        "x": 1370,
         "y": 1900,
         "wires": [
             []
@@ -9091,7 +9091,7 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 1290,
+        "x": 1310,
         "y": 2060,
         "wires": [
             [
@@ -9121,7 +9121,7 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 1440,
+        "x": 1460,
         "y": 2060,
         "wires": [
             [
@@ -9146,7 +9146,7 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 1620,
+        "x": 1640,
         "y": 2060,
         "wires": [
             []
@@ -9157,7 +9157,7 @@
         "type": "server-state-changed",
         "z": "8d422126.121a1",
         "d": true,
-        "name": "Увлажнитель в гостиной (1)",
+        "name": "Увлажнитель в гостиной TV (1)",
         "server": "6962e153.99eb9",
         "version": 3,
         "exposeToHomeAssistant": false,
@@ -9171,7 +9171,7 @@
                 "value": ""
             }
         ],
-        "entityidfilter": "sensor.xiaomi_humidifier_livingroom_1_water_level",
+        "entityidfilter": "sensor.xiaomi_humfan_livingroom_1_water_level",
         "entityidfiltertype": "exact",
         "outputinitially": false,
         "state_type": "num",
@@ -9208,7 +9208,7 @@
                 "valueType": "triggerId"
             }
         ],
-        "x": 140,
+        "x": 150,
         "y": 2020,
         "wires": [
             [
@@ -9221,7 +9221,7 @@
         "type": "server-state-changed",
         "z": "8d422126.121a1",
         "d": true,
-        "name": "Увлажнитель в гостиной (2)",
+        "name": "Увлажнитель в гостиной PC (2)",
         "server": "6962e153.99eb9",
         "version": 3,
         "exposeToHomeAssistant": false,
@@ -9235,7 +9235,7 @@
                 "value": ""
             }
         ],
-        "entityidfilter": "sensor.xiaomi_humidifier_livingroom_2_water_level",
+        "entityidfilter": "sensor.xiaomi_humfan_livingroom_2_water_level",
         "entityidfiltertype": "exact",
         "outputinitially": false,
         "state_type": "num",
@@ -9272,7 +9272,7 @@
                 "valueType": "triggerId"
             }
         ],
-        "x": 140,
+        "x": 150,
         "y": 2060,
         "wires": [
             [
@@ -9307,7 +9307,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 1130,
+        "x": 1150,
         "y": 1940,
         "wires": [
             [
@@ -9338,7 +9338,7 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 1350,
+        "x": 1370,
         "y": 1940,
         "wires": [
             []
@@ -9361,7 +9361,7 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 1350,
+        "x": 1370,
         "y": 1980,
         "wires": [
             []
@@ -9394,7 +9394,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 1130,
+        "x": 1150,
         "y": 2100,
         "wires": [
             [
@@ -9425,7 +9425,7 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 1290,
+        "x": 1310,
         "y": 2100,
         "wires": [
             [
@@ -9450,7 +9450,7 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 1290,
+        "x": 1310,
         "y": 2140,
         "wires": [
             [
@@ -9480,7 +9480,7 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 1440,
+        "x": 1460,
         "y": 2100,
         "wires": [
             [
@@ -9510,7 +9510,7 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 1440,
+        "x": 1460,
         "y": 2140,
         "wires": [
             [
@@ -9535,7 +9535,7 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 1620,
+        "x": 1640,
         "y": 2100,
         "wires": [
             []
@@ -9559,7 +9559,7 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 1620,
+        "x": 1640,
         "y": 2140,
         "wires": [
             []
