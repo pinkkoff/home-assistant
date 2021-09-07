@@ -17,3 +17,6 @@ scene:
       light.yeelight_bedroom_ceiling_light_nightlight:
         state: "on"
         brightness: 10
+  - name: Выключить свет
+    entities:
+      group.all_lights: "off"

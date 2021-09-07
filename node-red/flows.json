@@ -10798,5 +10798,62 @@
         "x": 180,
         "y": 620,
         "wires": []
+    },
+    {
+        "id": "9325d9a0e31adf50",
+        "type": "inject",
+        "z": "ee1a9216.12937",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1100,
+        "wires": [
+            [
+                "4caf8229c6c4a10b"
+            ]
+        ]
+    },
+    {
+        "id": "4caf8229c6c4a10b",
+        "type": "api-render-template",
+        "z": "ee1a9216.12937",
+        "name": "Status",
+        "server": "6962e153.99eb9",
+        "version": 0,
+        "template": "Статус дома\nТемпература:\n\n    {% if states('sensor.xiaomi_thp_temperature_bedroom_158d00025f03f5') | float > 22 and states('sensor.xiaomi_thp_temperature_bedroom_158d00025f03f5') | float < 28 %} ✅ {% else %} ❗️{% endif %}Спальня: {{ states('sensor.xiaomi_thp_temperature_bedroom_158d00025f03f5') | float + 1 }}\n    Гостиная: {{ states('sensor.xiaomi_thp_temperature_livingroom_158d00046581b5') | float + 1 }}\nВлажность:\n    Спальня: {{ states('sensor.xiaomi_thp_humidity_bedroom_158d00025f03f5') | float + 1 }}\n    Гостиная: {{ states('sensor.xiaomi_thp_humidity_livingroom_158d00046581b5') | float + 1 }}\n\n{% if states('sensor.xiaomi_thp_temperature_bedroom_158d00025f03f5') | float > 22 and states('sensor.xiaomi_thp_temperature_bedroom_158d00025f03f5') | float < 28 %}\n ok\n{% else %}\n  no ok\n{% endif %}",
+        "resultsLocation": "payload",
+        "resultsLocationType": "msg",
+        "templateLocation": "template",
+        "templateLocationType": "msg",
+        "x": 350,
+        "y": 1100,
+        "wires": [
+            [
+                "5944f389767af4b7"
+            ]
+        ]
+    },
+    {
+        "id": "5944f389767af4b7",
+        "type": "debug",
+        "z": "ee1a9216.12937",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 1100,
+        "wires": []
     }
 ]
