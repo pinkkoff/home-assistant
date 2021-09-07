@@ -52,6 +52,7 @@ yandex_smart_home:
       - person.vladimir
       - person.anna
       - input_number.tuya_floorheater_bathroom_settemp
+      - climate.haier_ac_livingroom
 
   entity_config:
     humidifier.xiaomi_humfan_bedroom:
@@ -63,7 +64,7 @@ yandex_smart_home:
         - type: humidity
           entity: sensor.xiaomi_thp_humidity_bedroom_158d00025f03f5
         - type: water_level
-          entity: sensor.xiaomi_humidifier_bedroom_water_level 
+          entity: sensor.xiaomi_humfan_bedroom_water_level 
     humidifier.xiaomi_humfan_livingroom_1:
       name: "Увлажнитель 1"
       type: devices.types.humidifier
@@ -73,7 +74,7 @@ yandex_smart_home:
         - type: humidity
           entity: sensor.xiaomi_thp_humidity_livingroom_158d00046581b5
         - type: water_level
-          entity: sensor.xiaomi_humidifier_livingroom_1_water_level
+          entity: sensor.xiaomi_humfan_livingroom_1_water_level
     humidifier.xiaomi_humfan_livingroom_2:
       name: "Увлажнитель 2"
       type: devices.types.humidifier
@@ -83,7 +84,7 @@ yandex_smart_home:
         - type: humidity
           entity: sensor.xiaomi_thp_humidity_livingroom_158d00046581b5
         - type: water_level
-          entity: sensor.xiaomi_humidifier_livingroom_2_water_level
+          entity: sensor.xiaomi_humfan_livingroom_2_water_level
     switch.sonoff_water_valve_cold_inverse:
       name: "Холодная вода"
     switch.sonoff_water_valve_hot_inverse:
