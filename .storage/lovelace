@@ -41,26 +41,6 @@
                             "type": "weather-forecast"
                         },
                         {
-                            "cards": [
-                                {
-                                    "aspect_ratio": "60%",
-                                    "type": "iframe",
-                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&refresh=1m&theme=dark&panelId=53&from=now-24h&to=now #https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&theme=dark&panelId=9&refresh=1m&from=now-24h&to=now"
-                                },
-                                {
-                                    "aspect_ratio": "60%",
-                                    "type": "iframe",
-                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&refresh=1m&theme=dark&panelId=54&from=now-24h&to=now"
-                                },
-                                {
-                                    "aspect_ratio": "60%",
-                                    "type": "iframe",
-                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&refresh=1m&theme=dark&panelId=10&from=now-24h&to=now"
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "switch.xiaomi_wallswitch_corridor_light"
@@ -138,6 +118,10 @@
                                 },
                                 {
                                     "entity": "cover.xiaomi_curtain_bedroom_158d0004118cca"
+                                },
+                                {
+                                    "entity": "media_player.lg_tv_bedroom",
+                                    "name": "\u0422\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440 \u0432 \u0441\u043f\u0430\u043b\u044c\u043d\u0435"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -156,6 +140,101 @@
                                 }
                             ],
                             "title": "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u043c\u0438"
+                        },
+                        {
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "custom:mini-media-player",
+                                    "entity": "media_player.yandex_station_lite_bedroom",
+                                    "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f",
+                                    "icon": "mdi:bed",
+                                    "artwork": "cover",
+                                    "info": "short",
+                                    "volume_step": "10",
+                                    "shortcuts": {
+                                        "attribute": "sound_mode",
+                                        "buttons": [
+                                            {
+                                                "icon": "mdi:playlist-star",
+                                                "id": "\u0432\u043a\u043b\u044e\u0447\u0438 \u043c\u043e\u044e \u043b\u044e\u0431\u0438\u043c\u0443\u044e \u043c\u0443\u0437\u044b\u043a\u0443 \u0432\u043f\u0435\u0440\u0435\u043c\u0435\u0448\u043a\u0443",
+                                                "type": "command"
+                                            },
+                                            {
+                                                "icon": "mdi:playlist-music",
+                                                "id": "\u0432\u043a\u043b\u044e\u0447\u0438 \u043f\u043b\u0435\u0439\u043b\u0438\u0441\u0442 \u0434\u043d\u044f",
+                                                "type": "command"
+                                            },
+                                            {
+                                                "icon": "mdi:heart",
+                                                "id": "\u043b\u0430\u0439\u043a",
+                                                "type": "command"
+                                            },
+                                            {
+                                                "icon": "mdi:heart-off",
+                                                "id": "\u0441\u043d\u044f\u0442\u044c \u043b\u0430\u0439\u043a",
+                                                "type": "command"
+                                            }
+                                        ],
+                                        "columns": 4
+                                    }
+                                },
+                                {
+                                    "type": "custom:mini-media-player",
+                                    "entity": "media_player.yandex_station_mini_livingroom",
+                                    "name": "\u0417\u0430\u043b",
+                                    "icon": "mdi:table-chair",
+                                    "artwork": "cover",
+                                    "info": "short",
+                                    "volume_step": "10",
+                                    "shortcuts": {
+                                        "attribute": "sound_mode",
+                                        "buttons": [
+                                            {
+                                                "icon": "mdi:playlist-star",
+                                                "id": "\u0432\u043a\u043b\u044e\u0447\u0438 \u043c\u043e\u044e \u043b\u044e\u0431\u0438\u043c\u0443\u044e \u043c\u0443\u0437\u044b\u043a\u0443 \u0432\u043f\u0435\u0440\u0435\u043c\u0435\u0448\u043a\u0443",
+                                                "type": "command"
+                                            },
+                                            {
+                                                "icon": "mdi:playlist-music",
+                                                "id": "\u0432\u043a\u043b\u044e\u0447\u0438 \u043f\u043b\u0435\u0439\u043b\u0438\u0441\u0442 \u0434\u043d\u044f",
+                                                "type": "command"
+                                            },
+                                            {
+                                                "icon": "mdi:heart",
+                                                "id": "\u043b\u0430\u0439\u043a",
+                                                "type": "command"
+                                            },
+                                            {
+                                                "icon": "mdi:heart-off",
+                                                "id": "\u0441\u043d\u044f\u0442\u044c \u043b\u0430\u0439\u043a",
+                                                "type": "command"
+                                            }
+                                        ],
+                                        "columns": 4
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "aspect_ratio": "60%",
+                                    "type": "iframe",
+                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&refresh=1m&theme=dark&panelId=53&from=now-24h&to=now #https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&theme=dark&panelId=9&refresh=1m&from=now-24h&to=now"
+                                },
+                                {
+                                    "aspect_ratio": "60%",
+                                    "type": "iframe",
+                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&refresh=1m&theme=dark&panelId=54&from=now-24h&to=now"
+                                },
+                                {
+                                    "aspect_ratio": "60%",
+                                    "type": "iframe",
+                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&refresh=1m&theme=dark&panelId=10&from=now-24h&to=now"
+                                }
+                            ],
+                            "type": "vertical-stack"
                         }
                     ]
                 },
@@ -356,6 +435,81 @@
                                 }
                             ],
                             "type": "conditional"
+                        },
+                        {
+                            "type": "custom:scheduler-card",
+                            "title": "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0448\u0442\u043e\u0440\u0430\u043c\u0438",
+                            "include": [
+                                "cover.xiaomi_curtain_bedroom_158d0004118cca"
+                            ],
+                            "display_options": {
+                                "primary_info": [
+                                    "{name} ({days})"
+                                ],
+                                "secondary_info": [
+                                    "time"
+                                ],
+                                "icon": "hass:action"
+                            },
+                            "discover_existing": true
+                        },
+                        {
+                            "type": "custom:mini-media-player",
+                            "sound_mode": "icon",
+                            "shortcuts": {
+                                "attribute": "sound_mode",
+                                "buttons": [
+                                    {
+                                        "icon": "mdi:account-voice",
+                                        "id": "\u041f\u0440\u043e\u0438\u0437\u043d\u0435\u0441\u0438 \u0442\u0435\u043a\u0441\u0442",
+                                        "type": "sound_mode"
+                                    },
+                                    {
+                                        "icon": "mdi:robot",
+                                        "id": "\u0412\u044b\u043f\u043e\u043b\u043d\u0438 \u043a\u043e\u043c\u0430\u043d\u0434\u0443",
+                                        "type": "sound_mode"
+                                    },
+                                    {
+                                        "icon": "mdi:playlist-star",
+                                        "id": "\u0432\u043a\u043b\u044e\u0447\u0438 \u043c\u043e\u044e \u043b\u044e\u0431\u0438\u043c\u0443\u044e \u043c\u0443\u0437\u044b\u043a\u0443 \u0432\u043f\u0435\u0440\u0435\u043c\u0435\u0448\u043a\u0443",
+                                        "type": "command"
+                                    },
+                                    {
+                                        "icon": "mdi:playlist-music",
+                                        "id": "\u0432\u043a\u043b\u044e\u0447\u0438 \u043f\u043b\u0435\u0439\u043b\u0438\u0441\u0442 \u0434\u043d\u044f",
+                                        "type": "command"
+                                    },
+                                    {
+                                        "icon": "mdi:heart",
+                                        "id": "\u043b\u0430\u0439\u043a",
+                                        "type": "command"
+                                    },
+                                    {
+                                        "icon": "mdi:heart-off",
+                                        "id": "\u0441\u043d\u044f\u0442\u044c \u043b\u0430\u0439\u043a",
+                                        "type": "command"
+                                    }
+                                ],
+                                "columns": 6
+                            },
+                            "hide": {
+                                "sound_mode": false,
+                                "runtime": false
+                            },
+                            "tts": {
+                                "platform": "yandex_station"
+                            },
+                            "artwork": "cover",
+                            "source": "icon",
+                            "info": "short",
+                            "replace_mute": "play_pause",
+                            "name": "\u042f\u043d\u0434\u0435\u043a\u0441 \u0421\u0442\u0430\u043d\u0446\u0438\u044f (\u0421\u043f\u0430\u043b\u044c\u043d\u044f)",
+                            "entity": "media_player.yandex_station_lite_bedroom",
+                            "volume_step": "10"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.lg_tv_bedroom"
                         }
                     ]
                 },
@@ -436,10 +590,6 @@
                             "name": "\u041a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440"
                         },
                         {
-                            "type": "entity",
-                            "entity": "vacuum.xiaomi_vacuum_cleaner"
-                        },
-                        {
                             "type": "entities",
                             "entities": [
                                 {
@@ -500,6 +650,65 @@
                             ],
                             "title": "\u0423\u0432\u043b\u0430\u0436\u043d\u0438\u0442\u0435\u043b\u044c (PC)",
                             "show_header_toggle": false
+                        },
+                        {
+                            "type": "custom:vacuum-card",
+                            "entity": "vacuum.xiaomi_vacuum_cleaner",
+                            "image": "default"
+                        },
+                        {
+                            "type": "custom:mini-media-player",
+                            "entity": "media_player.yandex_station_mini_livingroom",
+                            "sound_mode": "icon",
+                            "shortcuts": {
+                                "attribute": "sound_mode",
+                                "buttons": [
+                                    {
+                                        "icon": "mdi:account-voice",
+                                        "id": "\u041f\u0440\u043e\u0438\u0437\u043d\u0435\u0441\u0438 \u0442\u0435\u043a\u0441\u0442",
+                                        "type": "sound_mode"
+                                    },
+                                    {
+                                        "icon": "mdi:robot",
+                                        "id": "\u0412\u044b\u043f\u043e\u043b\u043d\u0438 \u043a\u043e\u043c\u0430\u043d\u0434\u0443",
+                                        "type": "sound_mode"
+                                    },
+                                    {
+                                        "icon": "mdi:playlist-star",
+                                        "id": "\u0432\u043a\u043b\u044e\u0447\u0438 \u043c\u043e\u044e \u043b\u044e\u0431\u0438\u043c\u0443\u044e \u043c\u0443\u0437\u044b\u043a\u0443 \u0432\u043f\u0435\u0440\u0435\u043c\u0435\u0448\u043a\u0443",
+                                        "type": "command"
+                                    },
+                                    {
+                                        "icon": "mdi:playlist-music",
+                                        "id": "\u0432\u043a\u043b\u044e\u0447\u0438 \u043f\u043b\u0435\u0439\u043b\u0438\u0441\u0442 \u0434\u043d\u044f",
+                                        "type": "command"
+                                    },
+                                    {
+                                        "icon": "mdi:heart",
+                                        "id": "\u043b\u0430\u0439\u043a",
+                                        "type": "command"
+                                    },
+                                    {
+                                        "icon": "mdi:heart-off",
+                                        "id": "\u0441\u043d\u044f\u0442\u044c \u043b\u0430\u0439\u043a",
+                                        "type": "command"
+                                    }
+                                ],
+                                "columns": 6
+                            },
+                            "hide": {
+                                "sound_mode": false,
+                                "runtime": false
+                            },
+                            "tts": {
+                                "platform": "yandex_station"
+                            },
+                            "artwork": "cover",
+                            "source": "icon",
+                            "info": "short",
+                            "replace_mute": "play_pause",
+                            "name": "\u042f\u043d\u0434\u0435\u043a\u0441 \u0421\u0442\u0430\u043d\u0446\u0438\u044f",
+                            "volume_step": "10"
                         }
                     ],
                     "icon": "mdi:table-chair",
@@ -881,7 +1090,7 @@
                                                     "entity": "sensor.last_boot"
                                                 },
                                                 {
-                                                    "entity": "sensor.snapshot_backup",
+                                                    "entity": "sensor.backup_state",
                                                     "name": "Backup"
                                                 }
                                             ],
@@ -1044,6 +1253,14 @@
                                     "name": "Space used %"
                                 },
                                 {
+                                    "entity": "sensor.nasmaster_temperature",
+                                    "name": "NASMaster temp"
+                                },
+                                {
+                                    "entity": "sensor.nasmaster_volume_1_average_disk_temp",
+                                    "name": "Disk temp"
+                                },
+                                {
                                     "entity": "sensor.nasmaster_drive_1_status",
                                     "name": "Disk 1"
                                 },
@@ -1058,15 +1275,46 @@
                                 {
                                     "entity": "sensor.nasmaster_drive_4_status",
                                     "name": "Disk 4"
-                                },
-                                {
-                                    "entity": "sensor.nasmaster_volume_1_average_disk_temp",
-                                    "name": "Disk temp"
                                 }
                             ],
                             "show_header_toggle": false,
                             "title": "NASMaster",
                             "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.kidnas_cpu_utilization_total",
+                                    "name": "CPU load"
+                                },
+                                {
+                                    "entity": "sensor.kidnas_memory_usage_real",
+                                    "name": "Memory used"
+                                },
+                                {
+                                    "entity": "sensor.kidnas_volume_1_used_space",
+                                    "name": "Space used"
+                                },
+                                {
+                                    "entity": "sensor.kidnas_volume_1_volume_used",
+                                    "name": "Space used %"
+                                },
+                                {
+                                    "entity": "sensor.kidnas_temperature",
+                                    "name": "KidNAS temp"
+                                },
+                                {
+                                    "entity": "sensor.kidnas_drive_1_temperature",
+                                    "name": "Disk temp"
+                                },
+                                {
+                                    "entity": "sensor.kidnas_drive_1_status",
+                                    "name": "Disk status"
+                                }
+                            ],
+                            "title": "KidNAS",
+                            "show_header_toggle": false
                         }
                     ],
                     "icon": "mdi:lan",
@@ -1334,6 +1582,116 @@
                                 }
                             ],
                             "type": "vertical-stack"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.lg_tv_bedroom"
+                        },
+                        {
+                            "type": "custom:tv-card",
+                            "entity": "media_player.lg_tv_bedroom",
+                            "name": "\u0422\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440",
+                            "tv": true,
+                            "power_on": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "power_off": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "back": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "home": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "up": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "left": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "select": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "right": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "down": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "source": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "channelup": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "channeldown": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "volume_up": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "volume_down": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "volume_mute": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            },
+                            "youtube": {
+                                "service": "wake_on_lan.send_magic_packet",
+                                "service_data": {
+                                    "mac": "64:95:6C:9B:AA:A7"
+                                }
+                            }
+                        },
+                        {
+                            "type": "entity",
+                            "entity": "vacuum.xiaomi_vacuum_cleaner"
                         }
                     ],
                     "title": "\u0442\u0435\u0441\u0442"

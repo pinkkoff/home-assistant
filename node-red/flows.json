@@ -2347,7 +2347,7 @@
         "outputProperties": [],
         "queue": "none",
         "x": 610,
-        "y": 420,
+        "y": 400,
         "wires": [
             []
         ]
@@ -2370,7 +2370,7 @@
         "outputProperties": [],
         "queue": "none",
         "x": 600,
-        "y": 460,
+        "y": 440,
         "wires": [
             []
         ]
@@ -2411,7 +2411,8 @@
                 "2e1e95f6.5bf28a",
                 "672d7f48.28336",
                 "a150322e.bbb5e",
-                "4e74ee01.78737"
+                "4e74ee01.78737",
+                "92d684ce97a84df4"
             ]
         ]
     },
@@ -2500,7 +2501,8 @@
             [
                 "ddfcfe38.1b09c",
                 "dae259f6.37a788",
-                "5661e385.1d916c"
+                "5661e385.1d916c",
+                "44fd66afd6ba1c03"
             ],
             []
         ]
@@ -2530,7 +2532,7 @@
         ],
         "queue": "none",
         "x": 370,
-        "y": 560,
+        "y": 540,
         "wires": [
             [
                 "97fb19bd.48d798"
@@ -2555,7 +2557,7 @@
         "outputProperties": [],
         "queue": "none",
         "x": 360,
-        "y": 600,
+        "y": 580,
         "wires": [
             []
         ]
@@ -7759,7 +7761,7 @@
         "outputProperties": [],
         "queue": "none",
         "x": 580,
-        "y": 500,
+        "y": 480,
         "wires": [
             []
         ]
@@ -7782,7 +7784,7 @@
         "outputProperties": [],
         "queue": "none",
         "x": 340,
-        "y": 640,
+        "y": 620,
         "wires": [
             []
         ]
@@ -10855,5 +10857,277 @@
         "x": 530,
         "y": 1100,
         "wires": []
+    },
+    {
+        "id": "375f6d7e17ad35b7",
+        "type": "comment",
+        "z": "8d422126.121a1",
+        "name": "Дверь открыта и никто не вошел",
+        "info": "",
+        "x": 160,
+        "y": 2220,
+        "wires": []
+    },
+    {
+        "id": "264b9221674ecbd3",
+        "type": "server-state-changed",
+        "z": "8d422126.121a1",
+        "name": "Door open",
+        "server": "6962e153.99eb9",
+        "version": 3,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "binary_sensor.xiaomi_doorwindow_corridor_entrance",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 80,
+        "y": 2280,
+        "wires": [
+            [
+                "4e4d152d3b879769"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "4e4d152d3b879769",
+        "type": "ha-wait-until",
+        "z": "8d422126.121a1",
+        "name": "",
+        "server": "6962e153.99eb9",
+        "version": 0,
+        "outputs": 2,
+        "entityId": "group.smb_at_home",
+        "entityIdFilterType": "exact",
+        "property": "state",
+        "comparator": "is",
+        "value": "home",
+        "valueType": "str",
+        "timeout": "10",
+        "timeoutType": "num",
+        "timeoutUnits": "minutes",
+        "entityLocation": "",
+        "entityLocationType": "none",
+        "checkCurrentState": true,
+        "blockInputOverrides": true,
+        "x": 240,
+        "y": 2280,
+        "wires": [
+            [],
+            [
+                "e7e937041cf453f4",
+                "23bfeea7513b9720"
+            ]
+        ]
+    },
+    {
+        "id": "e7e937041cf453f4",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "Send message to All",
+        "server": "6962e153.99eb9",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "notify",
+        "service": "telegram_chat_all",
+        "entityId": "",
+        "data": "{\"title\":\"❗️️*Опасность*\",\"message\":\"Входная дверь была открыта, но в течение 10 минут вас нет дома!\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 440,
+        "y": 2260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "23bfeea7513b9720",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "Send push to all",
+        "server": "6962e153.99eb9",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "notify",
+        "service": "mobile_app_iphone_all",
+        "entityId": "",
+        "data": "{\"message\":\"Дверь была открыта, но в течение 10 минут вас нет дома!\",\"title\":\"*❗ОПАСНОСТЬ❗️ Возможно проникновение*\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 420,
+        "y": 2300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c63e1d7a9064fabf",
+        "type": "inject",
+        "z": "ee1a9216.12937",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 740,
+        "y": 100,
+        "wires": [
+            [
+                "416e2e6de345a390",
+                "cf0a030f93be24f0"
+            ]
+        ]
+    },
+    {
+        "id": "416e2e6de345a390",
+        "type": "api-call-service",
+        "z": "ee1a9216.12937",
+        "name": "Yandex text to speech",
+        "server": "6962e153.99eb9",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "media_player",
+        "service": "play_media",
+        "entityId": "media_player.yandex_station_mini_livingroom",
+        "data": "{\"media_content_id\":\"привет. как дела?\",\"media_content_type\":\"text\",\"extra\":{\"volume_level\":0.5}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 960,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "92d684ce97a84df4",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "Yandex text to speech",
+        "server": "6962e153.99eb9",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "media_player",
+        "service": "play_media",
+        "entityId": "media_player.yandex_station_mini_livingroom, media_player.yandex_station_lite_bedroom",
+        "data": "{\"media_content_id\":\"Обнаружено задымление! Примите меры!\",\"media_content_type\":\"text\",\"extra\":{\"volume_level\":2}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 820,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cf0a030f93be24f0",
+        "type": "api-call-service",
+        "z": "ee1a9216.12937",
+        "name": "Yandex text to speech",
+        "server": "6962e153.99eb9",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "media_player",
+        "service": "play_media",
+        "entityId": "media_player.yandex_station_mini_livingroom, media_player.yandex_station_lite_bedroom",
+        "data": "{\"media_content_id\":\"Обнаружено задымление! Примите меры!\",\"media_content_type\":\"text\",\"extra\":{\"volume_level\":0.5}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1120,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "44fd66afd6ba1c03",
+        "type": "api-call-service",
+        "z": "8d422126.121a1",
+        "name": "Yandex text to speech",
+        "server": "6962e153.99eb9",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "media_player",
+        "service": "play_media",
+        "entityId": "media_player.yandex_station_mini_livingroom, media_player.yandex_station_lite_bedroom",
+        "data": "{\"media_content_id\":\"Датчик протечки сработал! Возможно затопление!\",\"media_content_type\":\"text\",\"extra\":{\"volume_level\":2}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 360,
+        "y": 660,
+        "wires": [
+            []
+        ]
     }
 ]

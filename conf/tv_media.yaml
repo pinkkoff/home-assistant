@@ -1,0 +1,8 @@
+webostv:
+  - host: 192.168.1.89
+    name: LG TV bedroom
+    turn_on_action:
+      service: wake_on_lan.send_magic_packet
+      data:
+        mac: 64:95:6C:9B:AA:A7
+        broadcast_address: 192.168.1.255

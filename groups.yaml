@@ -15,7 +15,21 @@ all_lights:
     - switch.xiaomi_wallswitch_cloackroom_light
     - switch.xiaomi_wallswitch_livingroom_kitchen_main
     - switch.xiaomi_wallswitch_livingroom_kitchen_sill
-#
+
+##
+# Умные устройства
+all_devices:
+  name: Все умные устройства
+  entities:
+    - switch.plug_158d00032d5e8b
+    - switch.plug_158d0002677bd3
+    - humidifier.xiaomi_humfan_bedroom
+    - humidifier.xiaomi_humfan_livingroom_1
+    - humidifier.xiaomi_humfan_livingroom_2
+    - climate.haier_ac_livingroom
+    - switch.xiaomi_wallswitch_bathroom_fan
+
+##
 # Есть ли кто-то дома
 smb_at_home:
   name: Кто-то дома

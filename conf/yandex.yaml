@@ -89,3 +89,13 @@ yandex_smart_home:
       name: "Холодная вода"
     switch.sonoff_water_valve_hot_inverse:
       name: "Горячая вода"
+
+### Yandex управление колонкой Яндекса ###
+yandex_station:
+  devices:
+    FF98F029F546BAF606AC3AD7:  # device_id колонки
+      host: 192.168.1.95
+      name: media_player.yandex_station_mini_livingroom
+    LG00000000000002842700001013446b:  # device_id колонки
+        host: 192.168.1.97
+        name: media_player.yandex_station_lite_bedroom
