@@ -709,6 +709,10 @@
                             "replace_mute": "play_pause",
                             "name": "\u042f\u043d\u0434\u0435\u043a\u0441 \u0421\u0442\u0430\u043d\u0446\u0438\u044f",
                             "volume_step": "10"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.lg_tv_livingroom"
                         }
                     ],
                     "icon": "mdi:table-chair",
@@ -883,6 +887,15 @@
                             "show_header_toggle": false,
                             "state_color": true,
                             "type": "entities"
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "input_boolean.door_bell",
+                            "icon_height": "40px",
+                            "show_state": true
                         },
                         {
                             "entities": [

@@ -53,3 +53,10 @@ notify:
   - name: telegram_chat_diag
     platform: telegram
     chat_id: !secret telegram_bot_allowed_chat_id_diag
+
+# Door bell
+input_boolean:
+  door_bell:
+    name: "Дверной звонок"
+    initial: on
+    icon: mdi:bell

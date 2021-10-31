@@ -35,8 +35,8 @@ tts:
 hacs:
   token: !secret HACS_github_token
   appdaemon: true
-  python_script: true
-  theme: true
+  #python_script: true
+  #theme: true
 
 # Yandex time
 sensor:
