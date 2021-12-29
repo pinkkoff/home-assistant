@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace",
     "data": {
         "config": {
@@ -38,7 +39,8 @@
                             "entity": "weather.gismeteo_forecast",
                             "name": "\u0413\u0438\u0441\u043c\u0435\u0442\u0435\u043e",
                             "show_forecast": true,
-                            "type": "weather-forecast"
+                            "type": "weather-forecast",
+                            "secondary_info_attribute": "humidity"
                         },
                         {
                             "entities": [
@@ -122,6 +124,10 @@
                                 {
                                     "entity": "media_player.lg_tv_bedroom",
                                     "name": "\u0422\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440 \u0432 \u0441\u043f\u0430\u043b\u044c\u043d\u0435"
+                                },
+                                {
+                                    "entity": "media_player.lg_tv_livingroom",
+                                    "name": "\u0422\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440 \u0432 \u0433\u043e\u0441\u0442\u0438\u043d\u043e\u0439"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -493,23 +499,117 @@
                                 "columns": 6
                             },
                             "hide": {
-                                "sound_mode": false,
+                                "sound_mode": true,
                                 "runtime": false
                             },
                             "tts": {
                                 "platform": "yandex_station"
                             },
-                            "artwork": "cover",
                             "source": "icon",
                             "info": "short",
                             "replace_mute": "play_pause",
                             "name": "\u042f\u043d\u0434\u0435\u043a\u0441 \u0421\u0442\u0430\u043d\u0446\u0438\u044f (\u0421\u043f\u0430\u043b\u044c\u043d\u044f)",
                             "entity": "media_player.yandex_station_lite_bedroom",
-                            "volume_step": "10"
+                            "volume_step": "10",
+                            "artwork": "full-cover"
                         },
                         {
-                            "type": "media-control",
-                            "entity": "media_player.lg_tv_bedroom"
+                            "type": "custom:mini-media-player",
+                            "volume_stateless": true,
+                            "toggle_power": true,
+                            "sound_mode": "icon",
+                            "group": false,
+                            "source": "icon",
+                            "artwork": "material",
+                            "shortcuts": {
+                                "columns": 5,
+                                "buttons": [
+                                    {
+                                        "icon": "mdi:arrow-left-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_bedroom",
+                                            "button": "LEFT"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:arrow-right-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_bedroom",
+                                            "button": "RIGHT"
+                                        }
+                                    },
+                                    {
+                                        "name": "OK",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_bedroom",
+                                            "button": "ENTER"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:arrow-down-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_bedroom",
+                                            "button": "DOWN"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:arrow-up-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_bedroom",
+                                            "button": "UP"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:arrow-u-down-left-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_bedroom",
+                                            "button": "BACK"
+                                        }
+                                    },
+                                    {
+                                        "name": "MENU",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_bedroom",
+                                            "button": "MENU"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:information-outline",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_bedroom",
+                                            "button": "INFO"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:exit-to-app",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_bedroom",
+                                            "button": "EXIT"
+                                        }
+                                    }
+                                ]
+                            },
+                            "entity": "media_player.lg_tv_bedroom",
+                            "name": "\u0422\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440 (\u0441\u043f\u0430\u043b\u044c\u043d\u044f)",
+                            "icon": "mdi:television-box"
                         }
                     ]
                 },
@@ -659,7 +759,6 @@
                         {
                             "type": "custom:mini-media-player",
                             "entity": "media_player.yandex_station_mini_livingroom",
-                            "sound_mode": "icon",
                             "shortcuts": {
                                 "attribute": "sound_mode",
                                 "buttons": [
@@ -675,7 +774,7 @@
                                     },
                                     {
                                         "icon": "mdi:playlist-star",
-                                        "id": "\u0432\u043a\u043b\u044e\u0447\u0438 \u043c\u043e\u044e \u043b\u044e\u0431\u0438\u043c\u0443\u044e \u043c\u0443\u0437\u044b\u043a\u0443 \u0432\u043f\u0435\u0440\u0435\u043c\u0435\u0448\u043a\u0443",
+                                        "id": "\u0432\u043a\u043b\u044e\u0447\u0438 \u043c\u043e\u044e \u043b\u044e\u0431\u0438\u043c\u0443\u044e \u043c\u0443\u0437\u044b\u043a\u0443",
                                         "type": "command"
                                     },
                                     {
@@ -697,22 +796,118 @@
                                 "columns": 6
                             },
                             "hide": {
-                                "sound_mode": false,
+                                "sound_mode": true,
                                 "runtime": false
                             },
                             "tts": {
                                 "platform": "yandex_station"
                             },
-                            "artwork": "cover",
-                            "source": "icon",
                             "info": "short",
                             "replace_mute": "play_pause",
                             "name": "\u042f\u043d\u0434\u0435\u043a\u0441 \u0421\u0442\u0430\u043d\u0446\u0438\u044f",
-                            "volume_step": "10"
+                            "volume_step": "10",
+                            "source": "icon",
+                            "sound_mode": "icon",
+                            "group": false,
+                            "artwork": "full-cover"
                         },
                         {
-                            "type": "media-control",
-                            "entity": "media_player.lg_tv_livingroom"
+                            "type": "custom:mini-media-player",
+                            "entity": "media_player.lg_tv_livingroom",
+                            "volume_stateless": true,
+                            "toggle_power": true,
+                            "sound_mode": "icon",
+                            "group": false,
+                            "source": "icon",
+                            "artwork": "material",
+                            "shortcuts": {
+                                "columns": 5,
+                                "buttons": [
+                                    {
+                                        "icon": "mdi:arrow-left-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_livingroom",
+                                            "button": "LEFT"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:arrow-right-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_livingroom",
+                                            "button": "RIGHT"
+                                        }
+                                    },
+                                    {
+                                        "name": "OK",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_livingroom",
+                                            "button": "ENTER"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:arrow-down-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_livingroom",
+                                            "button": "DOWN"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:arrow-up-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_livingroom",
+                                            "button": "UP"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:arrow-u-down-left-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_livingroom",
+                                            "button": "BACK"
+                                        }
+                                    },
+                                    {
+                                        "name": "MENU",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_livingroom",
+                                            "button": "MENU"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:information-outline",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_livingroom",
+                                            "button": "INFO"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:exit-to-app",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_livingroom",
+                                            "button": "EXIT"
+                                        }
+                                    }
+                                ]
+                            },
+                            "icon": "mdi:television-box",
+                            "name": "\u0422\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440 (\u0433\u043e\u0441\u0442\u0438\u043d\u0430\u044f)"
                         }
                     ],
                     "icon": "mdi:table-chair",
@@ -795,21 +990,6 @@
                                     "name": "\u0410\u0432\u0442\u043e \u043f\u043e\u0434\u0441\u0432\u0435\u0442\u043a\u0430"
                                 }
                             ]
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.tuya_floorheater_bathroom_currtemp",
-                                    "name": "T \u043f\u043e\u043b\u0430"
-                                },
-                                {
-                                    "entity": "input_number.tuya_floorheater_bathroom_settemp",
-                                    "name": "T \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "\u0422\u0435\u043f\u043b\u044b\u0439 \u043f\u043e\u043b",
-                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:shower",
@@ -975,19 +1155,22 @@
                                     "entity": "binary_sensor.bmw3_windows"
                                 },
                                 {
-                                    "entity": "binary_sensor.bmw_3_lights_parking"
-                                },
-                                {
                                     "entity": "sensor.bmw3_remaining_fuel"
                                 },
                                 {
-                                    "entity": "sensor.bmw3_remaining_range"
+                                    "entity": "sensor.bmw3_remaining_range_fuel"
                                 },
                                 {
-                                    "entity": "sensor.320d_xdrive_mileage"
+                                    "entity": "sensor.bmw3_mileage"
                                 }
                             ],
-                            "image": "https://a.d-cd.net/UsAAAgMF4eA-960.jpg"
+                            "image": "https://a.d-cd.net/UsAAAgMF4eA-960.jpg",
+                            "tap_action": {
+                                "action": "more-info"
+                            },
+                            "hold_action": {
+                                "action": "none"
+                            }
                         },
                         {
                             "type": "glance",
@@ -999,7 +1182,10 @@
                                     "entity": "binary_sensor.bmw3_windows"
                                 },
                                 {
-                                    "entity": "sensor.bmw3_remaining_range"
+                                    "entity": "sensor.bmw3_remaining_fuel"
+                                },
+                                {
+                                    "entity": "sensor.bmw3_remaining_range_fuel"
                                 }
                             ],
                             "show_name": false,
@@ -1036,6 +1222,16 @@
                                         "action": "toggle"
                                     },
                                     "type": "entity-button"
+                                },
+                                {
+                                    "type": "entity-button",
+                                    "entity": "script.check_config_ha",
+                                    "icon": "mdi:playlist-check",
+                                    "name": "Check",
+                                    "show_state": false,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    }
                                 },
                                 {
                                     "entity": "script.restart_ha_core",
@@ -1382,7 +1578,7 @@
                             "columns": 3,
                             "entities": [
                                 {
-                                    "entity": "fan.xiaomi_humidifier_bedroom"
+                                    "entity": "humidifier.xiaomi_humfan_bedroom"
                                 },
                                 {
                                     "entity": "sensor.xiaomi_gateway_illumination_7c49eb1babbf"
@@ -1477,21 +1673,6 @@
                             "type": "vertical-stack"
                         },
                         {
-                            "entity": "switch.plug_158d00032d5e8b",
-                            "hold_action": {
-                                "action": "more-info"
-                            },
-                            "icon": "mdi:thermometer-plus",
-                            "icon_height": "35px",
-                            "name": "\u041e\u0431\u043e\u0433\u0440\u0435\u0432\u0430\u0442\u0435\u043b\u044c",
-                            "show_icon": true,
-                            "show_name": true,
-                            "tap_action": {
-                                "action": "toggle"
-                            },
-                            "type": "entity-button"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "sensor.xiaomi_thp_bedroom_battery",
@@ -1565,146 +1746,7 @@
                         {
                             "type": "thermostat",
                             "entity": "climate.tuya_floorheater_bathroom",
-                            "name": "Tuya"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "input_number.tuya_floorheater_bathroom_settemp"
-                                },
-                                {
-                                    "entity": "sensor.tuya_floorheater_bathroom_currsettemp"
-                                },
-                                {
-                                    "entity": "sensor.tuya_floorheater_bathroom_currtemp"
-                                }
-                            ]
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "aspect_ratio": "60%",
-                                    "type": "iframe",
-                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&theme=dark&panelId=9&refresh=1m&from=now-24h&to=now"
-                                },
-                                {
-                                    "aspect_ratio": "60%",
-                                    "type": "iframe",
-                                    "url": "https://grafana.pinkkoff.ru/api/hassio_ingress/NoCG458pH16mZ8nl_Ji_8eOWp0WOQsuVFPAgFWl5Ra0/d-solo/zO6Ny-Zgk/klimat?orgId=1&refresh=1m&theme=dark&panelId=10&from=now-24h&to=now"
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.lg_tv_bedroom"
-                        },
-                        {
-                            "type": "custom:tv-card",
-                            "entity": "media_player.lg_tv_bedroom",
-                            "name": "\u0422\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440",
-                            "tv": true,
-                            "power_on": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "power_off": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "back": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "home": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "up": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "left": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "select": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "right": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "down": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "source": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "channelup": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "channeldown": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "volume_up": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "volume_down": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "volume_mute": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            },
-                            "youtube": {
-                                "service": "wake_on_lan.send_magic_packet",
-                                "service_data": {
-                                    "mac": "64:95:6C:9B:AA:A7"
-                                }
-                            }
-                        },
-                        {
-                            "type": "entity",
-                            "entity": "vacuum.xiaomi_vacuum_cleaner"
+                            "name": "\u0422\u0435\u043f\u043b\u044b\u0439 \u043f\u043e\u043b Tuya"
                         }
                     ],
                     "title": "\u0442\u0435\u0441\u0442"

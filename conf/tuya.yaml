@@ -6,32 +6,32 @@
 
 ###
 ### Sensors ###
-sensor:
-# Tuya
-  - platform: template
-    sensors:
-      tuya_floorheater_bathroom_currtemp:
-        friendly_name: "Текущая температура теплого пола"
-        value_template: "{{ (state_attr('climate.tuya_floorheater_bathroom', 'current_temperature')) / 2 }}"
-        device_class: temperature
-        unit_of_measurement: "°C"
-  - platform: template
-    sensors:
-      tuya_floorheater_bathroom_currsettemp:
-        friendly_name: "Выставленная температура теплого пола"
-        value_template: "{{ (state_attr('climate.tuya_floorheater_bathroom', 'temperature')) / 2 }}"
-        device_class: temperature
-        unit_of_measurement: "°C"
-
-###
-### Input numbers ###
-input_number:
-# Temp in floorheater in bathroom
-  tuya_floorheater_bathroom_settemp: 
-    name: "Заданная температура пола в ванной"
-    unit_of_measurement: '°C'
-    min: 15
-    max: 35
-    step: 0.5
-    mode: slider
-    icon: mdi:thermometer
+#sensor:
+## Tuya
+#  - platform: template
+#    sensors:
+#      tuya_floorheater_bathroom_currtemp:
+#        friendly_name: "Текущая температура теплого пола"
+#        value_template: "{{ (state_attr('climate.tuya_floorheater_bathroom', 'current_temperature')) / 2 }}"
+#        device_class: temperature
+#        unit_of_measurement: "°C"
+#  - platform: template
+#    sensors:
+#      tuya_floorheater_bathroom_currsettemp:
+#        friendly_name: "Выставленная температура теплого пола"
+#        value_template: "{{ (state_attr('climate.tuya_floorheater_bathroom', 'temperature')) / 2 }}"
+#        device_class: temperature
+#        unit_of_measurement: "°C"
+#
+####
+#### Input numbers ###
+#input_number:
+## Temp in floorheater in bathroom
+#  tuya_floorheater_bathroom_settemp: 
+#    name: "Заданная температура пола в ванной"
+#    unit_of_measurement: '°C'
+#    min: 15
+#    max: 35
+#    step: 0.5
+#    mode: slider
+#    icon: mdi:thermometer

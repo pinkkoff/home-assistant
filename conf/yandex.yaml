@@ -47,12 +47,16 @@ yandex_smart_home:
     # Water
       - switch.sonoff_water_valve_cold_inverse
       - switch.sonoff_water_valve_hot_inverse
+    # TV
+      - media_player.lg_tv_bedroom
+      - media_player.lg_tv_livingroom
     # Other
       - group.smb_at_home
       - person.vladimir
       - person.anna
       - input_number.tuya_floorheater_bathroom_settemp
       - climate.haier_ac_livingroom
+
 
   entity_config:
     humidifier.xiaomi_humfan_bedroom:

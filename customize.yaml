@@ -1,6 +1,6 @@
-fan.xiaomi_miio_device:
-  humidity: 52
-  mode: silent
+#fan.xiaomi_miio_device:
+#  humidity: 52
+#  mode: silent
 ###
 # Ping sensors
 binary_sensor.router_ping:

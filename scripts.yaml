@@ -23,3 +23,7 @@ restart_ha_scripts:
   sequence:
     - alias: Restart Home Assistant Scripts
       service: script.reload
+check_config_ha:
+  alias: Проверить конфиг HA
+  sequence:
+    service: config_check.run

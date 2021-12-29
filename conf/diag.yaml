@@ -10,6 +10,9 @@ wake_on_lan:
 #    username: nasmaster_username
 #    password: nasmaster_pass
 
+### Check config HACS ###
+config_check:
+
 ###
 ### Binary sensors ###
 binary_sensor:

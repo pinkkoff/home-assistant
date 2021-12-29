@@ -35,7 +35,7 @@ sensor:
   - platform: template
     sensors:
       xiaomi_thp_bedroom_battery:
-        friendly_name: "Заряд в датчике THP в комнате"
+        friendly_name: "Заряд в датчике THP в спальне"
         unit_of_measurement: '%'
         value_template: "{{ state_attr('sensor.xiaomi_thp_temperature_bedroom_158d00025f03f5', 'battery_level') }}"
         device_class: battery
