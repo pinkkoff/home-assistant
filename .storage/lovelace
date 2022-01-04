@@ -314,7 +314,7 @@
                                 {
                                     "type": "button",
                                     "icon_height": "50px",
-                                    "entity": "scene.tv_light",
+                                    "entity": "scene.rezhim_tv_v_spalne",
                                     "name": "\u041f\u0440\u043e\u0441\u043c\u043e\u0442\u0440 TV",
                                     "show_state": false,
                                     "tap_action": {
@@ -330,7 +330,7 @@
                                 {
                                     "type": "button",
                                     "icon_height": "50px",
-                                    "entity": "scene.night_light",
+                                    "entity": "scene.nochnik_v_spalne",
                                     "name": "\u041d\u043e\u0447\u043d\u043e\u0439 \u0441\u0432\u0435\u0442",
                                     "tap_action": {
                                         "action": "call-service",

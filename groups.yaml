@@ -28,6 +28,8 @@ all_devices:
     - humidifier.xiaomi_humfan_livingroom_2
     - climate.haier_ac_livingroom
     - switch.xiaomi_wallswitch_bathroom_fan
+    - media_player.lg_tv_bedroom
+    - media_player.lg_tv_livingroom
 
 ##
 # Есть ли кто-то дома

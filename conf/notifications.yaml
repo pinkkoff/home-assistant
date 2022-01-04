@@ -14,6 +14,15 @@ telegram_bot:
 
 # iOS integration
 ios:
+  actions:
+    - name: all_off
+      background_color: "#ffffff"
+      label:
+        text: "Выключить все устройства"
+        color: "#ff0000"
+      icon:
+        icon: power-plug-off
+        color: "#000000"
 #  push:
 #    categories:
 #      - name: "Тестовый PUSH c кнопками" # Дружелюбное имя

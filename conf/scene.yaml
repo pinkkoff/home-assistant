@@ -1,5 +1,5 @@
 scene:
-  - name: TV light
+  - name: Режим TV в спальне
     entities:
       light.yeelight_bedroom_ceiling_light: "off"
       switch.xiaomi_wallswitch_bedroom_spots: "off"
@@ -8,15 +8,29 @@ scene:
       light.yeelight_bedroom_ceiling_light_nightlight:
         state: "on"
         brightness: 25
-  - name: night light
+  - name: Режим TV в гостиной (сзади)
+    entities:
+      switch.xiaomi_wallswitch_livingroom_pczone: "on"
+      switch.xiaomi_wallswitch_livingroom_tvzone: "off"
+      switch.xiaomi_wallswitch_livingroom_kitchen_main: "off"
+      switch.xiaomi_wallswitch_livingroom_kitchen_sill: "off"
+      switch.xiaomi_wallswitch_corridor_light: "off"
+  - name: Режим TV в гостиной (спереди)
+    entities:
+      switch.xiaomi_wallswitch_livingroom_pczone: "off"
+      switch.xiaomi_wallswitch_livingroom_tvzone: "on"
+      switch.xiaomi_wallswitch_livingroom_kitchen_main: "off"
+      switch.xiaomi_wallswitch_livingroom_kitchen_sill: "off"
+      switch.xiaomi_wallswitch_corridor_light: "off"
+  - name: Ночник в спальне
     entities:
       light.yeelight_bedroom_ceiling_light: "off"
       switch.xiaomi_wallswitch_bedroom_spots: "off"
-      switch.xiaomi_wallswitch_bedroom_night_right: "off"
+      switch.xiaomi_wallswitch_bedroom_night_right: "on"
       switch.xiaomi_wallswitch_bedroom_night_left: "off"
       light.yeelight_bedroom_ceiling_light_nightlight:
-        state: "on"
-        brightness: 10
-  - name: Выключить свет
+        state: "off"
+      switch.xiaomi_wallswitch_corridor_light: "off"
+  - name: Выключить весь свет
     entities:
       group.all_lights: "off"
