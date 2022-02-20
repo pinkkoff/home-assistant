@@ -152,7 +152,6 @@
                             "cards": [
                                 {
                                     "type": "custom:mini-media-player",
-                                    "entity": "media_player.yandex_station_lite_bedroom",
                                     "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f",
                                     "icon": "mdi:bed",
                                     "artwork": "cover",
@@ -183,12 +182,12 @@
                                             }
                                         ],
                                         "columns": 4
-                                    }
+                                    },
+                                    "source": "icon",
+                                    "entity": "media_player.yandex_station_lite_bedroom"
                                 },
                                 {
                                     "type": "custom:mini-media-player",
-                                    "entity": "media_player.yandex_station_mini_livingroom",
-                                    "name": "\u0417\u0430\u043b",
                                     "icon": "mdi:table-chair",
                                     "artwork": "cover",
                                     "info": "short",
@@ -218,7 +217,10 @@
                                             }
                                         ],
                                         "columns": 4
-                                    }
+                                    },
+                                    "source": "icon",
+                                    "name": "\u0413\u043e\u0441\u0442\u0438\u043d\u0430\u044f",
+                                    "entity": "media_player.yandex_station_mini_livingroom"
                                 }
                             ]
                         },
@@ -523,7 +525,26 @@
                             "artwork": "material",
                             "shortcuts": {
                                 "columns": 5,
+                                "column_height": 50,
                                 "buttons": [
+                                    {
+                                        "icon": "mdi:arrow-down-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_bedroom",
+                                            "button": "DOWN"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:arrow-up-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_bedroom",
+                                            "button": "UP"
+                                        }
+                                    },
                                     {
                                         "icon": "mdi:arrow-left-bold",
                                         "type": "service",
@@ -549,24 +570,6 @@
                                         "data": {
                                             "entity_id": "media_player.lg_tv_bedroom",
                                             "button": "ENTER"
-                                        }
-                                    },
-                                    {
-                                        "icon": "mdi:arrow-down-bold",
-                                        "type": "service",
-                                        "id": "webostv.button",
-                                        "data": {
-                                            "entity_id": "media_player.lg_tv_bedroom",
-                                            "button": "DOWN"
-                                        }
-                                    },
-                                    {
-                                        "icon": "mdi:arrow-up-bold",
-                                        "type": "service",
-                                        "id": "webostv.button",
-                                        "data": {
-                                            "entity_id": "media_player.lg_tv_bedroom",
-                                            "button": "UP"
                                         }
                                     },
                                     {
@@ -822,7 +825,26 @@
                             "artwork": "material",
                             "shortcuts": {
                                 "columns": 5,
+                                "column_height": 50,
                                 "buttons": [
+                                    {
+                                        "icon": "mdi:arrow-down-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_livingroom",
+                                            "button": "DOWN"
+                                        }
+                                    },
+                                    {
+                                        "icon": "mdi:arrow-up-bold",
+                                        "type": "service",
+                                        "id": "webostv.button",
+                                        "data": {
+                                            "entity_id": "media_player.lg_tv_livingroom",
+                                            "button": "UP"
+                                        }
+                                    },
                                     {
                                         "icon": "mdi:arrow-left-bold",
                                         "type": "service",
@@ -848,24 +870,6 @@
                                         "data": {
                                             "entity_id": "media_player.lg_tv_livingroom",
                                             "button": "ENTER"
-                                        }
-                                    },
-                                    {
-                                        "icon": "mdi:arrow-down-bold",
-                                        "type": "service",
-                                        "id": "webostv.button",
-                                        "data": {
-                                            "entity_id": "media_player.lg_tv_livingroom",
-                                            "button": "DOWN"
-                                        }
-                                    },
-                                    {
-                                        "icon": "mdi:arrow-up-bold",
-                                        "type": "service",
-                                        "id": "webostv.button",
-                                        "data": {
-                                            "entity_id": "media_player.lg_tv_livingroom",
-                                            "button": "UP"
                                         }
                                     },
                                     {
@@ -990,6 +994,11 @@
                                     "name": "\u0410\u0432\u0442\u043e \u043f\u043e\u0434\u0441\u0432\u0435\u0442\u043a\u0430"
                                 }
                             ]
+                        },
+                        {
+                            "type": "thermostat",
+                            "entity": "climate.tuya_floorheater_bathroom",
+                            "name": "\u0422\u0435\u043f\u043b\u044b\u0439 \u043f\u043e\u043b"
                         }
                     ],
                     "icon": "mdi:shower",
@@ -1742,11 +1751,6 @@
                             "show_header_toggle": false,
                             "title": "\u0421\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u0431\u0430\u0442\u0430\u0440\u0435\u0435\u043a",
                             "type": "entities"
-                        },
-                        {
-                            "type": "thermostat",
-                            "entity": "climate.tuya_floorheater_bathroom",
-                            "name": "\u0422\u0435\u043f\u043b\u044b\u0439 \u043f\u043e\u043b Tuya"
                         }
                     ],
                     "title": "\u0442\u0435\u0441\u0442"

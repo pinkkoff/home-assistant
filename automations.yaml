@@ -1,0 +1,30 @@
+- id: '1645311234242'
+  alias: Включение телевизора в гостиной
+  description: Включает по WoL телевизор в гостиной
+  trigger:
+  - platform: device
+    device_id: f050b94712c08462e788faec3676921e
+    domain: webostv
+    type: webostv.turn_on
+  condition: []
+  action:
+  - service: wake_on_lan.send_magic_packet
+    data:
+      mac: B0:37:95:48:27:8B
+      broadcast_address: 192.168.1.255
+  mode: single
+- id: '1645311587818'
+  alias: Включение телевизора в спальне
+  description: Включает по WoL телевизор в спальне
+  trigger:
+  - platform: device
+    device_id: ba7649bc66a71407906facc1cc6fa0a8
+    domain: webostv
+    type: webostv.turn_on
+  condition: []
+  action:
+  - service: wake_on_lan.send_magic_packet
+    data:
+      mac: 64:95:6C:9B:AA:A7
+      broadcast_address: 192.168.1.255
+  mode: single

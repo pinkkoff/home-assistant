@@ -1,15 +1,16 @@
-webostv:
-  - host: 192.168.1.89
-    name: LG TV bedroom
-    turn_on_action:
-      service: wake_on_lan.send_magic_packet
-      data:
-        mac: 64:95:6C:9B:AA:A7
-        broadcast_address: 192.168.1.255
-  - host: 192.168.1.98
-    name: LG TV livingroom
-    turn_on_action:
-      service: wake_on_lan.send_magic_packet
-      data:
-        mac: B0:37:95:48:27:8B
-        broadcast_address: 192.168.1.255
+### LG TV integration. DEPRECATED, now in UI
+#webostv:
+#  - host: 192.168.1.89
+#    name: LG TV bedroom
+#    turn_on_action:
+#      service: wake_on_lan.send_magic_packet
+#      data:
+#        mac: 64:95:6C:9B:AA:A7
+#        broadcast_address: 192.168.1.255
+#  - host: 192.168.1.98
+#    name: LG TV livingroom
+#    turn_on_action:
+#      service: wake_on_lan.send_magic_packet
+#      data:
+#        mac: B0:37:95:48:27:8B
+#        broadcast_address: 192.168.1.255

@@ -68,11 +68,11 @@ sensor:
     command: "cat /sys/class/thermal/thermal_zone0/temp"
     unit_of_measurement: "°C"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
-# Version of Home Assistant
-  - platform: version
-    name: HA version
+## Version of Home Assistant - deprecated, now in UI
+#  - platform: version
+#    name: HA version
 
-    ###
+###
 ### Switch ###
 switch:
 # Wake on LAN switch. Indicate working comp
