@@ -103,3 +103,6 @@ yandex_station:
     LG00000000000002842700001013446b:  # device_id колонки
         host: 192.168.1.97
         name: media_player.yandex_station_lite_bedroom
+#  media_players:
+#    entity_id: media_player.harman_kardon_multibeam_700
+#    name: Саундбар

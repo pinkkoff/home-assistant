@@ -16,6 +16,9 @@ homeassistant:
   ### All my config yaml files in dir conf: ###
   packages: !include_dir_named conf
 
+  ### External URL of Home Assistant
+  #external_url: !secret ha_ext_url
+
 # Includes
 group: !include groups.yaml
 automation: !include automations.yaml

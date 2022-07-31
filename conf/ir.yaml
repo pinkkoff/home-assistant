@@ -1,10 +1,10 @@
 smartir:
-  check_updates: false
+#  check_updates: false
 
 climate:
   - platform: smartir
     name: haier_ac_livingroom
-    device_code: 1320
+    device_code: 1322
     controller_data: remote.broadlink_rm3_livingroom_remote
     temperature_sensor: sensor.xiaomi_thp_temperature_livingroom_158d00046581b5
     humidity_sensor: sensor.xiaomi_thp_humidity_livingroom_158d00046581b5
