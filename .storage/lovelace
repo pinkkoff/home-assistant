@@ -7,8 +7,9 @@
       "title": "Pinkkoff Smart Home",
       "views": [
         {
+          "theme": "Backend-selected",
           "icon": "mdi:home-city-outline",
-          "path": "default_view",
+          "path": "main_page",
           "title": "Главный экран",
           "badges": [
             {
@@ -247,8 +248,10 @@
           ]
         },
         {
+          "theme": "Backend-selected",
           "icon": "mdi:bed",
           "title": "Спальня",
+          "path": "bedroom",
           "badges": [],
           "cards": [
             {
@@ -617,6 +620,10 @@
           ]
         },
         {
+          "theme": "Backend-selected",
+          "icon": "mdi:table-chair",
+          "path": "livingroom",
+          "title": "Гостиная",
           "badges": [],
           "cards": [
             {
@@ -913,12 +920,13 @@
               "icon": "mdi:television-box",
               "name": "Телевизор (гостиная)"
             }
-          ],
-          "icon": "mdi:table-chair",
-          "path": "",
-          "title": "Гостиная"
+          ]
         },
         {
+          "theme": "Backend-selected",
+          "icon": "mdi:shower",
+          "path": "bathroom",
+          "title": "Ванная",
           "badges": [],
           "cards": [
             {
@@ -1000,12 +1008,13 @@
               "entity": "climate.tuya_floorheater_bathroom",
               "name": "Теплый пол"
             }
-          ],
-          "icon": "mdi:shower",
-          "path": "",
-          "title": "Ванная"
+          ]
         },
         {
+          "theme": "Backend-selected",
+          "icon": "mdi:wardrobe-outline",
+          "path": "cloackroom",
+          "title": "Гардеробная",
           "badges": [],
           "cards": [
             {
@@ -1038,12 +1047,13 @@
               },
               "type": "button"
             }
-          ],
-          "icon": "mdi:wardrobe-outline",
-          "path": "",
-          "title": "Гардеробная"
+          ]
         },
         {
+          "theme": "Backend-selected",
+          "icon": "mdi:door",
+          "path": "corridor",
+          "title": "Коридор",
           "badges": [],
           "cards": [
             {
@@ -1099,12 +1109,13 @@
               "type": "entities",
               "title": "Управление вентилями"
             }
-          ],
-          "icon": "mdi:door",
-          "path": "",
-          "title": "Коридор"
+          ]
         },
         {
+          "theme": "Backend-selected",
+          "icon": "mdi:home-export-outline",
+          "path": "balcony",
+          "title": "Балкон",
           "badges": [],
           "cards": [
             {
@@ -1136,14 +1147,12 @@
               },
               "type": "button"
             }
-          ],
-          "icon": "mdi:home-export-outline",
-          "path": "",
-          "title": "Балкон"
+          ]
         },
         {
+          "theme": "Backend-selected",
           "title": "",
-          "path": "bmw",
+          "path": "car",
           "icon": "mdi:car",
           "badges": [],
           "cards": [
@@ -1215,6 +1224,11 @@
           ]
         },
         {
+          "theme": "Backend-selected",
+          "icon": "mdi:lan",
+          "panel": false,
+          "path": "diag",
+          "title": "Диагностика",
           "badges": [],
           "cards": [
             {
@@ -1559,13 +1573,12 @@
               "title": "KidNAS",
               "show_header_toggle": false
             }
-          ],
-          "icon": "mdi:lan",
-          "panel": false,
-          "path": "",
-          "title": "Диагностика"
+          ]
         },
         {
+          "theme": "Backend-selected",
+          "title": "тест",
+          "path": "test",
           "badges": [],
           "cards": [
             {
@@ -1786,14 +1799,127 @@
               "image": "https://demo.home-assistant.io/stub_config/t-shirt-promo.png",
               "tap_action": {
                 "action": "navigate",
-                "navigation_path": "Тест"
+                "navigation_path": "bedroom"
               },
               "hold_action": {
                 "action": "none"
               }
+            },
+            {
+              "type": "picture-elements",
+              "elements": [
+                {
+                  "type": "state-badge",
+                  "entity": "sensor.xiaomi_thp_temperature_livingroom_158d00046581b5",
+                  "style": {
+                    "top": "7%",
+                    "--ha-label-badge-font-size": "1em",
+                    "--ha-label-text-font-size": "1em",
+                    "left": "2%",
+                    "color": "transparent",
+                    "transform": "none"
+                  }
+                },
+                {
+                  "type": "state-badge",
+                  "entity": "sensor.xiaomi_thp_humidity_livingroom_158d00046581b5",
+                  "style": {
+                    "top": "40%",
+                    "--ha-label-badge-font-size": "1em",
+                    "--ha-label-text-font-size": "1em",
+                    "left": "2%",
+                    "color": "transparent",
+                    "transform": "none"
+                  }
+                },
+                {
+                  "type": "icon",
+                  "icon": "mdi:arrow-right-bold-circle-outline",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/lovelace/livingroom"
+                  },
+                  "style": {
+                    "top": "15%",
+                    "left": "93%",
+                    "--paper-item-icon-color": "black",
+                    "color": "black"
+                  }
+                },
+                {
+                  "type": "service-button",
+                  "title": "Turn lights off",
+                  "style": {
+                    "top": "90%",
+                    "left": "86%",
+                    "background": "black"
+                  },
+                  "service": "homeassistant.turn_off",
+                  "service_data": {
+                    "entity_id": "group.livingroom_lights"
+                  }
+                }
+              ],
+              "image": "/local/my_pics/livingroom1.jpg"
+            },
+            {
+              "type": "picture-elements",
+              "elements": [
+                {
+                  "type": "state-badge",
+                  "entity": "sensor.xiaomi_thp_temperature_livingroom_158d00046581b5",
+                  "style": {
+                    "top": "7%",
+                    "--ha-label-badge-font-size": "1em",
+                    "--ha-label-text-font-size": "1em",
+                    "left": "2%",
+                    "color": "transparent",
+                    "transform": "none"
+                  }
+                },
+                {
+                  "type": "state-badge",
+                  "entity": "sensor.xiaomi_thp_humidity_livingroom_158d00046581b5",
+                  "style": {
+                    "top": "40%",
+                    "--ha-label-badge-font-size": "1em",
+                    "--ha-label-text-font-size": "1em",
+                    "left": "2%",
+                    "color": "transparent",
+                    "transform": "none"
+                  }
+                },
+                {
+                  "type": "icon",
+                  "icon": "mdi:arrow-right-bold-circle-outline",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/lovelace/livingroom"
+                  },
+                  "style": {
+                    "top": "15%",
+                    "left": "93%",
+                    "--paper-item-icon-color": "black",
+                    "color": "black"
+                  }
+                },
+                {
+                  "type": "service-button",
+                  "title": "Turn lights off",
+                  "style": {
+                    "top": "90%",
+                    "left": "83%",
+                    "background": "black"
+                  },
+                  "service": "homeassistant.turn_off",
+                  "service_data": {
+                    "entity_id": "group.livingroom_lights"
+                  }
+                }
+              ],
+              "image": "/local/my_pics/bedroom1.png"
             }
-          ],
-          "title": "тест"
+          ]
         }
       ]
     }

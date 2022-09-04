@@ -16,6 +16,24 @@ all_lights:
     - switch.xiaomi_wallswitch_livingroom_kitchen_main
     - switch.xiaomi_wallswitch_livingroom_kitchen_sill
 
+livingroom_lights:
+  name: Свет в гостиной
+  entities:
+    - switch.xiaomi_wallswitch_livingroom_tvzone
+    - switch.xiaomi_wallswitch_livingroom_pczone
+    - switch.xiaomi_wallswitch_livingroom_kitchen_main
+    - switch.xiaomi_wallswitch_livingroom_kitchen_sill
+
+bedroom_lights:
+  name: Свет в спальне
+  entities:
+    - switch.xiaomi_wallswitch_bedroom_night_left
+    - switch.xiaomi_wallswitch_bedroom_night_right
+    - switch.xiaomi_wallswitch_bedroom_spots
+    - light.yeelight_bedroom_ceiling_light
+    - light.yeelight_bedroom_ceiling_light_nightlight
+    - switch.xiaomi_wallswitch_balcony_light
+
 ##
 # Умные устройства
 all_devices:
