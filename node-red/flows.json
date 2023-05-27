@@ -101,7 +101,7 @@
         "id": "6962e153.99eb9",
         "type": "server",
         "name": "Home Assistant",
-        "version": 4,
+        "version": 5,
         "rejectUnauthorizedCerts": true,
         "ha_boolean": "y|yes|true|on|home|open",
         "connectionDelay": true,
@@ -116,7 +116,8 @@
         "statusMonth": "short",
         "statusDay": "numeric",
         "statusHourCycle": "h23",
-        "statusTimeFormat": "h:m"
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": true
     },
     {
         "id": "ac5fa68f.43b8d8",
@@ -1148,8 +1149,8 @@
         "z": "6a24dcbb.10a694",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
-        "event_type": "xiaomi_aqara.click",
+        "version": 2,
+        "eventType": "xiaomi_aqara.click",
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -2820,8 +2821,8 @@
         "z": "6a24dcbb.10a694",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
-        "event_type": "ios.action_fired",
+        "version": 2,
+        "eventType": "ios.action_fired",
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -5147,8 +5148,8 @@
         "z": "8d422126.121a1",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
-        "event_type": "telegram_callback",
+        "version": 2,
+        "eventType": "telegram_callback",
         "waitForRunning": true,
         "outputProperties": [
             {
@@ -5170,7 +5171,7 @@
                 "valueType": "jsonata"
             }
         ],
-        "x": 610,
+        "x": 660,
         "y": 620,
         "wires": [
             [
@@ -6507,7 +6508,7 @@
         "z": "8d422126.121a1",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
+        "version": 2,
         "outputs": 2,
         "entityId": "group.smb_at_home",
         "entityIdFilterType": "exact",
@@ -6518,10 +6519,9 @@
         "timeout": "10",
         "timeoutType": "num",
         "timeoutUnits": "minutes",
-        "entityLocation": "",
-        "entityLocationType": "none",
         "checkCurrentState": true,
         "blockInputOverrides": true,
+        "outputProperties": [],
         "x": 240,
         "y": 2280,
         "wires": [
@@ -6644,8 +6644,8 @@
         "z": "8d422126.121a1",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
-        "event_type": "xiaomi_aqara.click",
+        "version": 2,
+        "eventType": "xiaomi_aqara.click",
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -6666,7 +6666,7 @@
                 "valueType": "eventData"
             }
         ],
-        "x": 130,
+        "x": 180,
         "y": 2400,
         "wires": [
             [
@@ -7076,8 +7076,8 @@
         "z": "8d422126.121a1",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
-        "event_type": "home_assistant_client",
+        "version": 2,
+        "eventType": "home_assistant_client",
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -7110,7 +7110,7 @@
                 "valueType": "jsonata"
             }
         ],
-        "x": 140,
+        "x": 200,
         "y": 2520,
         "wires": [
             [
@@ -9951,8 +9951,8 @@
         "z": "96899f2.417176",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
-        "event_type": "telegram_callback",
+        "version": 2,
+        "eventType": "telegram_callback",
         "waitForRunning": true,
         "outputProperties": [
             {
@@ -10664,8 +10664,8 @@
         "z": "96899f2.417176",
         "name": "telegram_command",
         "server": "6962e153.99eb9",
-        "version": 1,
-        "event_type": "telegram_command",
+        "version": 2,
+        "eventType": "telegram_command",
         "waitForRunning": true,
         "outputProperties": [
             {
@@ -11955,8 +11955,8 @@
         "z": "06d82d40859379f4",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
-        "event_type": "yandex_speaker",
+        "version": 2,
+        "eventType": "yandex_speaker",
         "exposeToHomeAssistant": false,
         "haConfig": [
             {
@@ -12159,8 +12159,8 @@
         "z": "ee1a9216.12937",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
-        "event_type": "telegram_callback",
+        "version": 2,
+        "eventType": "telegram_callback",
         "waitForRunning": true,
         "outputProperties": [
             {
@@ -12196,8 +12196,8 @@
         "z": "ee1a9216.12937",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
-        "event_type": "telegram_text",
+        "version": 2,
+        "eventType": "telegram_text",
         "waitForRunning": true,
         "outputProperties": [
             {
@@ -12233,8 +12233,8 @@
         "z": "ee1a9216.12937",
         "name": "",
         "server": "6962e153.99eb9",
-        "version": 1,
-        "event_type": "telegram_command",
+        "version": 2,
+        "eventType": "telegram_command",
         "waitForRunning": true,
         "outputProperties": [
             {

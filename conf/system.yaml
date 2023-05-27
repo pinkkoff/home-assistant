@@ -39,9 +39,10 @@ hacs:
   #theme: true
 
 # Yandex time
-sensor:
-  - platform: yandex_maps
-    start: !secret home_addr
-    destination: !secret jet_addr
-    name: Time to work
+# Commented due to unavailable yandex_maps component
+#sensor:
+#  - platform: yandex_maps
+#    start: !secret home_addr
+#    destination: !secret jet_addr
+#    name: Time to work
     
