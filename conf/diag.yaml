@@ -10,8 +10,8 @@ wake_on_lan:
 #    username: nasmaster_username
 #    password: nasmaster_pass
 
-### Check config HACS ###
-config_check:
+### Check config HACS ### - deprecated
+#config_check:
 
 ###
 ### Binary sensors ###
@@ -62,12 +62,21 @@ sensor:
       - type: memory_use_percent
       - type: processor_use
       - type: last_boot
+# Temp pi4 cpu # - deprected config see braking changes 2023.6 command line
+#  - platform: command_line # - deprected config see braking changes 2023.6 command line
+#    name: CPU_temp
+#    command: "cat /sys/class/thermal/thermal_zone0/temp"
+#    unit_of_measurement: "°C"
+#    value_template: '{{ value | multiply(0.001) | round(1) }}'
+
 # Temp pi4 cpu
-  - platform: command_line
+command_line: 
+  sensor:
     name: CPU_temp
     command: "cat /sys/class/thermal/thermal_zone0/temp"
     unit_of_measurement: "°C"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
+
 ## Version of Home Assistant - deprecated, now in UI
 #  - platform: version
 #    name: HA version

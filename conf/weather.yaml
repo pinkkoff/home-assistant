@@ -1,12 +1,12 @@
 ### Wheater forecasting ###
 
-# Weather forecast provisers
-weather:
-  - platform: darksky
-    name: darksky_forecast
-    api_key: !secret dark_sky_api_key
-  - platform: gismeteo
-    name: gismeteo_forecast
+# Weather forecast provisers - deprecated
+#weather:
+#  - platform: darksky
+#    name: darksky_forecast
+#    api_key: !secret dark_sky_api_key
+#  - platform: gismeteo
+#    name: gismeteo_forecast
 
 # Weather sensors
 sensor:

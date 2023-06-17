@@ -61,7 +61,7 @@
                       "color": "#009fff"
                     },
                     {
-                      "value": 24,
+                      "value": 25,
                       "color": "#00ff2b"
                     },
                     {
@@ -138,12 +138,7 @@
             {
               "entities": [
                 {
-                  "entity": "switch.plug_158d00032d5e8b"
-                },
-                {
-                  "entity": "switch.plug_158d0002677bd3",
-                  "icon": "mdi:earth",
-                  "name": "Глобус"
+                  "entity": "cover.xiaomi_curtain_bedroom_158d0004118cca"
                 },
                 {
                   "entity": "humidifier.xiaomi_humfan_bedroom"
@@ -157,14 +152,19 @@
                   "name": "Увлажнитель в гостиной (TV)"
                 },
                 {
+                  "entity": "switch.xiaomi_wallswitch_bathroom_fan"
+                },
+                {
                   "entity": "climate.haier_ac_livingroom",
                   "name": "Кондиционер"
                 },
                 {
-                  "entity": "switch.xiaomi_wallswitch_bathroom_fan"
+                  "entity": "switch.plug_158d00032d5e8b"
                 },
                 {
-                  "entity": "cover.xiaomi_curtain_bedroom_158d0004118cca"
+                  "entity": "switch.plug_158d0002677bd3",
+                  "icon": "mdi:earth",
+                  "name": "Глобус"
                 },
                 {
                   "entity": "media_player.lg_tv_bedroom",
@@ -227,7 +227,7 @@
                       "color": "#009fff"
                     },
                     {
-                      "value": 24,
+                      "value": 25,
                       "color": "#00ff2b"
                     },
                     {
@@ -568,7 +568,7 @@
                       "color": "#009fff"
                     },
                     {
-                      "value": 24,
+                      "value": 25,
                       "color": "#00ff2b"
                     },
                     {
@@ -683,7 +683,7 @@
                       "color": "#009fff"
                     },
                     {
-                      "value": 24,
+                      "value": 25,
                       "color": "#00ff2b"
                     },
                     {
@@ -1015,7 +1015,7 @@
                       "color": "#009fff"
                     },
                     {
-                      "value": 24,
+                      "value": 25,
                       "color": "#00ff2b"
                     },
                     {
@@ -1101,7 +1101,7 @@
                           "color": "#009fff"
                         },
                         {
-                          "value": 24,
+                          "value": 25,
                           "color": "#00ff2b"
                         },
                         {
@@ -1193,7 +1193,7 @@
                       "color": "#009fff"
                     },
                     {
-                      "value": 24,
+                      "value": 25,
                       "color": "#00ff2b"
                     },
                     {
@@ -1330,16 +1330,6 @@
                     "action": "toggle"
                   },
                   "type": "entity-button"
-                },
-                {
-                  "type": "entity-button",
-                  "entity": "script.check_config_ha",
-                  "icon": "mdi:playlist-check",
-                  "name": "Check",
-                  "show_state": false,
-                  "tap_action": {
-                    "action": "toggle"
-                  }
                 },
                 {
                   "entity": "script.restart_ha_core",
@@ -1947,63 +1937,6 @@
                 }
               ],
               "image": "/local/my_pics/livingroom1.jpg"
-            },
-            {
-              "type": "picture-elements",
-              "elements": [
-                {
-                  "type": "state-badge",
-                  "entity": "sensor.xiaomi_thp_temperature_livingroom_158d00046581b5",
-                  "style": {
-                    "top": "7%",
-                    "--ha-label-badge-font-size": "1em",
-                    "--ha-label-text-font-size": "1em",
-                    "left": "2%",
-                    "color": "transparent",
-                    "transform": "none"
-                  }
-                },
-                {
-                  "type": "state-badge",
-                  "entity": "sensor.xiaomi_thp_humidity_livingroom_158d00046581b5",
-                  "style": {
-                    "top": "40%",
-                    "--ha-label-badge-font-size": "1em",
-                    "--ha-label-text-font-size": "1em",
-                    "left": "2%",
-                    "color": "transparent",
-                    "transform": "none"
-                  }
-                },
-                {
-                  "type": "icon",
-                  "icon": "mdi:arrow-right-bold-circle-outline",
-                  "tap_action": {
-                    "action": "navigate",
-                    "navigation_path": "/lovelace/livingroom"
-                  },
-                  "style": {
-                    "top": "15%",
-                    "left": "93%",
-                    "--paper-item-icon-color": "black",
-                    "color": "black"
-                  }
-                },
-                {
-                  "type": "service-button",
-                  "title": "Turn lights off",
-                  "style": {
-                    "top": "90%",
-                    "left": "83%",
-                    "background": "black"
-                  },
-                  "service": "homeassistant.turn_off",
-                  "service_data": {
-                    "entity_id": "group.livingroom_lights"
-                  }
-                }
-              ],
-              "image": "/local/my_pics/bedroom1.png"
             }
           ]
         },
@@ -2031,6 +1964,412 @@
                 "icon": "hass:action"
               },
               "discover_existing": true
+            }
+          ]
+        },
+        {
+          "title": "Main screen new",
+          "path": "main-screen",
+          "badges": [],
+          "cards": [
+            {
+              "square": false,
+              "type": "grid",
+              "cards": [
+                {
+                  "square": false,
+                  "type": "grid",
+                  "cards": [
+                    {
+                      "type": "custom:mushroom-person-card",
+                      "entity": "person.vladimir",
+                      "icon_type": "entity-picture"
+                    },
+                    {
+                      "type": "custom:mushroom-person-card",
+                      "entity": "person.anna",
+                      "icon_type": "entity-picture"
+                    }
+                  ],
+                  "columns": 2
+                },
+                {
+                  "show_current": true,
+                  "show_forecast": true,
+                  "type": "weather-forecast",
+                  "entity": "weather.gismeteo_forecast",
+                  "name": "На улице"
+                },
+                {
+                  "type": "custom:mini-graph-card",
+                  "entities": [
+                    "sensor.home_average_temperature"
+                  ],
+                  "name": "Температура дома",
+                  "hours_to_show": 24,
+                  "points_per_hour": 1,
+                  "decimals": 1,
+                  "show": {
+                    "labels": true
+                  },
+                  "lower_bound": "~22",
+                  "upper_bound": "~28",
+                  "color_thresholds": [
+                    {
+                      "value": 22,
+                      "color": "#009fff"
+                    },
+                    {
+                      "value": 25,
+                      "color": "#00ff2b"
+                    },
+                    {
+                      "value": 27,
+                      "color": "#c0392b"
+                    }
+                  ]
+                },
+                {
+                  "type": "custom:mini-graph-card",
+                  "entities": [
+                    "sensor.home_average_humidity"
+                  ],
+                  "show": {
+                    "labels": true
+                  },
+                  "line_color": "#208fff",
+                  "decimals": 0,
+                  "points_per_hour": 1,
+                  "name": "Влажность дома",
+                  "min_bound_range": 15
+                }
+              ],
+              "columns": 1
+            },
+            {
+              "square": false,
+              "type": "grid",
+              "cards": [
+                {
+                  "square": false,
+                  "type": "grid",
+                  "cards": [
+                    {
+                      "type": "tile",
+                      "entity": "group.all_lights",
+                      "name": "Свет",
+                      "icon": "mdi:lightbulb-group-outline",
+                      "vertical": false,
+                      "tap_action": {
+                        "action": "more-info"
+                      },
+                      "icon_tap_action": {
+                        "action": "more-info"
+                      }
+                    },
+                    {
+                      "type": "tile",
+                      "entity": "group.all_devices",
+                      "name": "Устройства",
+                      "vertical": false,
+                      "tap_action": {
+                        "action": "more-info"
+                      },
+                      "icon_tap_action": {
+                        "action": "more-info"
+                      }
+                    }
+                  ],
+                  "columns": 2
+                },
+                {
+                  "square": false,
+                  "type": "grid",
+                  "cards": [
+                    {
+                      "type": "tile",
+                      "entity": "switch.sonoff_water_valve_cold_inverse",
+                      "icon_tap_action": {
+                        "action": "more-info"
+                      }
+                    },
+                    {
+                      "type": "tile",
+                      "entity": "switch.sonoff_water_valve_hot_inverse",
+                      "icon_tap_action": {
+                        "action": "more-info"
+                      }
+                    }
+                  ],
+                  "columns": 2
+                },
+                {
+                  "type": "picture-elements",
+                  "elements": [
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_temperature_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "7%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_humidity_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "32%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "image": "/local/my_pics/empty.png",
+                      "style": {
+                        "top": "50%",
+                        "left": "50%",
+                        "width": "100%"
+                      },
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/lovelace/livingroom"
+                      }
+                    }
+                  ],
+                  "image": "/local/my_pics/room_background_test3.png"
+                },
+                {
+                  "type": "picture-elements",
+                  "elements": [
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_temperature_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "7%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_humidity_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "32%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "image": "/local/my_pics/empty.png",
+                      "style": {
+                        "top": "50%",
+                        "left": "50%",
+                        "width": "100%"
+                      },
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/lovelace/livingroom"
+                      }
+                    }
+                  ],
+                  "image": "/local/my_pics/room_background_test3.png"
+                },
+                {
+                  "type": "picture-elements",
+                  "elements": [
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_temperature_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "7%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_humidity_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "32%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "image": "/local/my_pics/empty.png",
+                      "style": {
+                        "top": "50%",
+                        "left": "50%",
+                        "width": "100%"
+                      },
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/lovelace/livingroom"
+                      }
+                    }
+                  ],
+                  "image": "/local/my_pics/room_background_test3.png"
+                }
+              ],
+              "columns": 1
+            },
+            {
+              "square": false,
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "picture-elements",
+                  "elements": [
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_temperature_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "7%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_humidity_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "32%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "image": "/local/my_pics/empty.png",
+                      "style": {
+                        "top": "50%",
+                        "left": "50%",
+                        "width": "100%"
+                      },
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/lovelace/livingroom"
+                      }
+                    }
+                  ],
+                  "image": "/local/my_pics/room_background_test3.png"
+                },
+                {
+                  "type": "picture-elements",
+                  "elements": [
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_temperature_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "7%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_humidity_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "32%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "image": "/local/my_pics/empty.png",
+                      "style": {
+                        "top": "50%",
+                        "left": "50%",
+                        "width": "100%"
+                      },
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/lovelace/livingroom"
+                      }
+                    }
+                  ],
+                  "image": "/local/my_pics/room_background_test3.png"
+                },
+                {
+                  "type": "picture-elements",
+                  "elements": [
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_temperature_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "7%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "state-badge",
+                      "entity": "sensor.xiaomi_thp_humidity_livingroom_158d00046581b5",
+                      "style": {
+                        "top": "32%",
+                        "--ha-label-badge-font-size": "1em",
+                        "--ha-label-text-font-size": "1em",
+                        "left": "2%",
+                        "color": "transparent",
+                        "transform": "none"
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "image": "/local/my_pics/empty.png",
+                      "style": {
+                        "top": "50%",
+                        "left": "50%",
+                        "width": "100%"
+                      },
+                      "tap_action": {
+                        "action": "navigate",
+                        "navigation_path": "/lovelace/livingroom"
+                      }
+                    }
+                  ],
+                  "image": "/local/my_pics/room_background_test3.png"
+                }
+              ],
+              "columns": 1
             }
           ]
         }
